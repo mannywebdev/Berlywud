@@ -9,7 +9,7 @@ function Home() {
 
     const dispatch = useDispatch()
     useEffect(() => {
-        const url = "https://raw.githubusercontent.com/mannywebdev/Burlywud/master/src/product.json";
+        const url = "https://raw.githubusercontent.com/mannywebdev/Berlywud/master/frontend/src/product.json";
             fetch(url)
                 .then(res => res.json())
                 .then(data => dispatch(allProducts(data)))
