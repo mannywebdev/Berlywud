@@ -1,0 +1,60 @@
+.basketitem{
+    display: flex;
+    margin: 5% 0;
+    border: 1px solid #e7e7e7;
+    padding: 1.5em;
+    border-radius: 3px;
+}
+
+.basketitem__info >span{
+    display: block;
+    margin: 4% 0;
+}
+.basketitem__info >p{
+    margin: 0;
+}
+.basketitem__img>img{
+    object-fit: contain;
+    width: 11em;
+    height: 11em;
+
+}
+.basketitem__img{
+    margin-right: 5%;
+}
+
+.basketitem__btn >button{
+    cursor: pointer;
+    outline: 0;
+    border: 1px solid #57534a;
+    background-color: white;
+    color: #57534a;
+    padding: 0.3em 0.3em; 
+    border-radius: 0.3em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 1.1em;
+}
+.basketitem__btn >button:active{
+    transform: translateY(2px);
+}
+.basketitem__info>span>del{
+    color: gray;
+    font-size: 13px;
+}
+
+@media only screen and (max-width: 1024px){
+    .basketitem__img>img{
+        object-fit: contain;
+        height: 10em;
+    }
+}
+@media only screen and (max-width: 800px){
+    .basketitem__img>img{
+        object-fit: contain;
+        height: 9em;
+    }
+    .basketitem{
+        padding: 0.5em;
+    }
+}

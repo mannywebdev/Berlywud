@@ -1,0 +1,48 @@
+.checkout-values{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #e7e7e7;
+    padding: 4%;
+    border-radius: 3px;
+}
+.checkout__left  h4,.checkout__right h4{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #57534a;
+    margin: 0;
+}
+.checkout{
+    display: flex;
+    justify-content: center;
+    margin: 4em 0;
+}
+.checkout__left{
+    width: 40em;
+    margin: 2% ;
+}
+.checkout__right{
+    width: 18em;
+    margin: 2%;
+}
+.checkout__quotes{
+    text-align: center;
+}
+
+@media only screen and (max-width: 1024px){
+    .checkout__left{
+        width: 30em;
+    }
+}
+@media only screen and (max-width: 800px){
+    .checkout{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .checkout__left{
+        width: 95%;
+    }
+    .checkout__right{
+        width: 95%;
+    }
+}

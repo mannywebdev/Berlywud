@@ -1,0 +1,32 @@
+.sidebar{
+    border: 1px solid #d3d3d3;
+    height: 1000px;
+    margin: 2em 0em 0em 1em;
+    padding: 0em 1em;
+    border-radius: 0.4em;
+}
+.sidebar h4{
+    border-bottom: 1px solid #d3d3d3;
+    margin: 0;
+    padding: 1em 0em;
+}
+.sidebar h5{
+    border-bottom: 1px solid #d3d3d3;
+    margin: 0;
+    padding: 1em 0em;
+}
+
+.sidebar div{
+    padding: 1em 0em;
+    border-bottom: 1px solid #d3d3d3;
+}
+.sidebar input{
+    margin-bottom: 0.7em;
+}
+.sidebar label {
+    font-weight: 300
+}
+div>label{
+    display: block;
+}
+

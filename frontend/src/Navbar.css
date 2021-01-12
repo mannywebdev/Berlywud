@@ -1,0 +1,57 @@
+.navbar{
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    border-bottom: 1px solid #e7e7e7;
+}
+.navbar__logo>img{
+    width: 17em;
+    object-fit: contain;
+}
+
+.navbar__option>nav>a{
+    text-decoration: none;
+    color: black;
+    padding-right: 4%;
+    font-size: 1.4em;
+    font-family: 'Playfair Display', serif;
+    color: #57534a;
+}
+.navbar__option{
+    width: 62%;
+}
+
+.navbar__logincart{
+    display: flex;
+    justify-content: space-between;
+    width: 5em;
+}
+.navbar__logincart svg{
+    color: #57534a;
+    width: 25px;
+}
+.navbar__logincart span{
+    font-weight: 900;
+    color: #57534a;
+}
+.bag{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.bag-link{
+    text-decoration: none;
+}
+@media only screen and (max-width: 1300px){
+    .navbar__logo>img{
+        width: 20em;
+    }
+    .navbar__option>nav>a{
+        font-size: 1.1em;
+    }
+    .navbar__logincart svg{
+        width: 20px;
+    }
+} 
