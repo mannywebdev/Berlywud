@@ -26,24 +26,22 @@
 .navbar__logincart{
     display: flex;
     justify-content: space-between;
-    width: 5em;
-}
-.navbar__logincart svg{
-    color: #57534a;
-    width: 25px;
-}
-.navbar__logincart span{
-    font-weight: 900;
-    color: #57534a;
-}
-.bag{
-    display: flex;
-    flex-direction: column;
     align-items: center;
 }
-.bag-link{
-    text-decoration: none;
+
+
+.navbar__logincart .MuiSvgIcon-root {
+    font-size: 1.3em;
+    color: #57534a;
 }
+
+
+
+
+
+
+
+
 @media only screen and (max-width: 1300px){
     .navbar__logo>img{
         width: 20em;

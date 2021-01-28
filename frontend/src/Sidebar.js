@@ -4,7 +4,8 @@ import {useSelector} from 'react-redux'
 
 
 function Sidebar() {
-    const {AllProducts} = useSelector(state => state) 
+    const AllProducts = useSelector(state => state.AllProducts) 
+    const {allProducts} = AllProducts
    
    const [brands,setBrands] = useState([])
     
@@ -19,7 +20,7 @@ function Sidebar() {
    }
    
    console.log(brands)
-   const filteredProducts = AllProducts.filter((item)=>{
+   const filteredProducts = allProducts.filter((item)=>{
        if(item.brand === brands.map(item=>item)){
            return item
        }

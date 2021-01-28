@@ -67,6 +67,10 @@
     border-radius: 25px;
     outline: none;
 }
+.productmain__info .productmain__button>button:active{
+    background-color: #ff3e6c;
+    color :#ffffff;
+}
 .productmain__addtocart>Button{
     background-color: #ff3e6c;
     color: #ffffff;
@@ -75,6 +79,7 @@
     border-radius: 4px;
     outline: none;
     border: none;
+    font-weight: 300;
 }
 .productmain__addtocart{
     margin: 0 0 1em 0;

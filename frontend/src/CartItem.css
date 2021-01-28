@@ -1,29 +1,50 @@
-.basketitem{
+.cartitem{
     display: flex;
-    margin: 5% 0;
+    margin: 1em 0;
     border: 1px solid #e7e7e7;
     padding: 1.5em;
     border-radius: 3px;
 }
 
-.basketitem__info >span{
+.cartitem__info >span{
     display: block;
-    margin: 4% 0;
+    margin: 0.5em 0;
 }
-.basketitem__info >p{
+.cartitem__info p{
     margin: 0;
+    font-weight: 300;
 }
-.basketitem__img>img{
+.cartitem__info p:first-child{
+    font-weight: 500;
+    margin-bottom: 0.3em;
+}
+.cartitem__info select{
+    outline: 0;
+    padding: 0.1em ; 
+    cursor: pointer; 
+    border: 1px solid black; 
+    border-radius: 5px; 
+    font-size: 1em;
+}
+.cartitem__delete{
+    margin-left: 2em;
+}
+
+
+.cartitem__img > img{
     object-fit: contain;
     width: 11em;
     height: 11em;
 
 }
-.basketitem__img{
+.cartitem__img{
     margin-right: 5%;
 }
+.cartitem__info .MuiSvgIcon-root{
+    font-size: 1em;
+}
 
-.basketitem__btn >button{
+.cartitem__btn >button{
     cursor: pointer;
     outline: 0;
     border: 1px solid #57534a;
@@ -35,26 +56,31 @@
     font-weight: 400;
     font-size: 1.1em;
 }
-.basketitem__btn >button:active{
+.cartitem__btn >button:active{
     transform: translateY(2px);
 }
-.basketitem__info>span>del{
+.cartitem__info>span>del{
     color: gray;
     font-size: 13px;
 }
+.link{
+    text-decoration: none;
+    color: black;
+}
+
 
 @media only screen and (max-width: 1024px){
-    .basketitem__img>img{
+    .cartitem__img>img{
         object-fit: contain;
         height: 10em;
     }
 }
 @media only screen and (max-width: 800px){
-    .basketitem__img>img{
+    .cartitem__img>img{
         object-fit: contain;
         height: 9em;
     }
-    .basketitem{
+    .cartitem{
         padding: 0.5em;
     }
 }

@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from './Navbar'
 import Carousel from './Carousel'
 import Home from './Home'
-import Checkout from './Checkout';
+import Cart from './Cart';
 import Footer from './Footer'
 import {BrowserRouter,Switch,Route} from 'react-router-dom'
 import Productmain from './Productmain'
@@ -21,9 +21,9 @@ function App() {
             <Home/>
             <Footer/>
           </Route>
-          <Route path="/checkout">
+          <Route path="/cart/:productId?">
             <Navbar/>
-            <Checkout/>
+            <Cart/>
           </Route>
           <Route path="/productpage/:productId">
             <Navbar/>
