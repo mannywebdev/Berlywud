@@ -78,7 +78,7 @@ function Productmain() {
                             </div>
                             {
                                 product.stockcount > 0 && (
-                                    <div className="productmain__addtocart">
+                                    <div className="pink__button">
                                         <Button variant="contained" onClick={addToCart} size="large" startIcon={<ShoppingCartIcon/>}>Add to Cart</Button>
                                     </div>
                                 )

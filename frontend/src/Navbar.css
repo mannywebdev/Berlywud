@@ -1,5 +1,4 @@
 .navbar{
-    
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,6 +32,32 @@
 .navbar__logincart .MuiSvgIcon-root {
     font-size: 1.3em;
     color: #57534a;
+}
+.dropdown{
+    display: inline-block;
+    position: relative;
+}
+.dropdown .MuiButton-contained{
+    background-color: red;
+}
+.MuiButton-root{
+    text-transform: lowercase;
+}
+
+.dropdown__content{
+    position: absolute ;
+    display: none;
+    z-index: 1;
+    right: 0 ;
+    margin: 0;
+    padding: 3em 0;
+
+}
+.dropdown:hover .dropdown__content{
+    display: block;
+}
+ul{
+    list-style-type: none;
 }
 
 

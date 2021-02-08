@@ -35,7 +35,7 @@ function Home() {
                         </div>
                         <div className="home__container">
                             {allProducts.map((item)=> {
-                                return <Product key={item.id} prop={item}/>
+                                return <Product key={item._id} prop={item}/>
                             })}
                         </div>
                     </div>

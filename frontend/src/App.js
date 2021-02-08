@@ -7,6 +7,7 @@ import Cart from './Cart';
 import Footer from './Footer'
 import {BrowserRouter,Switch,Route} from 'react-router-dom'
 import Productmain from './Productmain'
+import Signin from './Signin';
 
 function App() {
  
@@ -14,22 +15,27 @@ function App() {
   return(
     <BrowserRouter>
       <div className="App">
+        <header>
+          <Navbar/>
+        </header>
+        <main>
         <Switch>
           <Route exact path="/">
-            <Navbar/>
             <Carousel/>
             <Home/>
             <Footer/>
           </Route>
           <Route path="/cart/:productId?">
-            <Navbar/>
             <Cart/>
           </Route>
           <Route path="/productpage/:productId">
-            <Navbar/>
             <Productmain/>
           </Route>
+          <Route path="/signin">
+            <Signin/>
+          </Route>
         </Switch>
+        </main> 
       </div>
     </BrowserRouter>
   );

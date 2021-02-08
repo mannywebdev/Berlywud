@@ -19,7 +19,7 @@ function Cart() {
         if(productId){
             dispatch(addToCart(productId,price))
         }
-    },[dispatch,productId,price])
+    },[productId])
 
     
     const Cart = useSelector(state=> state.Cart)

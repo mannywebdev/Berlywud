@@ -1,18 +1,25 @@
 import React from 'react'
 import './Navbar.css'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import logoblack from './images/blacklogo2025.png'
 import Badge from '@material-ui/core/Badge';
 import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import {signout} from './redux/actions/userActions'
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 function Navbar() {
     const Cart = useSelector(state=> state.Cart)
+    const dispatch = useDispatch()
     const {cartItems} = Cart
-    
+    const UserSignin = useSelector(state=> state.UserSignin)
+    const { userInfo } = UserSignin
+    const signoutHandler = () =>{
+        dispatch(signout())
+    }
 
     const StyledBadge = withStyles((theme) => ({
         badge: {
@@ -40,13 +47,32 @@ function Navbar() {
                 </nav>
             </div>
             <div className="navbar__logincart">
-                <Link className="link" to='/signin'>
-                <div className='signin'>
-                    <IconButton>
-                        <AccountCircleIcon/>
-                    </IconButton>
-                </div>
-                </Link>
+                {
+                    userInfo ? (
+                        <div className="dropdown">
+                            <Link className="link" to='#'>
+                            <Button
+                                variant="contained"
+                                endIcon={<ArrowDropDownIcon/>}
+                            >
+                            {userInfo.name}
+                            </Button>
+                            </Link>
+                            <ul className="dropdown__content">
+                                <Link to="#" className="link" onClick={signoutHandler}>Logout</Link>
+                            </ul>
+                        </div>
+                    ):
+                    (
+                        <Link className="link" to='/signin'>
+                         <Button
+                                variant="contained"
+                            >
+                            Login
+                        </Button>
+                        </Link>
+                    )
+                }
                 
                 <Link className="link" to='/cart'>
                 <div className="cart">

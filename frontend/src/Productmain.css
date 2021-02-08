@@ -71,7 +71,7 @@
     background-color: #ff3e6c;
     color :#ffffff;
 }
-.productmain__addtocart>Button{
+.pink__button>Button{
     background-color: #ff3e6c;
     color: #ffffff;
     font-size: 1em;
@@ -79,12 +79,12 @@
     border-radius: 4px;
     outline: none;
     border: none;
-    font-weight: 300;
+    font-weight: 500;
 }
-.productmain__addtocart{
+.pink__button{
     margin: 0 0 1em 0;
 }
-.productmain__addtocart>Button:hover{
+.pink__button>Button:hover{
     background-color: #ff3e6be8;
 }
 

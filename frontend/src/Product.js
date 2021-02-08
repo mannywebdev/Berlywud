@@ -2,25 +2,18 @@ import React from 'react'
 import "./Product.css"
 import {useDispatch} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {addToBasket} from './redux/addToBasket'
 import Rating from './Rating'
 
 
 function Product({prop}) {
     const dispatch = useDispatch()
-    function addOnClick(){
-        dispatch(addToBasket({
-            id: prop.id,
-            title:prop.title,
-            origprice:prop.origprice,
-            decantprice:prop.decantprice.discprice,
-            url: prop.url,
-        }))
-    }
+    // function addOnClick(){
+    //     dispatch(addToCart())
+    // }
    
     return (
         <div className="product">
-        <Link style={{color: 'inherit', textDecoration: 'inherit'}} to={`/productpage/${prop.id}`}>
+        <Link style={{color: 'inherit', textDecoration: 'inherit'}} to={`/productpage/${prop._id}`}>
             <img className="product__img" src={prop.url} alt={prop.title}/>
             <div className="product__info">
                 <p>{prop.title}</p>
@@ -29,7 +22,7 @@ function Product({prop}) {
             <Rating rating={prop.rating} reviews={prop.reviews}/>
         </Link>
             <div className="product__btn">
-                <button className="btn1" onClick={addOnClick}>Add to Cart</button>
+                <button className="btn1">Add to Cart</button>
                 <button className="btn2">Quick View</button>
             </div>
         
