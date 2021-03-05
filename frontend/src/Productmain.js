@@ -7,7 +7,7 @@ import {useSelector,useDispatch} from 'react-redux'
 import Button from '@material-ui/core/Button';
 import Loadingmsg from './Loadingmsg'
 import Errormsg from './Errormsg'
-import {productDetails} from './redux/actions/allProductsAction'
+import {productDetails} from './redux/actions/allProductsActions'
 
 function Productmain() {
     const dispatch = useDispatch()
@@ -76,6 +76,7 @@ function Productmain() {
                                 <button value="thirtyml" onClick={changePrice}>30ml</button>
                                 <button value="discprice" onClick={changePrice} selected>Retail</button>
                             </div>
+                            <div className="productmain__buttonwidth">
                             {
                                 product.stockcount > 0 && (
                                     <div className="pink__button">
@@ -83,6 +84,7 @@ function Productmain() {
                                     </div>
                                 )
                             }
+                            </div>
                             <div className="productmain__status">
                                 <span>Status: </span>
                                 {product.stockcount > 0 ? <span className="success">Instock</span> : <span className="error">Out of stock</span>}

@@ -18,11 +18,10 @@
 }
 .cart__left{
     width: 40em;
-    margin: 2% ;
+    margin: 1em ;
 }
 .cart__right{
-    width: 18em;
-    margin: 2%;
+    margin: 1em;
 }
 .cart__quotes{
     text-align: center;
@@ -43,7 +42,7 @@
         width: 30em;
     }
 }
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 860px){
     .cart{
         display: flex;
         justify-content: center;

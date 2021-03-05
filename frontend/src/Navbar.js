@@ -50,7 +50,7 @@ function Navbar() {
                 {
                     userInfo ? (
                         <div className="dropdown">
-                            <Link className="link" to='#'>
+                            <Link className="link link__button" to='#'>
                             <Button
                                 variant="contained"
                                 endIcon={<ArrowDropDownIcon/>}
@@ -59,12 +59,13 @@ function Navbar() {
                             </Button>
                             </Link>
                             <ul className="dropdown__content">
-                                <Link to="#" className="link" onClick={signoutHandler}>Logout</Link>
+                                <Link to="#" className="link"><li>Profile</li></Link>
+                                <Link to="#signout" className="link" onClick={signoutHandler}><li>Logout</li></Link>
                             </ul>
                         </div>
                     ):
                     (
-                        <Link className="link" to='/signin'>
+                        <Link className="link link__button" to='/signin'>
                          <Button
                                 variant="contained"
                             >

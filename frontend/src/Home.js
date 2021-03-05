@@ -5,7 +5,7 @@ import {useDispatch,useSelector} from 'react-redux'
 import Sidebar from "./Sidebar"
 import Loadingmsg from './Loadingmsg'
 import Errormsg from './Errormsg'
-import {allProductsLoad} from './redux/actions/allProductsAction'
+import {allProductsLoad} from './redux/actions/allProductsActions'
 
 function Home() {
 

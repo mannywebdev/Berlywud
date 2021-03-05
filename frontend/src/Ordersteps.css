@@ -1,0 +1,15 @@
+.ordersteps > div {
+    border-top: 0.2em #c0c0c0 solid;
+    color: #c0c0c0;
+    font-weight: 700;
+    flex: 1;
+    padding: 1em;
+}
+.ordersteps > div.active{
+    border-top: 0.2em green solid;
+    color: green;
+}
+.ordersteps{
+    display: flex;
+    margin-bottom: 1em;
+}

@@ -1,0 +1,118 @@
+.payment__left{
+    flex-grow: 1;
+    margin-right: 2%;
+}
+.payment__right{
+    flex-grow: 1;
+    margin-left: 2%;
+}
+.paymentleft__card >h3{
+    margin: 0;
+    border-bottom: 1px solid #e7e7e7;
+    padding-bottom: 0.8em;
+}
+.paymentleft__card>p{
+    font-weight: 300;
+}
+.paymentleft__card > p >span{
+    font-weight: 500;
+}
+.paymentleft__card{
+    border-radius: 3px;
+    border: 1px solid #e7e7e7;
+    margin: 1em 0;
+    padding: 1em;
+}
+.paymentleft__card > div:nth-child(4){
+    border-top: 1px solid #e7e7e7;
+    padding-top: 0.5em;
+}
+.payment__container{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 4%;
+}
+
+.cardinner{
+    display: flex;
+    justify-content: space-between;
+    margin: 1em 0;
+    border-bottom: 1px solid #e7e7e7;
+    padding: 0.5em 0;
+    border-radius: 3px;
+}
+
+.cardleft{
+    display: flex;
+}
+.cardright{
+    padding-left: 2em;
+}
+.cardleft__img >img{
+    width: 6em;
+    height: 6em;
+    object-fit: contain;
+}
+.cardleft__info >span{
+    display: block;
+    margin: 0.5em 0;
+}
+.cardleft__info p{
+    margin: 0;
+    font-weight: 300;
+}
+.cardleft__info p:first-child{
+    font-weight: 500;
+    margin-bottom: 0.3em;
+}
+.paymentright__div{
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5em 0;
+}
+.paymentright__div>p{
+    font-weight: 300;
+    margin: 0;
+}
+
+
+@media only screen and (max-width: 500px){
+    .cardleft__info >span{
+        display: block;
+        margin: 0.5em 0;
+        font-size: 0.8em;
+    }
+    .cardleft__info p{
+        margin: 0;
+        font-size: 0.9em;
+        font-weight: 300;
+    }
+    .cardleft__info p:first-child{
+        font-weight: 500;
+        font-size: 1em;
+        margin-bottom: 0.3em;
+    }
+    .cardleft__img >img{
+        width: 5em;
+        height: 5em;
+    }
+    .cardright{
+        font-size: 0.9em;
+        padding: 0.3em 1em 0 1em;
+        border-top: 1px solid #e7e7e7;
+        display: block;
+        text-align: right;
+    }
+    .cardinner{
+        display: block;
+    }
+    .paymentleft__card>p{
+        font-size: 0.9em;
+    }
+    .paymentleft__card > p >span{
+        font-size: 1.1em;
+    }
+    .paymentleft__card >h3{
+        margin: 0;
+    }
+}

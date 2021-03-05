@@ -80,12 +80,16 @@
     outline: none;
     border: none;
     font-weight: 500;
+    width: 100%;
 }
 .pink__button{
-    margin: 0 0 1em 0;
+    margin: .5em 0 .5em 0;
 }
 .pink__button>Button:hover{
     background-color: #ff3e6be8;
+}
+.productmain__buttonwidth{
+    max-width: 12em;
 }
 
 .productmain__productdetails{

@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const userRouter = require('./routers/user.js')
 const productRouter = require('./routers/product.js')
+const orderRouter = require('./routers/orderRouter.js')
 const dotenv = require('dotenv')
 
 dotenv.config()
@@ -19,6 +20,7 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/berlywud'
 
 app.use('/api/users',userRouter)
 app.use('/api/products',productRouter)
+app.use('/api/orders', orderRouter);
 
 app.get('/',(req,res) =>{
     res.send('Server is Ready')

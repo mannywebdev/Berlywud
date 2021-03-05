@@ -3,7 +3,7 @@ import './Cart.css'
 import { useDispatch, useSelector } from 'react-redux';
 import Subtotal from './Subtotal'
 
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
 import { addToCart } from './redux/actions/cartActions'
 import CartItem from './CartItem';
 import emptybag from './images/emptybag.png'
@@ -20,8 +20,10 @@ function Cart() {
             dispatch(addToCart(productId,price))
         }
     },[productId])
-
-    
+    const history = useHistory()
+    const checkoutHandler = () => {
+        history.push('/signin?redirect=shipping')
+    }
     const Cart = useSelector(state=> state.Cart)
     const {cartItems} = Cart
     
@@ -82,6 +84,9 @@ function Cart() {
                     </div>
                     <div className="cart__right">
                         <Subtotal/>
+                        <div className="pink__button">
+                            <Button variant="contained" onClick={checkoutHandler}>Proceed to Checkout</Button>
+                        </div>
                     </div>
                 </div>)
             }

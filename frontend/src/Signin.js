@@ -59,7 +59,7 @@ function Signin() {
                 </div>
                 
                 <div>
-                    <span>New Customer?</span> <Link to="/register" className="link link__pink">Create your account</Link>
+                    <span>New Customer?</span> <Link to={`/register?redirect=${redirect}`} className="link link__pink">Create your account</Link>
                 </div>
             </form>
             </>

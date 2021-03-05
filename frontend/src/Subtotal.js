@@ -6,18 +6,14 @@ import { Button } from '@material-ui/core'
 import { green, purple } from '@material-ui/core/colors';
 
 function Subtotal() {
-    var deliveryCharge= 99;
 
     const Cart = useSelector(state=> state.Cart)
     const {cartItems} = Cart
-    const history = useHistory()
-
-    const totalMRP = cartItems.reduce((accumulator,item)=> item.price * item.qty + accumulator,0)
+    
+    const toNum = (num) => Number(num.toFixed(2))
+    const totalMRP = toNum(cartItems.reduce((accumulator,item)=> item.price * item.qty + accumulator,0))
+    const deliveryCharge = totalMRP > 999 ? toNum(0) : toNum(99)
     const totalAmount = totalMRP + deliveryCharge
-
-    const checkoutHandler = () => {
-        history.push('/signin?redirect=shipping')
-    }
 
 
     return (
@@ -27,20 +23,17 @@ function Subtotal() {
                 <table>
                     <tr>
                         <td>Total MRP</td>
-                        <td className="rates">&#8377;{totalMRP}</td>
+                        <td className="rates">&#8377;{totalMRP.toFixed(2)}</td>
                     </tr>
                     <tr>
                         <td>Delivery Charges</td>
-                        <td className="rates">&#8377;{deliveryCharge}</td>
+                        <td className="rates">&#8377;{deliveryCharge.toFixed(2)}</td>
                     </tr>
                     <tr>
                         <td className="bt">Total Amount</td>
-                        <td className="rates bt">&#8377;{totalAmount}</td>
+                        <td className="rates bt">&#8377;{totalAmount.toFixed(2)}</td>
                     </tr>
                 </table>
-            </div>
-            <div className="subtotal__button">
-                <Button variant="contained" onClick={checkoutHandler}>Proceed to Checkout</Button>
             </div>
         </div>
     )

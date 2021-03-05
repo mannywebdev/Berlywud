@@ -37,20 +37,25 @@
     display: inline-block;
     position: relative;
 }
-.dropdown .MuiButton-contained{
-    background-color: red;
+.link__button Button{
+    background-color: white;
+    box-shadow: none;
+    text-transform: none;
+    font-size: 1em;
 }
-.MuiButton-root{
-    text-transform: lowercase;
+.link__button Button:hover{
+    background-color: white;
+    box-shadow: none;
 }
 
 .dropdown__content{
     position: absolute ;
     display: none;
     z-index: 1;
-    right: 0 ;
+    right: 10px;
     margin: 0;
-    padding: 3em 0;
+    padding: 0.5em 2em;
+    background-color: bisque;
 
 }
 .dropdown:hover .dropdown__content{
@@ -58,6 +63,10 @@
 }
 ul{
     list-style-type: none;
+    
+}
+ul li {
+    padding: 0.5em 0;
 }
 
 
