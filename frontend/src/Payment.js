@@ -26,6 +26,17 @@ function Payment() {
     useEffect(() => {
         if (success) {
           history.push(`/order/${order._id}`);
+
+
+
+
+
+
+
+
+
+
+
           dispatch({ type: ORDER_CREATE_RESET });
         }
       }, [dispatch, order, history, success]);
