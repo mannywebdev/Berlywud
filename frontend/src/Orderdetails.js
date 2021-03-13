@@ -1,34 +1,21 @@
-import { Button, IconButton } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link, useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { Link, useParams } from 'react-router-dom'
 import Errormsg from './Errormsg'
 import Loadingmsg from './Loadingmsg'
-
 import Ordersteps from './Ordersteps'
 import './Payment.css'
-import { createOrder } from './redux/actions/orderActions'
-import { ORDER_CREATE_RESET } from './redux/constants/orderConstants'
-function Payment() {
-    const Cart = useSelector(state=> state.Cart)
-    const { cartItems} = Cart
-    const OrderCreate = useSelector((state) => state.OrderCreate);
-    const { loading, success, error, order } = OrderCreate;
-    const toNum = (num) => Number(num.toFixed(2)) //4.627 => "4.62" => 4.62
-    Cart.itemPrice = Cart.cartItems.reduce((accumulator,item)=> item.price * item.qty + accumulator,0)
-    Cart.shippingPrice = Cart.itemPrice > 999 ? toNum(0)  : toNum(99)
-    Cart.totalPrice = Cart.itemPrice + Cart.shippingPrice
+
+function Orderdetails() {
+
     const dispatch = useDispatch()
-    const history = useHistory()
-    const placeOrderHandler= () =>{
-        dispatch(createOrder({...Cart,orderItems:cartItems}))
-    }
+    const params = useParams()
+    const orderId = params.id
+
     useEffect(() => {
-        if (success) {
-            history.push(`/order/${order._id}`);
-            dispatch({ type: ORDER_CREATE_RESET });
-        }
-      }, [dispatch, order, history, success]);
+        dispatch(detailsOrder(orderId))
+      }, [dispatch, orderId]);
     return (
         <div className="payment">
             <Ordersteps step1 step2 step3/>
@@ -95,4 +82,4 @@ function Payment() {
     )
 }
 
-export default Payment
+export default Orderdetails
