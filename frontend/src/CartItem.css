@@ -6,9 +6,12 @@
     border-radius: 3px;
 }
 
-.cartitem__info >span{
-    display: block;
-    margin: 0.5em 0;
+.cartitem__info__pricesize > span{
+    margin: 0.5em 0.5em 0.5em 0;
+}
+.cartitem__info__pricesize > span:nth-child(2){
+    font-weight: 300;
+    color: green;
 }
 .cartitem__info p{
     margin: 0;

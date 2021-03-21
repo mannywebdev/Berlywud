@@ -15,7 +15,7 @@ orderRouter.post(
       const order = new Order({
         orderItems: req.body.orderItems,
         shippingAddress: req.body.shippingAddress,
-        paymentMethod: req.body.paymentMethod,
+        //paymentMethod: req.body.paymentMethod,
         itemPrice: req.body.itemPrice,
         shippingPrice: req.body.shippingPrice,
         totalPrice: req.body.totalPrice,

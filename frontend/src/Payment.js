@@ -9,9 +9,11 @@ import Ordersteps from './Ordersteps'
 import './Payment.css'
 import { createOrder } from './redux/actions/orderActions'
 import { ORDER_CREATE_RESET } from './redux/constants/orderConstants'
+
+
 function Payment() {
     const Cart = useSelector(state=> state.Cart)
-    const { cartItems} = Cart
+    const { cartItems } = Cart
     const OrderCreate = useSelector((state) => state.OrderCreate);
     const { loading, success, error, order } = OrderCreate;
     const toNum = (num) => Number(num.toFixed(2)) //4.627 => "4.62" => 4.62
@@ -56,7 +58,9 @@ function Payment() {
                                                 <div className="cardleft__info">
                                                     <p>{item.brand}</p>
                                                     <p>{item.title}</p>
-                                                    <span>Qty: {item.qty}  Price: {item.price} </span>
+                                                    <span>Qty: {item.qty}</span>
+                                                    <span>Price: {item.price}</span>
+                                                    <span>{item.size}</span>
                                                 </div>
                                             </div>
                                             <span className="cardright">Total Rs.{item.qty*item.price}</span>

@@ -12,7 +12,7 @@ import {productDetails} from './redux/actions/allProductsActions'
 function Productmain() {
     const dispatch = useDispatch()
 
-    const [ml,setMl]= useState("discprice")  //State management for the size of perfume
+    const [ml,setMl]= useState("Retail")  //State management for the size of perfume
     console.log(ml)
 
     const {productId} = useParams() //
@@ -32,9 +32,8 @@ function Productmain() {
     }
 
     function addToCart(){
-        history.push(`/cart/${productId}?price=${product.decantprice[ml]}`)
+        history.push(`/cart/${productId}?price=${product.decantprice[ml]}&size=${ml}`)
     } 
-    
     return (
         <div>
             {
@@ -56,25 +55,25 @@ function Productmain() {
                                 <p>{product.title}</p>
                             </div>
 
-                            {(ml==="twoml" || ml==="fiveml"|| ml==="tenml"|| ml==="thirtyml")?  
+                            {(ml==="2ml" || ml==="5ml"|| ml==="10ml"|| ml==="30ml")?  
                                 (<div className="productmain__pricing">
                                     <span>Rs.{product.decantprice[ml]}</span>
                                     <p>inclusive of all taxes</p>
                                 </div>) : 
                                 (<div className="productmain__pricing">
-                                    <span>Rs.{product.decantprice.discprice}&nbsp;<del>Rs.{product.origprice}</del> </span>
-                                    <span className="discount">({Math.floor(100-((product.decantprice.discprice/product.origprice)*100))}% off)</span>
+                                    <span>Rs.{product.decantprice.Retail}&nbsp;<del>Rs.{product.origprice}</del> </span>
+                                    <span className="discount">({Math.floor(100-((product.decantprice.Retail/product.origprice)*100))}% off)</span>
                                     <p>inclusive of all taxes</p>
                                 </div>  
                                 )
                             }
                             <div className="productmain__button">
                                 <p>Select Size</p>
-                                <button value="twoml" onClick={changePrice}>2ml</button>
-                                <button value="fiveml" onClick={changePrice}>5ml</button>
-                                <button value="tenml" onClick={changePrice}>10ml</button>
-                                <button value="thirtyml" onClick={changePrice}>30ml</button>
-                                <button value="discprice" onClick={changePrice} selected>Retail</button>
+                                <button value="2ml" onClick={changePrice}>2ml</button>
+                                <button value="5ml" onClick={changePrice}>5ml</button>
+                                <button value="10ml" onClick={changePrice}>10ml</button>
+                                <button value="30ml" onClick={changePrice}>30ml</button>
+                                <button value="Retail" onClick={changePrice} selected>Retail</button>
                             </div>
                             <div className="productmain__buttonwidth">
                             {

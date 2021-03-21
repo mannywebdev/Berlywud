@@ -17,7 +17,7 @@ function Product({prop}) {
             <img className="product__img" src={prop.url} alt={prop.title}/>
             <div className="product__info">
                 <p>{prop.title}</p>
-                <span>Rs.{prop.decantprice.discprice}&nbsp;<del>Rs.{prop.origprice}</del></span>
+                <span>Rs.{prop.decantprice.Retail}&nbsp;<del>Rs.{prop.origprice}</del></span>
             </div>
             <Rating rating={prop.rating} reviews={prop.reviews}/>
         </Link>

@@ -54,8 +54,11 @@
     object-fit: contain;
 }
 .cardleft__info >span{
-    display: block;
-    margin: 0.5em 0;
+    margin: 0.5em 1em 0.5em 0;
+}
+.cardleft__info > span:last-child{
+    font-weight: 300;
+    color: green;
 }
 .cardleft__info p{
     margin: 0;
@@ -78,8 +81,7 @@
 
 @media only screen and (max-width: 500px){
     .cardleft__info >span{
-        display: block;
-        margin: 0.5em 0;
+        margin: 0.3em 0.3em 0.3em 0;
         font-size: 0.8em;
     }
     .cardleft__info p{

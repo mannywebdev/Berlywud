@@ -6,7 +6,7 @@ import { addToCart, removeFromCart } from './redux/actions/cartActions'
 import DeleteIcon from '@material-ui/icons/Delete';
 import { IconButton } from '@material-ui/core'
 
-function CartItem({title,url,brand,price,product,stockcount,qty}) {
+function CartItem({title,url,brand,price,product,stockcount,size,qty}) {
     const dispatch = useDispatch()
 
     const removeFromCartHandler = (product,price) =>{
@@ -23,9 +23,11 @@ function CartItem({title,url,brand,price,product,stockcount,qty}) {
                 <p>{brand}</p>
                 <p>{title}</p>
                 </Link>
+                <div className="cartitem__info__pricesize">
                 <span>Rs.{price}</span>
-                
-                <select value={qty} onChange={e => dispatch(addToCart(product,price,Number(e.target.value)))}>
+                <span>{size}</span>
+                </div>
+                <select value={qty} onChange={e => dispatch(addToCart(product,price,size,Number(e.target.value)))}>
                     { [...Array(stockcount).keys()].map(x => (
                         <option key={x+1} value={x+1}>{x+1}</option>
                     ))}
@@ -33,6 +35,7 @@ function CartItem({title,url,brand,price,product,stockcount,qty}) {
                 <IconButton aria-label="delete">
                     <DeleteIcon onClick={()=> removeFromCartHandler(product,price)}/>
                 </IconButton>
+                
             </div>
         </div>
     )

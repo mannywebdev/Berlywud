@@ -13,11 +13,13 @@ function Cart() {
     const dispatch = useDispatch()
     const {productId} = useParams() 
     const location = useLocation()
-    const price = Number(location.search.split("=")[1])
-
+    const array = location.search.split(/[=&]/g)
+    const price = Number(array[1])
+    const size = array[3]
+    
     useEffect(()=>{
         if(productId){
-            dispatch(addToCart(productId,price))
+            dispatch(addToCart(productId,price,size))
         }
     },[productId])
     const history = useHistory()
@@ -54,6 +56,7 @@ function Cart() {
                     url={item.url}
                     qty={item.qty}
                     stockcount={item.stockcount}
+                    size={item.size}
                     />
                 )
             })

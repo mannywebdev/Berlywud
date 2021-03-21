@@ -11,6 +11,7 @@ import Signin from './Signin';
 import Register from './Register';
 import Shippingaddress from './Shippingaddress';
 import Payment from './Payment';
+import Orderdetails from './Orderdetails';
 
 function App() {
  
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route path="/payment">
             <Payment/>
+          </Route>
+          <Route path="/order/:id">
+            <Orderdetails/>
           </Route>
           <Route path="/signin">
             <Signin/>
