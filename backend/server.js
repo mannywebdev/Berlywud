@@ -7,6 +7,10 @@ const dotenv = require('dotenv')
 
 dotenv.config()
 
+const stripePublicKey = process.env.STRIPE_PUBLIC_KEY
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY
+const stripe = require('stripe')(stripeSecretKey)
+
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended : true}))
@@ -22,20 +26,11 @@ app.use('/api/users',userRouter)
 app.use('/api/products',productRouter)
 app.use('/api/orders', orderRouter);
 
+
+
 app.get('/',(req,res) =>{
     res.send('Server is Ready')
 })
-
-
-
-// app.get('/api/products/:id',(req,res)=>{
-//     const productdetail = data.products.find((item)=> item.id === req.params.id)
-//     if(productdetail){
-//         res.send(productdetail)
-//     }else{
-//         res.status(404).send({ message:"Product Not Found"})
-//     }
-// })
 
 app.use((err,req,res,next)=>{
     res.status(500).send({message : err.message})

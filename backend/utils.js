@@ -9,7 +9,7 @@ module.exports = {
         email:user.email,
         isAdmin:user.isAdmin
     },
-    process.env.JWT_KEY
+    `${process.env.JWT_KEY}`
     )
   },
   restAuth : (req, res, next) => {
@@ -18,7 +18,7 @@ module.exports = {
         const token = authorization.slice(7, authorization.length); // Bearer XXXXXX
         jwt.verify(
           token,
-          process.env.JWT_KEY ,
+          `${process.env.JWT_KEY}`,
           (err, decode) => {
             if (err) {
               res.status(401).send({ message: 'Invalid Token' });
