@@ -60,6 +60,7 @@ function Navbar() {
                             </Link>
                             <ul className="dropdown__content">
                                 <Link to="#" className="link"><li>Profile</li></Link>
+                                <Link to="/orderhistory" className="link"><li>Order History</li></Link>
                                 <Link to="#signout" className="link" onClick={signoutHandler}><li>Logout</li></Link>
                             </ul>
                         </div>

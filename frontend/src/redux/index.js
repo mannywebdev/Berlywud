@@ -2,7 +2,7 @@ import {allProductsReducer, productDetailsReducer} from './reducer/allProductsRe
 import thunk from 'redux-thunk'
 import { cartReducer } from './reducer/cartReducers'
 import { userRegisterReducer, userSigninReducer } from './reducer/userReducer'
-import { orderCreateReducer, orderDetailsReducer, orderPayReducer } from './reducer/orderReducers'
+import { myOrdersListReducer, orderCreateReducer, orderDetailsReducer, orderPayReducer } from './reducer/orderReducers'
 
 const redux = require("redux")
 const {combineReducers,createStore,compose,applyMiddleware}= redux
@@ -25,6 +25,7 @@ const rootReducer = combineReducers({
     OrderCreate : orderCreateReducer,
     OrderDetails: orderDetailsReducer,
     orderPay: orderPayReducer,
+    MyOrders : myOrdersListReducer
 })
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer,initialState,composeEnhancers(applyMiddleware(thunk)))
