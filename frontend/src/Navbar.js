@@ -75,6 +75,25 @@ function Navbar() {
                         </Link>
                     )
                 }
+                {
+                    userInfo && userInfo.isAdmin &&
+                        <div className="dropdown">
+                            <Link className="link link__button" to='#admin'>
+                            <Button
+                                variant="contained"
+                                endIcon={<ArrowDropDownIcon/>}
+                            >
+                            Admin
+                            </Button>
+                            </Link>
+                            <ul className="dropdown__content">
+                                <Link to="/dashboard" className="link"><li>Dashboard</li></Link>
+                                <Link to="/productlist" className="link"><li>Products</li></Link>
+                                <Link to="/orderlist" className="link" ><li>Orders</li></Link>
+                                <Link to="/userlist" className="link"><li>Users</li></Link>
+                            </ul>
+                        </div>
+                }
                 
                 <Link className="link" to='/cart'>
                 <div className="cart">
