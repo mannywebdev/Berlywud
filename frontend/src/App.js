@@ -13,6 +13,8 @@ import Shippingaddress from './Shippingaddress';
 import Payment from './Payment';
 import Orderdetails from './Orderdetails';
 import Orderhistory from './Orderhistory';
+import Myprofile from './Myprofile';
+import PrivateRoute from './PrivateRoute';
 
 function App() {
  
@@ -48,12 +50,14 @@ function App() {
           <Route path="/orderhistory">
             <Orderhistory/>
           </Route>
+          <PrivateRoute component={Myprofile} path="/profile"></PrivateRoute>
           <Route path="/signin">
             <Signin/>
           </Route>
           <Route path="/register">
             <Register/>
           </Route>
+          
         </Switch>
         </main> 
       </div>
