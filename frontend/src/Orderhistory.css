@@ -16,8 +16,14 @@
     margin: 0 0.2rem;
   }
   button.small {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    outline: 0;
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: white;
   }
   .orderhistory{
-    margin : 0 4%;
+    margin : 0 4% 4% 4%;
   }

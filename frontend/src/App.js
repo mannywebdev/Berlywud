@@ -15,6 +15,8 @@ import Orderdetails from './Orderdetails';
 import Orderhistory from './Orderhistory';
 import Myprofile from './Myprofile';
 import PrivateRoute from './PrivateRoute';
+import AdminRoute from './AdminRoute';
+import ProductList from './ProductList';
 
 function App() {
  
@@ -35,7 +37,7 @@ function App() {
           <Route path="/cart/:productId?">
             <Cart/>
           </Route>
-          <Route path="/productpage/:productId">
+          <Route exact path="/productpage/:productId">
             <Productmain/>
           </Route>
           <Route path="/shipping">
@@ -50,13 +52,14 @@ function App() {
           <Route path="/orderhistory">
             <Orderhistory/>
           </Route>
-          <PrivateRoute component={Myprofile} path="/profile"></PrivateRoute>
           <Route path="/signin">
             <Signin/>
           </Route>
           <Route path="/register">
             <Register/>
           </Route>
+          <PrivateRoute component={Myprofile} path="/profile"></PrivateRoute>
+          <AdminRoute component={ProductList} path="/productlist"></AdminRoute>
           
         </Switch>
         </main> 

@@ -1,5 +1,5 @@
 import  { ALL_PRODUCTS_REQUEST ,ALL_PRODUCTS_SUCCESS, ALL_PRODUCTS_FAIL,
-    PRODUCT_DETAILS_REQUEST,PRODUCT_DETAILS_SUCCESS,PRODUCT_DETAILS_FAIL } from '../constants/allProductConstants'
+    PRODUCT_DETAILS_REQUEST,PRODUCT_DETAILS_SUCCESS,PRODUCT_DETAILS_FAIL, PRODUCT_CREATE_SUCCESS, PRODUCT_CREATE_REQUEST, PRODUCT_CREATE_FAIL } from '../constants/allProductConstants'
 import axios from 'axios'
 
 // allProductsLoad Action
@@ -23,3 +23,29 @@ export const productDetails = (productId) => async(dispatch) =>{
         dispatch({type: PRODUCT_DETAILS_FAIL , payload: error.response && error.response.data.message ? error.response.data.message : error.message})
     }
 }
+
+export const createProduct = () => async (dispatch, getState) => {
+    dispatch({ type: PRODUCT_CREATE_REQUEST  });
+    const {
+      UserSignin: { userInfo },
+    } = getState();
+    try {
+      const { data } = await axios.post(
+        '/api/products',
+        {},
+        {
+          headers: { Authorization: `Bearer ${userInfo.token}` },
+        }
+      );
+      dispatch({
+        type: PRODUCT_CREATE_SUCCESS,
+        payload: data.product,
+      });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: PRODUCT_CREATE_FAIL, payload: message });
+    }
+  };
