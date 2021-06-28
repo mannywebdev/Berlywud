@@ -17,6 +17,7 @@ import Myprofile from './Myprofile';
 import PrivateRoute from './PrivateRoute';
 import AdminRoute from './AdminRoute';
 import ProductList from './ProductList';
+import ProductEdit from './ProductEdit';
 
 function App() {
  
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route exact path="/productpage/:productId">
             <Productmain/>
+          </Route>
+          <Route exact path="/productpage/:productId/edit">
+            <ProductEdit/>
           </Route>
           <Route path="/shipping">
             <Shippingaddress/>

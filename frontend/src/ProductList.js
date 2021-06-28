@@ -73,7 +73,7 @@ export default function ProductList(props) {
                     type="button"
                     className="small"
                     onClick={() =>
-                      props.history.push(`/product/${product._id}/edit`)
+                      props.history.push(`/productpage/${product._id}/edit`)
                     }
                   >
                     Edit
