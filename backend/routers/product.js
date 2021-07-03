@@ -27,4 +27,55 @@ productRouter.get('/:id',expressAsyncHandler(async(req,res)=>{
     }
 }))
 
+productRouter.post('/',restAuth,isAdmin,expressAsyncHandler(async (req, res) => {
+    const product = new Product({
+      brand: 'Brand has to be changed ',
+      title: 'Title has to be changed',
+      description: 'Description has to be changed',
+      origprice: 1999 ,
+      gender: 'unisex',
+      launch: 2010,
+      concentration: 'Eau De Parfum',
+      stockcount: 100,
+      url: 'https://raw.githubusercontent.com/mannywebdev/perfumesite/main/PerfumePics/giorgio%20armani%20code%20absolu.jpg',
+      rating: 4.5,
+      review: 6,
+      decantprice: {
+          "2ml": 150,
+          "5ml": 250,
+          "10ml": 550,
+          "30ml": 1050,
+          "Retail": 3500,
+      },
+      notes: {
+          Topnotes:["Apple","Green Mandarin"],
+          Middlenotes:["Orange Blossom","Nutmeg","Carrot Seeds"],
+          Basenotes:["Suede","Tonka Bean","Vanilla"]
+      }
+    });
+    
+    const createdProduct = await product.save();
+    res.send({ message: 'Product Created', product: createdProduct });
+  })
+);
+
+productRouter.put('/:id',restAuth,isAdmin,expressAsyncHandler(async (req, res) => {
+      const productId = req.params.id;
+      const product = await Product.findById(productId);
+      if (product) {
+        product.name = req.body.name;
+        product.price = req.body.price;
+        product.image = req.body.image;
+        product.category = req.body.category;
+        product.brand = req.body.brand;
+        product.countInStock = req.body.countInStock;
+        product.description = req.body.description;
+        const updatedProduct = await product.save();
+        res.send({ message: 'Product Updated', product: updatedProduct });
+      } else {
+        res.status(404).send({ message: 'Product Not Found' });
+      }
+    })
+  );
+
 module.exports = productRouter
