@@ -9,7 +9,7 @@ const productSchema = new mongoose.Schema(
         origprice : {type:Number,required:true},
         decantprice : {"2ml":{type:Number,required:true},"5ml":{type:Number,required:true},"10ml":{type:Number,required:true},"30ml":{type:Number,required:true},"Retail":{type:Number,required:true}},
         gender: {type:String, required:true},
-        notes:{Topnotes:[{type:String, required:true},{type:String, required:true},{type:String, required:true}],Middlenotes:[{type:String, required:true},{type:String, required:true},{type:String, required:true}],Basenotes:[{type:String, required:true},{type:String, required:true},{type:String, required:true}]},
+        notes:{Topnotes:[{type:String, required:true},{type:String, required:true},{type:String, required:false}],Middlenotes:[{type:String, required:true},{type:String, required:true},{type:String, required:false}],Basenotes:[{type:String, required:true},{type:String, required:true},{type:String, required:false}]},
         launch:{type:Number,required:true},
         concentration:{type:String, required:true},
         rating:{type:Number,required:true},

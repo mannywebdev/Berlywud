@@ -48,7 +48,7 @@ export default function Orderhistory(props) {
                     type="button"
                     className="small"
                     onClick={() => {
-                      props.history.push(`/order/${order._id}`);
+                      history.push(`/order/${order._id}`);
                     }}
                   >
                     Details

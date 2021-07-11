@@ -6,6 +6,7 @@ import Errormsg from './Errormsg'
 import Loadingmsg from './Loadingmsg'
 import { PRODUCT_CREATE_RESET } from './redux/constants/allProductConstants';
 import Button from '@material-ui/core/Button'
+import { useHistory } from 'react-router-dom';
 
 export default function ProductList(props) {
   const productList = useSelector((state) => state.AllProducts);
@@ -15,14 +16,15 @@ export default function ProductList(props) {
   const {loading: loadingCreate,error: errorCreate,success: successCreate,product: createdProduct} = productCreate; 
 
   const dispatch = useDispatch();
+  const history = useHistory()
 
   useEffect(() => {
     if (successCreate) {
       dispatch({ type: PRODUCT_CREATE_RESET });
-      props.history.push(`/product/${createdProduct._id}/edit`);
+      history.push(`/product/${createdProduct._id}/edit`);
     }
     dispatch(allProductsLoad());
-  }, [createdProduct, dispatch, props.history, successCreate]);
+  }, [createdProduct, dispatch, history, successCreate]);
   
   const deleteHandler = () => {
     /// TODO: dispatch delete action
@@ -73,7 +75,7 @@ export default function ProductList(props) {
                     type="button"
                     className="small"
                     onClick={() =>
-                      props.history.push(`/productpage/${product._id}/edit`)
+                      history.push(`/productpage/${product._id}/edit`)
                     }
                   >
                     Edit

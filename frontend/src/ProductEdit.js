@@ -5,9 +5,10 @@ import { productDetails, updateProduct } from './redux/actions/allProductsAction
 import TextField from '@material-ui/core/TextField';
 import Errormsg from './Errormsg'
 import Loadingmsg from './Loadingmsg'
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
+import { PRODUCT_UPDATE_RESET } from './redux/constants/allProductConstants';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ProductEdit(props) {
   
   const {productId} = useParams() 
+  const history = useHistory()
   const classes = useStyles();
 
   const [brand, setBrand] = useState('');
@@ -52,11 +54,19 @@ export default function ProductEdit(props) {
 
   const ProductDetails = useSelector((state) => state.ProductDetails);
   const { loading, error, product } = ProductDetails;
+
+  const productUpdate = useSelector((state) => state.ProductUpdate);
+  const {loading: loadingUpdate,error: errorUpdate,success: successUpdate,} = productUpdate;
+
   console.log(`product`, product)
   const dispatch = useDispatch();
   useEffect(() => {
-    if (!product || product._id !== productId) {
-      dispatch(productDetails(productId));
+    if (successUpdate) {
+        dispatch({ type: PRODUCT_UPDATE_RESET });
+        history.push('/productlist');
+    }
+    if (!product || product._id !== productId || successUpdate) {
+        dispatch(productDetails(productId));
     } else {
         setBrand(product.brand);
         setTitle(product.title);
@@ -84,7 +94,7 @@ export default function ProductEdit(props) {
         setBasenote2(product.notes.Basenotes[1])
         setBasenote3(product.notes.Basenotes[2])
     }
-  }, [product, dispatch, productId]);
+  }, [product, dispatch, productId, successUpdate, history]);
   const submitHandler = (e) => {
     e.preventDefault();
     // TODO: dispatch update product
@@ -94,13 +104,16 @@ export default function ProductEdit(props) {
     <div className="productedit">
       <div className="productlist__header">
         <h2 style={{color:"black"}}>Edit Product {productId}</h2>
-        <div className="pink__button">
-          <Button className="pink__button" >
-            Update Product
-          </Button>
-        </div>
+        
       </div>
       <form className={classes.root} noValidate autoComplete="off"  onSubmit={submitHandler}>
+        <div className="pink__button">
+          <button className="pink__button" type="submit">
+            Update Product
+          </button>
+        </div>
+        {loadingUpdate &&  <Loadingmsg/>}
+        {errorUpdate && <Errormsg variant="danger">{error}</Errormsg>}
         {loading ? (
         <Loadingmsg/>
       ) : error ? (
@@ -210,7 +223,6 @@ export default function ProductEdit(props) {
                 label="Topnote3"
                 color="secondary"
                 variant="outlined"
-                required
                 value={topnote3}
                 onChange={(e) => setTopnote3(e.target.value)}
             />
@@ -238,7 +250,6 @@ export default function ProductEdit(props) {
                 label="Middlenote3"
                 color="secondary"
                 variant="outlined"
-                required
                 value={middlenote3}
                 onChange={(e) => setMiddlenote3(e.target.value)}
             />
@@ -266,7 +277,6 @@ export default function ProductEdit(props) {
                 label="Basenote3"
                 color="secondary"
                 variant="outlined"
-                required
                 value={basenote3}
                 onChange={(e) => setBasenote3(e.target.value)}
             />

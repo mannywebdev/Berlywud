@@ -29,7 +29,7 @@ const rootReducer = combineReducers({
     UserDetails: userDetailsReducer,
     UserUpdateProfile: userUpdateProfileReducer,
     ProductCreate: productCreateReducer,
-    productUpdate: productUpdateReducer,
+    ProductUpdate: productUpdateReducer,
 })
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer,initialState,composeEnhancers(applyMiddleware(thunk)))
