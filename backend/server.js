@@ -6,8 +6,8 @@ const orderRouter = require('./routers/orderRouter.js')
 const dotenv = require('dotenv')
 const path = require('path')
 const Razorpay= require('razorpay')
-const { uploadRouter } = require('./routers/uploadRouter.js')
-
+const multer = require('multer')
+const restAuth = require('./utils').restAuth
 
 dotenv.config()
 
@@ -36,6 +36,9 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/berlywud'
 app.get('/berlywud.png',(req,res) =>{
     res.sendFile(path.join(__dirname,"greylogo2025.png"))
 })
+
+const _dirname = path.resolve();
+app.use('/uploads', express.static(path.join(_dirname, '/uploads')));
 
 
 //Payment routes
@@ -93,7 +96,25 @@ app.post("/payment/success", async (req, res) => {
     }
 });
 
-app.use('/api/uploads', uploadRouter);
+/// Image upload///
+
+const storage = multer.diskStorage({
+    destination(req, file, cb) {
+      cb(null, 'uploads/');
+    },
+    filename(req, file, cb) {
+      cb(null, `${Date.now()}.jpg`);
+    },
+ });
+const upload = multer({ storage });
+
+app.post('/uploads', restAuth, upload.single('image'), (req, res) => {
+    console.log(`req`, req)
+    res.send(`/${req.file.path}`);
+});
+/// Image upload///
+
+
 app.use('/api/users',userRouter)
 app.use('/api/products',productRouter)
 app.use('/api/orders', orderRouter);
