@@ -6,6 +6,7 @@ const orderRouter = require('./routers/orderRouter.js')
 const dotenv = require('dotenv')
 const path = require('path')
 const Razorpay= require('razorpay')
+const { uploadRouter } = require('./routers/uploadRouter.js')
 
 
 dotenv.config()
@@ -37,30 +38,7 @@ app.get('/berlywud.png',(req,res) =>{
 })
 
 
-// app.post('/verification', (req, res) => {
-//     console.log(`req.body`, req.body)
-//     const crypto = require('crypto')
-
-//     const secret = 'yellow321!#'
-
-// 	const shasum = crypto.createHmac('sha256', secret)
-// 	shasum.update(JSON.stringify(req.body))
-// 	const digest = shasum.digest('hex')
-
-// 	console.log(digest, req.headers['x-razorpay-signature'])
-
-// 	if (digest === req.headers['x-razorpay-signature']) {
-// 		console.log('request is legit')
-// 		// process it
-// 		// require('fs').writeFileSync('payment1.json', JSON.stringify(req.body, null, 4))
-//         res.json({ status: 'ok' })
-// 	} else {
-// 		// pass it
-//         res.status (502)
-// 	}
-	
-// })
-
+//Payment routes
 app.post('/razorpay',async(req,res) =>{
     try{
         console.log(req.body)
@@ -115,7 +93,7 @@ app.post("/payment/success", async (req, res) => {
     }
 });
 
-
+app.use('/api/uploads', uploadRouter);
 app.use('/api/users',userRouter)
 app.use('/api/products',productRouter)
 app.use('/api/orders', orderRouter);

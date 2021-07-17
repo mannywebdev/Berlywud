@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { myOrdersList } from './redux/actions/orderActions';
 import Errormsg from './Errormsg'
 import Loadingmsg from './Loadingmsg'
+import { useHistory } from 'react-router-dom';
 
-export default function Orderhistory(props) {
+export default function Orderhistory() {
   const myOrders = useSelector((state) => state.MyOrders);
+  const history = useHistory()
   const { loading, error, orders } = myOrders;
   const dispatch = useDispatch();
   useEffect(() => {

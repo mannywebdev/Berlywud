@@ -9,6 +9,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
 import { PRODUCT_UPDATE_RESET } from './redux/constants/allProductConstants';
+import axios from 'axios';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -62,10 +63,10 @@ export default function ProductEdit(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     if (successUpdate) {
-        dispatch({ type: PRODUCT_UPDATE_RESET });
         history.push('/productlist');
     }
     if (!product || product._id !== productId || successUpdate) {
+        dispatch({ type: PRODUCT_UPDATE_RESET });
         dispatch(productDetails(productId));
     } else {
         setBrand(product.brand);
@@ -99,6 +100,31 @@ export default function ProductEdit(props) {
     e.preventDefault();
     // TODO: dispatch update product
     dispatch(updateProduct({_id:productId, brand, title, url, description, origprice, gender, launch, concentration, rating, reviews, stockcount, twoml, fiveml, tenml, thirtyml, retail, topnote1, topnote2, topnote3, middlenote1, middlenote2, middlenote3, basenote1, basenote2, basenote3}))
+  };
+
+  const [loadingUpload, setLoadingUpload] = useState(false);
+  const [errorUpload, setErrorUpload] = useState('');
+
+  const userSignin = useSelector((state) => state.UserSignin);
+  const { userInfo } = userSignin;
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const bodyFormData = new FormData();
+    bodyFormData.append('image', file);
+    setLoadingUpload(true);
+    try {
+      const { data } = await axios.post('/api/uploads', bodyFormData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      });
+      setUrl(data);
+      setLoadingUpload(false);
+    } catch (error) {
+      setErrorUpload(error.message);
+      setLoadingUpload(false);
+    }
   };
   return (
     <div className="productedit">
@@ -156,6 +182,7 @@ export default function ProductEdit(props) {
                 color="secondary"
                 onChange={(e) => setLaunch(e.target.value)}
             />
+            
             <TextField
                 id="outlined-basic"
                 required
@@ -184,6 +211,18 @@ export default function ProductEdit(props) {
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
             />
+            <div>
+              <input
+                type="file"
+                id="imageFile"
+                label="Choose Image"
+                onChange={uploadFileHandler}
+              ></input>
+              {loadingUpload && <Loadingmsg/>}
+              {errorUpload && (
+                <Errormsg variant="danger">{errorUpload}</Errormsg>
+              )}
+            </div>
             
             <TextField 
                 id="outlined-multiline-static"

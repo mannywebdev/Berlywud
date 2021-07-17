@@ -21,7 +21,7 @@ export default function ProductList(props) {
   useEffect(() => {
     if (successCreate) {
       dispatch({ type: PRODUCT_CREATE_RESET });
-      history.push(`/product/${createdProduct._id}/edit`);
+      history.push(`/productpage/${createdProduct._id}/edit`);
     }
     dispatch(allProductsLoad());
   }, [createdProduct, dispatch, history, successCreate]);
