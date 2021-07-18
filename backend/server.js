@@ -37,6 +37,11 @@ app.get('/berlywud.png',(req,res) =>{
     res.sendFile(path.join(__dirname,"greylogo2025.png"))
 })
 
+app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
+);
+
 const _dirname = path.resolve();
 app.use('/uploads', express.static(path.join(_dirname, '/uploads')));
 
@@ -122,9 +127,9 @@ app.use('/api/orders', orderRouter);
 
 
 
-app.get('/',(req,res) =>{
-    res.send('Server is Ready')
-})
+// app.get('/',(req,res) =>{
+//     res.send('Server is Ready')
+// })
 
 app.use((err,req,res,next)=>{
     res.status(500).send({message : err.message})
