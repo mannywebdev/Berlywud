@@ -33,17 +33,17 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/berlywud'
 })
 
 //Serving Berlywud logo
-app.get('/berlywud.png',(req,res) =>{
-    res.sendFile(path.join(__dirname,"greylogo2025.png"))
-})
+// app.get('/berlywud.png',(req,res) =>{
+//     res.sendFile(path.join(__dirname,"greylogo2025.png"))
+// })
+
+const __dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 app.use(express.static(path.join(__dirname, '/frontend/build')));
 app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
 );
-
-const _dirname = path.resolve();
-app.use('/uploads', express.static(path.join(_dirname, '/uploads')));
 
 
 //Payment routes
