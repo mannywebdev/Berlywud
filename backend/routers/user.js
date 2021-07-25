@@ -5,6 +5,7 @@ const data = require('../data')
 const bcrypt = require('bcryptjs')
 const  generateToken  = require('../utils.js').generateToken
 const restAuth = require('../utils').restAuth
+const isAdmin = require('../utils').isAdmin
 
 const userRouter = express.Router()
 
@@ -77,5 +78,52 @@ userRouter.get(
       }
     })
   );
+
+  userRouter.get(
+    '/',
+    restAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) => {
+      const users = await User.find({});
+      res.send(users);
+    })
+  );
+
+  userRouter.delete(
+    '/:id',
+    restAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) => {
+      const user = await User.findById(req.params.id);
+      if (user) {
+        if (user.email === 'admin@example.com') {
+          res.status(400).send({ message: 'Can Not Delete Admin User' });
+          return;
+        }
+        const deleteUser = await user.remove();
+        res.send({ message: 'User Deleted', user: deleteUser });
+      } else {
+        res.status(404).send({ message: 'User Not Found' });
+      }
+    })
+  );
+
+  userRouter.put(
+    '/:id',
+    restAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) => {
+      const user = await User.findById(req.params.id);
+      if (user) {
+        user.name = req.body.name || user.name;
+        user.email = req.body.email || user.email;
+        user.isAdmin = req.body.isAdmin || user.isAdmin;
+      const updatedUser = await user.save();
+      res.send({ message: 'User Updated', user: updatedUser });
+    } else {
+      res.status(404).send({ message: 'User Not Found' });
+    }
+  })
+);
 
 module.exports = userRouter
