@@ -21,10 +21,10 @@ import ProductEdit from './ProductEdit';
 import OrderList from './OrderList';
 import UserList from './UserList';
 import UserEdit from './UserEdit';
+import Searchscreen from './Searchscreen';
 
-function App() {
- 
-  
+
+function App() { 
   return(
     <BrowserRouter>
       <div className="App">
@@ -65,13 +65,16 @@ function App() {
           <Route path="/register">
             <Register/>
           </Route>
+          <Route path="/search/name/:name?">
+            <Searchscreen/>
+          </Route>
           <PrivateRoute component={Myprofile} path="/profile"></PrivateRoute>
           <AdminRoute component={ProductList} path="/productlist"></AdminRoute>
           <AdminRoute component={OrderList}  path="/orderlist"></AdminRoute>
           <AdminRoute component={UserList}  path="/userlist"></AdminRoute>
-          <AdminRoute path="/user/:id/edit" component={UserEdit}></AdminRoute>
+          <AdminRoute component={UserEdit} path="/user/:id/edit"></AdminRoute>
         </Switch>
-        </main> 
+        </main>
       </div>
     </BrowserRouter>
   );

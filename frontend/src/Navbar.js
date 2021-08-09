@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import {signout} from './redux/actions/userActions'
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import SearchBox from './SearchBox'
 
 function Navbar() {
     const Cart = useSelector(state=> state.Cart)
@@ -45,6 +46,9 @@ function Navbar() {
                     <a href="#decantssplits">Decants & Splits</a>
                     <a href="#miniatures">Miniatures</a>
                 </nav>
+            </div>
+            <div>
+                <SearchBox/>
             </div>
             <div className="navbar__logincart">
                 {
