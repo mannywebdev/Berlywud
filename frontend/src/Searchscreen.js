@@ -8,19 +8,24 @@ import Loadingmsg from './Loadingmsg'
 import Errormsg from './Errormsg'
 
 export default function Searchscreen(props) {
-//   const { name = 'all' } = useParams();
+  const { name = 'all' } = useParams();
   const dispatch = useDispatch();
-    const  AllProducts= useSelector(state => state.AllProducts)
-    const {loading,error,allProducts} = AllProducts
+  const  AllProducts= useSelector(state => state.AllProducts)
+  const {loading,error,allProducts} = AllProducts
+
+  const productCategoryList = useSelector((state) => state.ProductCategoryList);
+  const {loading: loadingCategories,error: errorCategories,categories} = productCategoryList;
+  console.log(categories)
   
   useEffect(() => {
-    dispatch(allProductsLoad());
-  }, [dispatch]);
+    dispatch(allProductsLoad({ name: name !== 'all' ? name : '' }))
+  }, [dispatch,name])
+
   return (
     <div className="home">
             {
                 loading ? (
-                    <Loadingmsg/> 
+                    <Loadingmsg/>  
                 ): error ? (
                     <Errormsg>{error}</Errormsg>
                 ):(

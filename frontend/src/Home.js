@@ -14,7 +14,7 @@ function Home() {
     const {loading,error,allProducts} = AllProducts
    
     useEffect(()=>{
-        dispatch(allProductsLoad())
+        dispatch(allProductsLoad({}))
     },[dispatch])
 
     

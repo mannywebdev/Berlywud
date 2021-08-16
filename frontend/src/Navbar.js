@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Navbar.css'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
@@ -11,6 +11,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import {signout} from './redux/actions/userActions'
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import SearchBox from './SearchBox'
+import { listProductCategories } from './redux/actions/allProductsActions'
 
 function Navbar() {
     const Cart = useSelector(state=> state.Cart)
@@ -21,6 +22,10 @@ function Navbar() {
     const signoutHandler = () =>{
         dispatch(signout())
     }
+
+    useEffect(() => {
+        dispatch(listProductCategories());
+      }, [dispatch]);
 
     const StyledBadge = withStyles((theme) => ({
         badge: {

@@ -8,9 +8,19 @@ const isAdmin = require('../utils').isAdmin
 const productRouter = express.Router()
 
 productRouter.get('/',expressAsyncHandler(async(req,res)=>{
-    const products = await Product.find({})
+  const name = req.query.name || '';
+  const nameFilter = name ? { title: { $regex: name, $options: 'i' } } : {};
+    const products = await Product.find({...nameFilter})
     res.send(products)
 }))
+
+productRouter.get(
+  '/categories',
+  expressAsyncHandler(async (req, res) => {
+    const categories = await Product.find().distinct('gender');
+    res.send(categories);
+  })
+);
 
 productRouter.get('/seed',expressAsyncHandler(async(req,res)=>{
     // await Product.remove({})
@@ -48,7 +58,7 @@ productRouter.post('/',restAuth,isAdmin,expressAsyncHandler(async (req, res) => 
           "Retail": 3500,
       },
       notes: {
-          Topnotes:["Apple","Green Mandarin"],
+          Topnotes:["Apple","Green Mandarin","Nutmeg"],
           Middlenotes:["Orange Blossom","Nutmeg","Carrot Seeds"],
           Basenotes:["Suede","Tonka Bean","Vanilla"]
       }

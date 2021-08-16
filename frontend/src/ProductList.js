@@ -15,6 +15,9 @@ export default function ProductList() {
   const productCreate = useSelector((state) => state.ProductCreate);
   const {loading: loadingCreate,error: errorCreate,success: successCreate,product: createdProduct} = productCreate; 
 
+  const UserSignin = useSelector(state=> state.UserSignin)
+    const { userInfo } = UserSignin
+
   const productDelete = useSelector((state) => state.ProductDelete);
   const {loading: loadingDelete,error: errorDelete,success: successDelete,} = productDelete;
 
@@ -29,7 +32,7 @@ export default function ProductList() {
     if (successDelete) {
       dispatch({ type: PRODUCT_DELETE_RESET });
     }
-    dispatch(allProductsLoad());
+    dispatch(allProductsLoad({userInfo}));
   }, [createdProduct, dispatch, history, successCreate, successDelete]);
   
   const deleteHandler = (product) => {
