@@ -18,7 +18,7 @@ console.log(`razorpayPublickey`, razorpaySecretKey)
 var instance = new Razorpay({
     key_id: razorpayPublicKey,
     key_secret: razorpaySecretKey,
-  });
+});
 
 
 const app = express()

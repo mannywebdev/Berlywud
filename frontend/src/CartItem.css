@@ -87,3 +87,13 @@
         padding: 0.5em;
     }
 }
+/* 
+@media only screen and (max-width: 800px){
+    .cartitem__img>img{
+        object-fit: contain;
+        height: 9em;
+    }
+    .cartitem{
+        padding: 0.5em;
+    }
+} */

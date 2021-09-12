@@ -1,34 +1,60 @@
-import React, { useState } from 'react'
-import './Carousel.css'
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import CarouselItem from './CarouselItem'
-import { brown, grey, red } from '@material-ui/core/colors';
+import React,{useEffect, useState} from "react";
+import "./Carousel.css";
+import {useSwipeable} from "react-swipeable"
 
 
-function Carousel() {
 
-    const carouselArray=[<CarouselItem src={"logos/i1.png"}/>,<CarouselItem src={"logos/i2.png"}/>,<CarouselItem src={"logos/i3.png"}/>,<CarouselItem src={"logos/i4.png"}/>]
-    const [x,setX] =useState(0)
-    function goLeft(){
-        console.log(x)
-        x===0 ? setX(-100*(carouselArray.length-1)) :setX(x+100);
-    }
-    function goRight(){
-        console.log(x)
-        x=== -100*(carouselArray.length-1) ? setX(0) :setX(x-100);
-    }
+export const CarouselItem = ({ children, width }) => {
     return (
-        <div className="carousel">
-            {carouselArray.map((item,index)=> 
-                <div className="carousel__slide" style={{transform:`translateX(${x}%)`}} key={index}>{item}</div>
-            )}
-            <button className="carouselleft__btn" onClick={goLeft}><ChevronLeftIcon style={{ color: grey[700],fontSize: 50 }}/></button>
-            <button className="carouselright__btn" onClick={goRight}><ChevronRightIcon style={{ color: grey[700],fontSize: 50 }}/></button>
+        <div className="carousel-item" style={{ width: width }}>
+            {children}
         </div>
-    )
-}
+    );
+};
+const Carousel = ({ children }) => {
+    const [activeIndex,setActiveIndex] = useState(0)
+    const [paused,setPaused] = useState(false);
+    const updateIndex = (newIndex) => {
+        if (newIndex < 0) {
+            newIndex = React.Children.count(children) - 1;
+        } else if (newIndex >= React.Children.count(children)) {
+            newIndex = 0;
+        }
+        setActiveIndex (newIndex);
+    };
 
-export default Carousel
-
-
+    useEffect(() => {
+        const interval = setInterval(() => {
+        if (!paused) {
+            updateIndex (activeIndex + 1);
+        }
+        }, 1500);
+        return () => {
+            if (interval) {
+                clearInterval(interval);
+            }
+        };
+    });
+    const handlers = useSwipeable({
+        onSwipedLeft: ()=> updateIndex(activeIndex+1),
+        onSwipedRight: ()=> updateIndex(activeIndex-1)
+    })
+    
+    return (
+        <div onMouseEnter={() => setPaused(true)} onMouseLeave={()=> setPaused(false) } className="carousel" {...handlers}>
+            <div className="inner" style={{ transform: `translateX(-${activeIndex*100}%)` }}>
+                {React.Children.map(children, (child, index) => {
+                return React.cloneElement(child, { width: "100%" });
+                })}
+            </div>
+            <div className="indicators">
+                {React.Children.map(children, (child, index) => {
+                return (
+                    <button className={`${index === activeIndex ? "active" : ""}`} onClick={() => {updateIndex(index);}}></button>
+                )
+                })}
+            </div>
+        </div>
+    );
+};
+export default Carousel;

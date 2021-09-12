@@ -11,17 +11,21 @@ export default function SearchBox() {
     history.push(`/search/name/${name}`);
   };
   return (
-    <form className="search" onSubmit={submitHandler}>
-      <div className="row">
+    <form  onSubmit={submitHandler}>
+      <div className="wrap">
+      <div className="search">
         <input
+          className="searchTerm"
+          placeholder="Search for products"
           type="text"
           name="q"
           id="q"
           onChange={(e) => setName(e.target.value)}
         ></input>
-        <button className="primary" type="submit">
+        <button className="primary" className="searchButton" type="submit">
           <BiSearchAlt/>
         </button>
+      </div>
       </div>
     </form>
   );

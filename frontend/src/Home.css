@@ -5,15 +5,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 1em;
-    width: 85%;
+    margin: 0 3%;
 }
 .home p{
     margin: 0em 1em;
 }
 .home h3{
     font-size: 2em;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #57534a;
     text-align: center;
 }
@@ -22,4 +21,31 @@
 }
 .home__page .home__sidebar{
     min-width: 15em;
+}
+
+
+@media only screen and (max-width: 570px){
+    .home__page .home__container{
+        margin: 0 1%;
+    }
+}
+
+@media only screen and (max-width: 1024px){
+    .home h3{
+        margin: 1em;
+        font-size: 1.6em;
+    }
+    .home{
+        padding: 2em 0;
+    }
+}
+
+@media only screen and (max-width: 570px){
+    .home h3{
+        margin: 0.8em;
+        font-size: 1em;
+    }
+    .home{
+        padding: 1em 0;
+    }
 }

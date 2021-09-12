@@ -68,7 +68,7 @@ function Cart() {
             {
                 (cartItems.length <= 0)? 
                 (<div className="cart">
-                    <div style={{margin: "2% auto"}} className="cart__left">
+                    <div className="cart__left">
                         <div className="cart-values">
                             <h4>My Shopping Bag ({cartItems.length} item)</h4>
                             <h4>Total: ₹ 0</h4>

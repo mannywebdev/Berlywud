@@ -3,10 +3,10 @@ import  { ALL_PRODUCTS_REQUEST ,ALL_PRODUCTS_SUCCESS, ALL_PRODUCTS_FAIL,
 import axios from 'axios'
 
 // allProductsLoad Action
-export const allProductsLoad = ({name=''}) => async(dispatch) =>{
+export const allProductsLoad = ({name='',category=''}) => async(dispatch) =>{
     dispatch({type: ALL_PRODUCTS_REQUEST})
     try{
-        const {data} = await axios.get(`/api/products?name=${name}`)
+        const {data} = await axios.get(`/api/products?name=${name}&category=${category}`)
         dispatch({ type: ALL_PRODUCTS_SUCCESS, payload : data})
     }catch(error){
         dispatch({ type: ALL_PRODUCTS_FAIL, payload : error.message})

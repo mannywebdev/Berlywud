@@ -9,8 +9,10 @@ const productRouter = express.Router()
 
 productRouter.get('/',expressAsyncHandler(async(req,res)=>{
   const name = req.query.name || '';
+  const category = req.query.category || '';
   const nameFilter = name ? { title: { $regex: name, $options: 'i' } } : {};
-    const products = await Product.find({...nameFilter})
+  const categoryFilter = category ? {gender : category } : {}
+    const products = await Product.find({...nameFilter,...categoryFilter})
     res.send(products)
 }))
 

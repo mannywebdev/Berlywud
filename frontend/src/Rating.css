@@ -2,7 +2,7 @@
     margin-bottom: 1em;
     color: #ff9529;
 }
-span{
+.rating span{
     margin-right: 0.15em;
 }
 .rating > span:last-child{
@@ -10,3 +10,9 @@ span{
     margin-left: 0.2em;
 }
 
+@media only screen and (max-width: 570px){
+    .rating span{
+        margin-right: 0.10em;
+        font-size: 0.7em;
+    }
+}

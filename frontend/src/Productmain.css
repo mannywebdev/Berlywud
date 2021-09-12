@@ -1,14 +1,16 @@
 .productmain{
     display: flex;
-    
 }
 .productmain__img{
     width: 60%;
     text-align: center;
 }
+.productmain__img__mob{
+    display: none;
+}
 .productmain__info{
     width: 40%;
-    margin: 2em 0.5em 1em 0.5em;
+    margin: 2em 1em 1em 1em;
 }
 .productmain__img >img{
     margin: 2em 0.5em 1em 0.5em;
@@ -22,8 +24,8 @@
     transition: 1s;
 }
 .productmain__info .brandtitle > h3{
-    font-weight: 400;
-    font-family: "Playfair Display",sans-serif;
+    font-weight: 700;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 2em;
     margin: 0;
 }
@@ -67,7 +69,7 @@
     border-radius: 25px;
     outline: none;
 }
-.productmain__info .productmain__button>button:active{
+.productmain__info .productmain__button>button:focus{
     background-color: #ff3e6c;
     color :#ffffff;
 }
@@ -115,20 +117,70 @@
     margin: 0.8em 0;
     color: #505050;
 }
-.productmain__productdetails>h3{
+
+
+
+
+@media only screen and (max-width: 1310px){
+    .productmain__info .brandtitle > h3{
+        font-size: 1.6em;
+    }
     
+    .productmain__info .brandtitle > p{
+        padding-bottom: 0.5em;
+        margin: 0.5em 0;
+        font-size: 1.2em;
+        color: #505050;
+        font-weight: 300;
+        border-bottom: 1px solid rgba(211,211,211,0.5);
+    }
+    .productmain__info .productmain__pricing >span{
+        font-size: 1.4em;
+        font-weight: 500;
+    }
+    .productmain__info .productmain__pricing>span>del{
+        font-size: 0.7em;
+        color: #505050;
+        font-weight: 300;
+    }
+    .productmain__info .productmain__pricing >p{
+        font-size: 1em;
+        color: green;
+        font-weight: 500;
+    }
+    .productmain__info .productmain__pricing .discount{
+        font-size: 1.2em;
+        color: orange;
+    }
+    .productmain__button>p{
+        font-size: 1em;
+        color: #505050;
+    }
+    .productmain__info .productmain__button>button{
+        padding: 0.3em 0.6em;
+        margin: 0 0.5em 1em 0 ;   
+        font-size: 1em;
+    }
+    .productmain__productdetails>h3{
+        font-size: 0.9em;
+    }
+    .pink__button>Button{
+        padding: 0.4em 0.8em;
+    }
+    
+    .productmain__productdetails{
+        margin: 0.8em 0 0.8em 0;
+    }
+    
+    .productmain__productdetails>p{
+        font-weight: 300;
+        font-size: 0.9em;
+    }
+    .productmain__productdetails>h4{
+        font-size: 0.9em;
+        margin: 0.7em 0;
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 @media only screen and (max-width: 1400px){
@@ -140,7 +192,13 @@
 @media only screen and (max-width: 1080px){
     .productmain__img >img{
         width: 14em;
-        height: 24em;
+        height: 20em;
+    }
+}
+@media only screen and (max-width: 880px){
+    .productmain__img >img{
+        width: 11em;
+        height: 16em;
     }
 }
 @media only screen and (max-width: 850px){
@@ -150,6 +208,148 @@
     }
     .productmain__img{
         width: 100%;
+        margin: 0;
     }
+    .productmain__info{
+        width: 100%;
+        margin: 0;
+        padding: 1em;
+    }
+    .productmain__info .brandtitle > h3{
+        font-size: 1.4em;
+    }
+    
+    .productmain__info .brandtitle > p{
+        padding-bottom: 0.4em;
+        margin: 0.4em 0;
+        font-size: 1.4em;
+    }
+    .productmain__info .productmain__pricing >span{
+        font-size: 1.2em;
+    }
+    .productmain__info .productmain__pricing>span>del{
+        font-size: 0.9em;
+        color: #505050;
+        font-weight: 300;
+    }
+    .productmain__info .productmain__pricing >p{
+        font-size: 1em;
+        color: green;
+        font-weight: 500;
+    }
+    .productmain__info .productmain__pricing .discount{
+        font-size: 1.2em;
+        color: orange;
+    }
+    .productmain__button>p{
+        font-size: 1em;
+        color: #505050;
+    }
+    .productmain__info .productmain__button>button{
+        padding: 0.4em 0.8em;
+        margin: 0 0.6em 1.2em 0 ;   
+        font-size: 1em;
+    }
+    .productmain__productdetails>h3{
+        font-size: 1.3em;
+    }
+    .pink__button>Button{
+        padding: 0.5em 0.6em;
+        font-size: 1em;
+    }
+    
+    .productmain__productdetails{
+        margin: 0.8em 0 0.8em 0;
+    }
+    
+    .productmain__productdetails>p{
+        font-weight: 300;
+        font-size: 0.9em;
+    }
+    .productmain__productdetails>h4{
+        font-size: 0.9em;
+        margin: 0.7em 0;
+    }
+}
 
+@media only screen and (max-width: 790px){
+    .productmain__img{
+        display: none;
+    }
+    .productmain__img__mob{
+        display: block;
+        margin: 1.2em 0;
+    }
+    .productmain__info .productmain__button>button{
+        font-size: 1em;
+        padding: 0.3em 0.6em;
+        margin: 0 0.5em 1em 0 ;
+    }
+    .pink__button>Button{
+        padding: 0.5em 0.6em;
+        font-size: 0.9em;
+    }
+    .carouselitem__img_mob{
+        height: 16em;
+        object-fit: contain;
+    }
+    .productmain__buttonwidth{
+        max-width: 100%;
+    }
+    .productmain__button>button{ 
+        font-size: 0.8em;
+    }
+}
+
+@media only screen and (max-width: 570px){
+    
+    .productmain__info .brandtitle > h3{
+        font-size: 1.2em;
+    }
+    
+    .productmain__info .brandtitle > p{
+        padding-bottom: 0.3em;
+        margin: 0.3em 0;
+        font-size: 1em;
+    }
+    .productmain__info .productmain__pricing >span{
+        font-size: 1.2em;
+    }
+    .productmain__info .productmain__pricing>span>del{
+        font-size: 0.7em;
+    }
+    .productmain__info .productmain__pricing >p{
+        font-size: 0.8em;
+    }
+    .productmain__info .productmain__pricing .discount{
+        font-size: 1em;
+    }
+    .productmain__button>p{
+        font-size: 0.8em;
+    }
+    .productmain__info .productmain__button>button{
+        padding: 0.3em 0.6em;
+        margin: 0 0.5em 1em 0 ;   
+        font-size: 0.9em;
+    }
+    .productmain__productdetails>h3{
+        font-size: 0.9em;
+    }
+    .pink__button>Button{
+        padding: 0.5em 0.6em;
+        font-size: 0.8em;
+    }
+    
+    .productmain__productdetails{
+        margin: 0.8em 0 0.8em 0;
+    }
+    
+    .productmain__productdetails>p{
+        font-weight: 300;
+        font-size: 0.7em;
+    }
+    .productmain__productdetails>h4{
+        font-size: 0.9em;
+        margin: 0.7em 0;
+    }
 }

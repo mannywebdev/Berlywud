@@ -8,6 +8,8 @@ import Button from '@material-ui/core/Button';
 import Loadingmsg from './Loadingmsg'
 import Errormsg from './Errormsg'
 import {productDetails} from './redux/actions/allProductsActions'
+import Carousel ,{CarouselItem} from './Carousel'
+import { CgDetailsMore } from "react-icons/cg";
 
 function Productmain() {
     const dispatch = useDispatch()
@@ -49,6 +51,14 @@ function Productmain() {
                             <img src={product.url} alt={product.title}/>
                             <img src={product.url} alt={product.title}/>
                         </div>
+                        <div className="productmain__img__mob">
+                            <Carousel>
+                                <CarouselItem><img className="carouselitem__img_mob" src={product.url} alt={product.title}/></CarouselItem>
+                                <CarouselItem><img className="carouselitem__img_mob" src={product.url} alt={product.title}/></CarouselItem>
+                                <CarouselItem><img className="carouselitem__img_mob" src={product.url} alt={product.title}/></CarouselItem>
+                                <CarouselItem><img className="carouselitem__img_mob" src={product.url} alt={product.title}/></CarouselItem>
+                            </Carousel>
+                        </div>
                         <div className="productmain__info">
                             <div className="brandtitle">
                                 <h3>{product.brand}</h3>
@@ -73,7 +83,7 @@ function Productmain() {
                                 <button value="5ml" onClick={changePrice}>5ml</button>
                                 <button value="10ml" onClick={changePrice}>10ml</button>
                                 <button value="30ml" onClick={changePrice}>30ml</button>
-                                <button value="Retail" onClick={changePrice} selected>Retail</button>
+                                <button value="Retail" onClick={changePrice}>Retail</button>
                             </div>
                             <div className="productmain__buttonwidth">
                             {
@@ -89,7 +99,7 @@ function Productmain() {
                                 {product.stockcount > 0 ? <span className="success">Instock</span> : <span className="error">Out of stock</span>}
                             </div>
                             <div className="productmain__productdetails">
-                                <h3>PRODUCT DETAILS <NotesRoundedIcon/></h3>
+                                <h3>PRODUCT DETAILS<CgDetailsMore/></h3>
                                 <h4>Notes</h4>
                                 <p>Topnotes: {product.notes.Topnotes.join(', ')}</p>
                                 <p>Middlenotes: {product.notes.Middlenotes.join(', ')}</p>
@@ -104,11 +114,8 @@ function Productmain() {
                         </div>
                     </div>
                 )
-            }
-            
+            } 
         </div>
-        
-        
     )
 }
 export default Productmain

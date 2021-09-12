@@ -1,34 +1,45 @@
-.carousel{
+.carousel {
+    overflow: hidden;
+    }
+    .inner {
+    white-space: nowrap;
+    transition: transform 0.3s;
+    }
+    .carousel-item {
+    display: inline-flex;
+    object-fit: contain;
+}
+.carousel-item img {
     width: 100%;
+}
+.indicators{
     display: flex;
-    position: relative;
-    overflow: hidden;
+    justify-content: center;
+    align-items: center;
 }
-.carousel__slide{
-    min-width: 100%;
-    overflow: hidden;
-}
-.carouselleft__btn{
-    top: 50%;
-    left: 0;
-}
-.carouselright__btn{
-    top: 50%;
-    right: 0;
-}
-.carousel>button{
-    position: absolute;
-    width: 6%;
-    height: 20%;
-    cursor: pointer;
-    background: none;
-    border: none;
+.indicators > button{
+    margin: 1em 0.5em;
+    border: 0;
     outline: 0;
-    transition: .5s;
+    background-color: grey;
+    height: 12px;
+    border-radius: 50%;
 }
-.carousel>button:hover{
-    background-color: rgba(0, 0, 0,0.1);
+.indicators > button.active{
+    background-color: #ff3e6c;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    height: 12px;
+    border-radius: 50%;
 }
-@media only screen and (max-width: 800px){
-
+    
+@media only screen and (max-width: 570px){
+    .indicators > button{
+        margin: 0.5em 0.5em;
+        height: 1px; 
+    }
+    .indicators > button.active{
+        height: 2px;
+    }
 }

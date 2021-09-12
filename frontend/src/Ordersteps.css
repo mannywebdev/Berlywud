@@ -6,8 +6,8 @@
     padding: 1em;
 }
 .ordersteps > div.active{
-    border-top: 0.2em green solid;
-    color: green;
+    border-top: 0.2em #43a547 solid;
+    color: #43a547 ;
 }
 .ordersteps{
     display: flex;

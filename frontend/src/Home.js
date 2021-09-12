@@ -30,9 +30,9 @@ function Home() {
                     <>
                     <h3>OUR PRODUCTS</h3>
                     <div className="home__page">
-                        <div className="home__sidebar">
+                        {/* <div className="home__sidebar">
                             <Sidebar/>
-                        </div>
+                        </div> */}
                         <div className="home__container">
                             {allProducts.map((item)=> {
                                 return <Product key={item._id} prop={item}/>

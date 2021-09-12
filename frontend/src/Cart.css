@@ -49,9 +49,15 @@
         flex-direction: column;
     }
     .cart__left{
-        width: 95%;
+        width: 100%;
+        margin: 0;
     }
     .cart__right{
-        width: 95%;
+        width: 100%;
+        margin: 0;
+    }
+    .cart{
+        margin: 1em 1em;
     }
 }
+

@@ -65,7 +65,6 @@ function Orderdetails() {
         const data= {
             amount:(order.totalPrice*100).toString(),
         }
-        
         const option={
             method: 'POST',
             headers : {
@@ -95,17 +94,15 @@ function Orderdetails() {
                     razorpayOrderId: response.razorpay_order_id,
                     razorpaySignature: response.razorpay_signature,
                 }
-                const result = await axios.post("http://localhost:5000/payment/success", data);
+                const result = await axios.post("http://localhost:5000/payment/success",data);
                 if(result.data.msg === "success"){
                     dispatch(payOrder(order,result))
                 }
-
             },
             "prefill": {
                 "name": "Gaurav Kumar",
                 "email": "gaurav.kumar@example.com",
-                "contact": "9999999999"
-                
+                "contact": "9999999999"  
             }
         };
         var paymentObject = new window.Razorpay(options);

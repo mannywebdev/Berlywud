@@ -21,10 +21,10 @@ function Product({prop}) {
             </div>
             <Rating rating={prop.rating} reviews={prop.reviews}/>
         </Link>
-            <div className="product__btn">
+            {/* <div className="product__btn">
                 <button className="btn1">Add to Cart</button>
                 <button className="btn2">Quick View</button>
-            </div>
+            </div> */}
         
         </div>
     )

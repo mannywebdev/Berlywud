@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import './Navbar.css'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-import logoblack from './images/blacklogo2025.png'
+import BERLYWUD from './images/BERLYWUD.png'
 import Badge from '@material-ui/core/Badge';
 import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
@@ -19,6 +19,7 @@ function Navbar() {
     const {cartItems} = Cart
     const UserSignin = useSelector(state=> state.UserSignin)
     const { userInfo } = UserSignin
+    
     const signoutHandler = () =>{
         dispatch(signout())
     }
@@ -40,7 +41,7 @@ function Navbar() {
         <div className="navbar">
             <Link className="navbar__link" style={{color: 'inherit', textDecoration: 'inherit'}} to="/">
             <div className="navbar__logo">
-                <img src={logoblack} alt=""/>
+                <img src={BERLYWUD} alt=""/>
             </div>
             </Link>
             <div className="navbar__option">
@@ -48,8 +49,7 @@ function Navbar() {
                     <a href="#mens">Men</a>
                     <a href="#womens">Women</a>
                     <a href="#unisex">Unisex</a>
-                    <a href="#decantssplits">Decants & Splits</a>
-                    <a href="#miniatures">Miniatures</a>
+                    
                 </nav>
             </div>
             <div>

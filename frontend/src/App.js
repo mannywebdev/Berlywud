@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Navbar from './Navbar'
-import Carousel from './Carousel'
+
 import Home from './Home'
 import Cart from './Cart';
 import Footer from './Footer'
@@ -22,21 +22,30 @@ import OrderList from './OrderList';
 import UserList from './UserList';
 import UserEdit from './UserEdit';
 import Searchscreen from './Searchscreen';
-
+import Carousel ,{CarouselItem} from './Carousel'
+import i1 from './images/i1.png'
+import i2 from './images/i2.png'
+import i3 from './images/i3.png'
+import i4 from './images/i4.png'
 
 function App() { 
   return(
     <BrowserRouter>
       <div className="App">
         <header>
-          <Navbar/>
+          {/* <Navbar/> */}
         </header>
         <main>
         <Switch>
           <Route exact path="/">
-            <Carousel/>
+            <Carousel>
+              <CarouselItem><img className="carouselimg" src={i4} alt=""/></CarouselItem>
+              <CarouselItem><img className="carouselimg" src={i2} alt=""/></CarouselItem>
+              <CarouselItem><img className="carouselimg" src={i3} alt=""/></CarouselItem>
+              <CarouselItem><img className="carouselimg" src={i1} alt=""/></CarouselItem>
+            </Carousel>
             <Home/>
-            <Footer/>
+            {/* <Footer/> */}
           </Route>
           <Route path="/cart/:productId?">
             <Cart/>
@@ -65,7 +74,13 @@ function App() {
           <Route path="/register">
             <Register/>
           </Route>
-          <Route path="/search/name/:name?">
+          <Route exact path="/search/name/:name?">
+            <Searchscreen/>
+          </Route>
+          <Route exact path="/search/category/:category">
+            <Searchscreen/>
+          </Route>
+          <Route exact path="/search/category/:category/name/:name">
             <Searchscreen/>
           </Route>
           <PrivateRoute component={Myprofile} path="/profile"></PrivateRoute>

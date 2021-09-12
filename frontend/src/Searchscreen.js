@@ -8,18 +8,16 @@ import Loadingmsg from './Loadingmsg'
 import Errormsg from './Errormsg'
 
 export default function Searchscreen(props) {
-  const { name = 'all' } = useParams();
+  const { name = 'all' , category = 'all' , min = 0, max = 0 } = useParams();
   const dispatch = useDispatch();
   const  AllProducts= useSelector(state => state.AllProducts)
   const {loading,error,allProducts} = AllProducts
 
   const productCategoryList = useSelector((state) => state.ProductCategoryList);
-  const {loading: loadingCategories,error: errorCategories,categories} = productCategoryList;
-  console.log(categories)
   
   useEffect(() => {
-    dispatch(allProductsLoad({ name: name !== 'all' ? name : '' }))
-  }, [dispatch,name])
+    dispatch(allProductsLoad({ name: name !== 'all' ? name : '' , category: category !== 'all' ? category : '' , min, max }))
+  }, [dispatch,name,category,min,max])
 
   return (
     <div className="home">
@@ -33,7 +31,7 @@ export default function Searchscreen(props) {
                     <p>{allProducts.length} RESULTS</p>
                     <div className="home__page">
                         <div className="home__sidebar">
-                            <Sidebar/>
+                            <Sidebar filters={category,name,min,max} productCategoryList={productCategoryList} />
                         </div>
                         <div className="home__container">
                             {allProducts.map((item)=> {

@@ -24,8 +24,10 @@
     margin: 1em 0;
 }
 .product__info > p{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins' , 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 300;
+    font-size: 0.9em;
+    height: 5em;
 }
 .product__btn > button{
     width: 45%;
@@ -35,7 +37,7 @@
     background-color: white;
     color: #57534a;
     padding: 0.3em 0.3em; 
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 400;
     font-size: 1.1em;
     margin: 0 auto;
@@ -50,5 +52,79 @@
     color: gray;
     font-size: 13px;
 }
+
+@media only screen and (max-width: 1310px){
+    .product{
+        width:15em;     
+        margin:  0.5em;
+        padding: 0.7em;
+    }
+    .product__img{
+        width: 9em;
+        height: 9em;
+    }
+    .product__btn > button{
+        width: 45%;
+        cursor: pointer;
+        outline: 0;
+        border: 1px solid #57534a;
+        background-color: white;
+        color: #57534a;
+        padding: 0.3em 0.3em; 
+        font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 400;
+        font-size: 0.9em;
+        margin: 0 auto;
+    }
+}
+
+
+@media only screen and (max-width: 1024px){
+    .product{
+        width:14em;     
+        margin:  0.4em;
+        padding: 0.6em;
+    }
+    .product__img{
+        width: 9em;
+        height: 9em;
+    }
+    .product__btn > button{
+        width: 45%;
+        font-size: 0.9em;
+    }
+}
+
+@media only screen and (max-width: 570px){
+    .product{
+        width:10em;     
+        margin:  0.3em;
+        padding: 0.6em 0.4em;
+    }
+    .product__img{
+        width: 6em;
+        height: 6em;
+    }
+    .product__btn > button{
+        width: 40%;
+        font-size: 0.6em;
+    }
+    .product__info > p{
+        font-size: 0.7em;
+        height: 4em;
+    }
+    .product__info>span>del{
+        color: gray;
+        font-size: 0.7em;
+    }
+    .product__info>span{
+        font-size: 0.7em;
+    }
+    .product__info{
+        margin: 0.5em 0 0.2em 0;
+    }
+}
+
+
 
 
