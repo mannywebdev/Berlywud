@@ -1,5 +1,16 @@
 const mongoose = require('mongoose')
 
+const reviewSchema = new mongoose.Schema(
+    {
+      name: { type: String, required: true },
+      comment: { type: String, required: true },
+      ratings: { type: Number, required: true },
+    },
+    {
+      timestamps: true,
+    }
+  );
+
 const productSchema = new mongoose.Schema(
     {
         url : {type:String, required:true},
@@ -12,9 +23,10 @@ const productSchema = new mongoose.Schema(
         notes:{Topnotes:[{type:String, required:true},{type:String, required:true},{type:String, required:false}],Middlenotes:[{type:String, required:true},{type:String, required:true},{type:String, required:false}],Basenotes:[{type:String, required:true},{type:String, required:true},{type:String, required:false}]},
         launch:{type:Number,required:true},
         concentration:{type:String, required:true},
-        rating:{type:Number,required:true},
-        reviews: {type:Number,required:true},
-        stockcount:{type:Number,required:true}
+        rating: { type: Number, required: true },
+        userreviews: [reviewSchema],
+        numReviews: { type: Number, required: true },
+        stockcount:{type:Number,required:true},
     },
     {
         timestamps: true

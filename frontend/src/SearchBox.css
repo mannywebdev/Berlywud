@@ -40,10 +40,22 @@
     text-align: center;
     color: #fff;
     border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    font-size: 20px;
-    
+    cursor: pointer;  
   }
   
   /*Resize the wrap to see the search bar change!*/
  
+  @media only screen and (max-width: 1310px){
+    .searchButton {
+      width: 2em;
+      height: 2em;
+      text-align: center;
+      color: #fff;
+    }
+    .searchTerm {
+      border-right: none;
+      padding: 5px;
+      height: 2em;
+    }
+} 
+

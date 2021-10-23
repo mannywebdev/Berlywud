@@ -61,6 +61,7 @@ export default function UserEdit() {
             <div>
               <label htmlFor="name">Name</label>
               <input
+              className="inputfieldtext"
                 id="name"
                 type="text"
                 placeholder="Enter name"
@@ -71,6 +72,7 @@ export default function UserEdit() {
             <div>
               <label htmlFor="email">Email</label>
               <input
+              className="inputfieldtext"
                 id="email"
                 type="email"
                 placeholder="Enter email"
@@ -81,6 +83,7 @@ export default function UserEdit() {
             <div>
               <label htmlFor="isAdmin">Is Admin</label>
               <input
+              className="inputfieldtext"
                 id="isAdmin"
                 type="checkbox"
                 checked={isAdmin}

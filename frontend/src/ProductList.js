@@ -6,11 +6,16 @@ import Errormsg from './Errormsg'
 import Loadingmsg from './Loadingmsg'
 import { PRODUCT_CREATE_RESET, PRODUCT_DELETE_RESET } from './redux/constants/allProductConstants';
 import Button from '@material-ui/core/Button'
-import { useHistory } from 'react-router-dom';
+import { useParams,useHistory, Link } from 'react-router-dom';
 
 export default function ProductList() {
+
+  const { pageNumber = 1 } = useParams();
+
   const productList = useSelector((state) => state.AllProducts);
-  const { loading, error, allProducts } = productList;
+  const { loading, error, allProducts , page ,pages} = productList;
+  console.log(`page`, page)
+  console.log(`pages`, pages)
 
   const productCreate = useSelector((state) => state.ProductCreate);
   const {loading: loadingCreate,error: errorCreate,success: successCreate,product: createdProduct} = productCreate; 
@@ -19,7 +24,7 @@ export default function ProductList() {
     const { userInfo } = UserSignin
 
   const productDelete = useSelector((state) => state.ProductDelete);
-  const {loading: loadingDelete,error: errorDelete,success: successDelete,} = productDelete;
+  const {loading: loadingDelete,error: errorDelete,success: successDelete} = productDelete;
 
   const dispatch = useDispatch();
   const history = useHistory()
@@ -32,8 +37,8 @@ export default function ProductList() {
     if (successDelete) {
       dispatch({ type: PRODUCT_DELETE_RESET });
     }
-    dispatch(allProductsLoad({userInfo}));
-  }, [createdProduct, dispatch, history, successCreate, successDelete]);
+    dispatch(allProductsLoad({userInfo,pageNumber}));
+  }, [createdProduct, dispatch, history, successCreate, successDelete ,pageNumber]);
   
   const deleteHandler = (product) => {
     if (window.confirm('Are you sure to delete?')) {
@@ -63,6 +68,7 @@ export default function ProductList() {
       ) : error ? (
         <Errormsg variant="danger">{error}</Errormsg>
       ) : (
+        <>
         <table className="table">
           <thead>
             <tr>
@@ -105,6 +111,18 @@ export default function ProductList() {
             ))}
           </tbody>
         </table>
+        <div className="pagination">
+        {[...Array(pages).keys()].map((x) => (
+              <Link
+                  className={x + 1 === page ? 'link active' : 'link'}
+                  key={x + 1}
+                  to={`/productlist/pageNumber/${x + 1}`}
+              >
+              {x + 1}
+              </Link>    
+        ))}
+        </div>                
+        </>
       )}
     </div>
   );

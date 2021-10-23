@@ -33,7 +33,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <header>
-          {/* <Navbar/> */}
+          <Navbar/>
         </header>
         <main>
         <Switch>
@@ -83,8 +83,12 @@ function App() {
           <Route exact path="/search/category/:category/name/:name">
             <Searchscreen/>
           </Route>
+          <Route exact path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order/pageNumber/:pageNumber">
+            <Searchscreen/>
+          </Route>
           <PrivateRoute component={Myprofile} path="/profile"></PrivateRoute>
           <AdminRoute component={ProductList} path="/productlist"></AdminRoute>
+          <AdminRoute component={ProductList} path="/productlist/pageNumber/:pageNumber"></AdminRoute>
           <AdminRoute component={OrderList}  path="/orderlist"></AdminRoute>
           <AdminRoute component={UserList}  path="/userlist"></AdminRoute>
           <AdminRoute component={UserEdit} path="/user/:id/edit"></AdminRoute>

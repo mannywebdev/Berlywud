@@ -28,6 +28,13 @@
     .home__page .home__container{
         margin: 0 1%;
     }
+    .home h3{
+        margin: 0.8em;
+        font-size: 1em;
+    }
+    .home{
+        padding: 1em 0;
+    }
 }
 
 @media only screen and (max-width: 1024px){
@@ -40,7 +47,7 @@
     }
 }
 
-@media only screen and (max-width: 570px){
+/* @media only screen and (max-width: 570px){
     .home h3{
         margin: 0.8em;
         font-size: 1em;
@@ -48,4 +55,4 @@
     .home{
         padding: 1em 0;
     }
-}
+} */

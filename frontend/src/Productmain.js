@@ -2,14 +2,17 @@ import React,{useEffect, useState} from 'react'
 import './Productmain.css'
 import NotesRoundedIcon from '@material-ui/icons/NotesRounded';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import {useHistory, useParams} from 'react-router-dom'
+import {Link, useHistory, useParams} from 'react-router-dom'
 import {useSelector,useDispatch} from 'react-redux'
 import Button from '@material-ui/core/Button';
 import Loadingmsg from './Loadingmsg'
 import Errormsg from './Errormsg'
-import {productDetails} from './redux/actions/allProductsActions'
+import {createReview, productDetails} from './redux/actions/allProductsActions'
 import Carousel ,{CarouselItem} from './Carousel'
 import { CgDetailsMore } from "react-icons/cg";
+import Rating from './Rating';
+import _ from 'lodash';
+import { PRODUCT_REVIEW_CREATE_RESET } from './redux/constants/allProductConstants';
 
 function Productmain() {
     const dispatch = useDispatch()
@@ -17,15 +20,34 @@ function Productmain() {
     const [ml,setMl]= useState("Retail")  //State management for the size of perfume
     console.log(ml)
 
-    const {productId} = useParams() //
+    const {productId} = useParams() 
     const history = useHistory()
 
     const ProductDetails = useSelector(state => state.ProductDetails)   
     const {loading,error,product} = ProductDetails
 
+    const userSignin = useSelector((state) => state.UserSignin);
+    const { userInfo } = userSignin;
+
+    const productReviewCreate = useSelector((state) => state.ProductReviewCreate);
+    const {
+        loading: loadingReviewCreate,
+        error: errorReviewCreate,
+        success: successReviewCreate,
+    } = productReviewCreate;
+
+    const [rating, setRating] = useState(0);
+    const [comment, setComment] = useState('');
+
     useEffect(()=>{
+        if (successReviewCreate) {
+            window.alert('Review Submitted Successfully');
+            setRating('');
+            setComment('');
+            dispatch({ type: PRODUCT_REVIEW_CREATE_RESET });
+        }
         dispatch(productDetails(productId))
-    },[dispatch,productId])
+    },[dispatch,productId,successReviewCreate])
 
 
     function changePrice(e){
@@ -36,6 +58,17 @@ function Productmain() {
     function addToCart(){
         history.push(`/cart/${productId}?price=${product.decantprice[ml]}&size=${ml}`)
     } 
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        if (comment && rating) {
+          dispatch(
+            createReview(productId, { rating, comment, name: userInfo.name })
+          );
+        } else {
+          alert('Please enter comment and rating');
+        }
+      };
     return (
         <div>
             {
@@ -110,6 +143,72 @@ function Productmain() {
                                 <p>{product.launch}</p>
                                 <h4>Concentration</h4>
                                 <p>{product.concentration}</p>
+                            </div>
+                            <div>
+                                <h3 className="reviews">Reviews</h3>
+                                {_.isEmpty(product.userreviews) && (
+                                <Errormsg>There is no review.</Errormsg>
+                                )}
+                                <div>
+                                { product.userreviews.map((review) => (
+                                    <div key={review._id}>
+                                    <strong>{review.name}</strong>
+                                    <Rating rating={review.ratings} caption= " "></Rating>
+                                    <p>{review.createdAt.substring(0, 10)}</p>
+                                    <p>{review.comment}</p>
+                                    </div>
+                                ))}
+                                <div>
+                                    {userInfo ? (
+                                    <form className="productmain__form" onSubmit={submitHandler}>
+                                        <div>
+                                        <h2>Write a customer review</h2>
+                                        </div>
+                                        <div>
+                                        <label htmlFor="rating">Rating</label>
+                                        <select
+                                            id="rating"
+                                            value={rating}
+                                            onChange={(e) => setRating(e.target.value)}
+                                        >
+                                            <option value="">Select...</option>
+                                            <option value="1">1- Poor</option>
+                                            <option value="2">2- Fair</option>
+                                            <option value="3">3- Good</option>
+                                            <option value="4">4- Very Good</option>
+                                            <option value="5">5- Excellent</option>
+                                        </select>
+                                        </div>
+                                        <div>
+                                        <label htmlFor="comment">Comment</label>
+                                        <textarea
+                                            id="comment"
+                                            value={comment}
+                                            onChange={(e) => setComment(e.target.value)}
+                                        ></textarea>
+                                        </div>
+                                        <div>
+                                        <label />
+                                        <button className="pinkButton" type="submit">
+                                            Submit
+                                        </button>
+                                        </div>
+                                        <div>
+                                        {loadingReviewCreate && <Loadingmsg/>}
+                                        {errorReviewCreate && (
+                                            <Errormsg variant="danger">
+                                            {errorReviewCreate}
+                                            </Errormsg>
+                                        )}
+                                        </div>
+                                    </form>
+                                    ) : (
+                                    <Errormsg>
+                                        Please <Link className="link" to="/signin" style={{"color":"#008000"}}>Sign In</Link> to write a review
+                                    </Errormsg>
+                                    )}
+                                </div>
+                                </div>
                             </div>
                         </div>
                     </div>

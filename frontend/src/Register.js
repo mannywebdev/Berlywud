@@ -45,6 +45,7 @@ function Register() {
                 <div>
                     <label htmlFor="name">Name</label>
                     <input 
+                    className="inputfieldtext"
                     type="text" 
                     id="name"
                     placeholder="Enter name"
@@ -54,6 +55,7 @@ function Register() {
                 <div>
                     <label htmlFor="email">Email</label>
                     <input 
+                    className="inputfieldtext"
                     type="email" 
                     id="email"
                     placeholder="Enter email"
@@ -63,6 +65,7 @@ function Register() {
                 <div>
                     <label htmlFor="password">Password</label>
                     <input 
+                    className="inputfieldtext"
                     type="password" 
                     id="password"
                     placeholder="Enter password"
@@ -72,6 +75,7 @@ function Register() {
                 <div>
                     <label htmlFor="confirmpassword">Confirm Password</label>
                     <input 
+                    className="inputfieldtext"
                     type="password" 
                     id="confirmpassword"
                     placeholder="Enter password again"

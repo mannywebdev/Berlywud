@@ -213,6 +213,7 @@ export default function ProductEdit(props) {
             />
             <div>
               <input
+                className="inputfieldtext"
                 type="file"
                 id="imageFile"
                 label="Choose Image"

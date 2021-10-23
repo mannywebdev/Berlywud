@@ -19,7 +19,7 @@ function Product({prop}) {
                 <p>{prop.title}</p>
                 <span>Rs.{prop.decantprice.Retail}&nbsp;<del>Rs.{prop.origprice}</del></span>
             </div>
-            <Rating rating={prop.rating} reviews={prop.reviews}/>
+            <Rating rating={prop.rating} reviews={prop.numReviews}/>
         </Link>
             {/* <div className="product__btn">
                 <button className="btn1">Add to Cart</button>

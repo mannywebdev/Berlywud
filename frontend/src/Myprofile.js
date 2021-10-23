@@ -66,6 +66,7 @@ export default function Myprofile() {
             <div>
               <label htmlFor="name">Name</label>
               <input
+                className="inputfieldtext"
                 id="name"
                 type="text"
                 placeholder="Enter name"
@@ -76,6 +77,7 @@ export default function Myprofile() {
             <div>
               <label htmlFor="email">Email</label>
               <input
+                className="inputfieldtext"
                 id="email"
                 type="email"
                 placeholder="Enter email"
@@ -86,6 +88,7 @@ export default function Myprofile() {
             <div>
               <label htmlFor="password">Password</label>
               <input
+                className="inputfieldtext"
                 id="password"
                 type="password"
                 placeholder="Enter password"
@@ -95,6 +98,7 @@ export default function Myprofile() {
             <div>
               <label htmlFor="confirmPassword">confirm Password</label>
               <input
+                className="inputfieldtext"
                 id="confirmPassword"
                 type="password"
                 placeholder="Enter confirm password"

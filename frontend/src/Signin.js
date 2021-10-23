@@ -6,6 +6,7 @@ import { signin } from './redux/actions/userActions'
 import Loadingmsg from './Loadingmsg'
 import Errormsg from './Errormsg'
 import Button from '@material-ui/core/Button';
+import GoogleLogin from 'react-google-login';
 
 function Signin() {
     const dispatch = useDispatch()
@@ -29,6 +30,13 @@ function Signin() {
         }
     },[userInfo,redirect,historysignin])
 
+    const googleSuccess = (response) =>{
+        console.log(response);
+    }
+    const googleFailure = (error) =>{
+        console.log(error);
+    }
+
     return (
         <div className="signin">
             <>
@@ -39,6 +47,7 @@ function Signin() {
                 <div>
                     <label htmlFor="email">Email</label>
                     <input 
+                    className="inputfieldtext"
                     type="email" 
                     id="email"
                     placeholder="Enter email"
@@ -48,6 +57,7 @@ function Signin() {
                 <div>
                     <label htmlFor="password">Password</label>
                     <input 
+                    className="inputfieldtext"
                     type="password" 
                     id="password"
                     placeholder="Enter password"
@@ -57,7 +67,16 @@ function Signin() {
                 <div className="pink__button">
                     <Button variant="contained" type="submit">Login</Button>
                 </div>
-                
+                <GoogleLogin
+                    clientId="988273385279-nhtg9hfjh0kidtum9jb8oj21mjiqnhfu.apps.googleusercontent.com"
+                    render={renderProps => (
+                    <button onClick={renderProps.onClick} disabled={renderProps.disabled}>Google</button>
+                    )}
+                    buttonText="Login"
+                    onSuccess={googleSuccess}
+                    onFailure={googleFailure}
+                    cookiePolicy={'single_host_origin'}
+                />  
                 <div>
                     <span>New Customer?</span> <Link to={`/register?redirect=${redirect}`} className="link link__pink">Create your account</Link>
                 </div>

@@ -41,6 +41,7 @@ function Shippingaddress() {
                         <div>
                             <label htmlFor="fullname">Full name (First and Last name)</label>
                             <input 
+                            className="inputfieldtext"
                             type="text" 
                             id="fullname"
                             value={fullName}
@@ -51,6 +52,7 @@ function Shippingaddress() {
                         <div>
                             <label htmlFor="pincode">PIN code</label>
                             <input 
+                            className="inputfieldtext"
                             type="number" 
                             id="pincode"
                             placeholder="6 digits [0-9] PIN code"
@@ -62,6 +64,7 @@ function Shippingaddress() {
                         <div>
                             <label htmlFor="address1">Flat, House no., Building, Company, Apartment</label>
                             <input 
+                            className="inputfieldtext"
                             type="text" 
                             id="address1"
                             value={address1}
@@ -72,6 +75,7 @@ function Shippingaddress() {
                         <div>
                             <label htmlFor="address2">Area, Colony, Street, Sector, Village , Landmark</label>
                             <input 
+                            className="inputfieldtext"
                             type="text" 
                             id="address2"
                             placeholder="E.g Near Roman apt. sector-62 ,e.t.c"
@@ -82,6 +86,7 @@ function Shippingaddress() {
                         <div>
                             <label htmlFor="city">Town/City</label>
                             <input 
+                            className="inputfieldtext"
                             type="text" 
                             id="city"
                             value={city}
@@ -92,6 +97,7 @@ function Shippingaddress() {
                         <div>
                             <label htmlFor="state">State/Region</label>
                             <input 
+                            className="inputfieldtext"
                             type="text" 
                             id="state"
                             placeholder="E.g MP,Punjab,Gujarat"

@@ -4,12 +4,13 @@ import {useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 import Loadingmsg from './Loadingmsg'
 import Errormsg from './Errormsg'
-import { prices } from './utils'
+import { prices,ratings } from './utils'
+import Rating from './Rating'
 
 
-function Sidebar(props) {
-    console.log(`props.min`, props.min)
-    console.log(`props.max`, props.max)
+const Sidebar = React.forwardRef((props, ref) => {
+    console.log(`props.filters`, props.category)
+    console.log(`props.productCategoryList`, props.productCategoryList)
 
     const {loading: loadingCategories,error: errorCategories,categories} = props.productCategoryList;
     
@@ -30,17 +31,27 @@ function Sidebar(props) {
    
    console.log(brands)
    const filteredProducts = allProducts.filter((item)=>{
-       if(item.brand === brands.map(item=>item)){
-           return item
-       }
+        if(item.brand === brands.map(item=>item)){
+            return item
+        }
    })
-     console.log("fdsg",filteredProducts)
+    console.log("fdsg",filteredProducts)
 
     const getFilterUrl = (filter) =>{
+        console.log(`filter.page`, filter.page)
+        const filterPage = filter.page || props.pageNumber;
         const filterCategory = filter.category || props.category
         const filterName = filter.name || props.name
-        return `/search/category/${filterCategory}/name/${filterName}`
+        const filterMin = filter.min ? filter.min : filter.min === 0 ? 0 : props.min;
+        const filterMax = filter.max ? filter.max : filter.max === 0 ? 0 : props.max;
+        // const sortOrder = filter.order || props.order;
+        const filterRating = filter.rating || props.rating
+        return `/search/category/${filterCategory}/name/${filterName}/min/${filterMin}/max/${filterMax}/rating/${filterRating}/pageNumber/${filterPage}`
     }
+
+    React.useImperativeHandle(ref, () => ({
+        getFilterUrl
+    }))
 
     return (
         <div className="sidebar">
@@ -53,13 +64,16 @@ function Sidebar(props) {
                     <Errormsg>{errorCategories}</Errormsg>
                 ) : (
                     <div className="sidebar__gender">
-                    {
-                        categories.map(c =>(
-                            <p key={c}>
-                                <Link className={c === props.category ? "active link capitalize" : "link capitalize"} to={getFilterUrl({category: c})}>{c}</Link>
-                            </p>
-                        ))
-                    }
+                        <p>
+                            <Link className={"all" === props.category ? "active link capitalize" : "link capitalize"} to={getFilterUrl({category: 'all'})}>Any</Link>
+                        </p>
+                        {
+                            categories.map(c =>(
+                                <p key={c}>
+                                    <Link className={c === props.category ? "active link capitalize" : "link capitalize"} to={getFilterUrl({category: c})}>{c}</Link>
+                                </p>
+                            ))
+                        }
                     </div>
                 )}
             <h5>BRANDS</h5>
@@ -73,26 +87,33 @@ function Sidebar(props) {
                 <label><input type="checkbox" value="Versace" onChange={handleChange}/> Versace</label>
             </div>
             <h5>PRICE</h5>
-            <div className="sidebar__price">
-                {/* <label><input type="checkbox"/> Rs. 99 to Rs. 2499</label>
-                <label><input type="checkbox"/> Rs. 2500 to Rs. 4999</label>
-                <label><input type="checkbox"/> Rs. 5000 to Rs. 7499</label>
-                <label><input type="checkbox"/> Rs. 7500 to Rs. 9999</label> */}
+            <div className="sidebar__price">                
                 {prices.map((p) => (
                 <p key={p.name}>
-                  {/* <Link
+                  <Link
                     to={getFilterUrl({ min: p.min, max: p.max })}
-                    className={
-                      `${p.min}-${p.max}` === `${min}-${max}` ? 'active' : ''
-                    }
+                    className={`${p.min}-${p.max}` === `${props.min}-${props.max}` ? 'active link capitalize' : 'link capitalize'}
                   >
                     {p.name}
-                  </Link> */}
+                  </Link>
                 </p>
               ))}
             </div>
+            <h5>Avg. Customer Rating</h5>
+            <div className="sidebar__rating">
+                {ratings.map((r) => (
+                <p key={r.name}>
+                  <Link
+                    to={getFilterUrl({ rating: r.rating })}
+                    className={`${r.rating}` === `${props.rating}` ? 'active' : ''}
+                  >
+                    <Rating caption ={" & Up"} rating={r.rating}/>
+                  </Link>
+                </p>
+                ))}
+            </div>
         </div>
     )
-}
+})
 
 export default Sidebar

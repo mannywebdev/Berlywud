@@ -1,8 +1,9 @@
 import React from 'react'
 import './Rating.css'
 import { BsStarFill , BsStarHalf , BsStar } from "react-icons/bs";
+import _ from 'lodash';
 
-function Rating({rating,reviews}) {
+function Rating({rating,reviews,caption}) {
     
     return (
         <div className="rating">
@@ -21,9 +22,16 @@ function Rating({rating,reviews}) {
             <span>
                 { rating >=5 ? <BsStarFill/> : rating >= 4.5 ? <BsStarHalf/> : <BsStar/>}
             </span>
-            <span>
-                {`(${reviews})`}
-            </span>
+            {
+                caption? 
+                <span>
+                    {caption}
+                </span>:
+                <span>
+                    { !_.isUndefined(reviews) ?
+                    `(${reviews})` :  `(${0})`}
+                </span>
+            }
         </div>
     )
 }

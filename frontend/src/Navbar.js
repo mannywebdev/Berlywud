@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Navbar.css'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
@@ -12,8 +12,16 @@ import {signout} from './redux/actions/userActions'
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import SearchBox from './SearchBox'
 import { listProductCategories } from './redux/actions/allProductsActions'
+import { FiMenu } from "react-icons/fi";
+import { ImCancelCircle } from "react-icons/im";
 
 function Navbar() {
+
+    const [click,setClick]= useState(false)
+
+    const handleClick = () => setClick(!click)
+    console.log(`click`, click)
+
     const Cart = useSelector(state=> state.Cart)
     const dispatch = useDispatch()
     const {cartItems} = Cart
@@ -38,28 +46,33 @@ function Navbar() {
       }))(Badge)
 
     return (
+        <div className="navbar__outer">
         <div className="navbar">
             <Link className="navbar__link" style={{color: 'inherit', textDecoration: 'inherit'}} to="/">
             <div className="navbar__logo">
+                <div className="hamburger__cancel" onClick = {handleClick}>
+                {
+                    click ? <ImCancelCircle/> : <FiMenu/> 
+                }    
+                </div>
                 <img src={BERLYWUD} alt=""/>
             </div>
             </Link>
-            <div className="navbar__option">
-                <nav>
-                    <a href="#mens">Men</a>
-                    <a href="#womens">Women</a>
-                    <a href="#unisex">Unisex</a>
-                    
-                </nav>
+            <div className={click ? "navbar__option active" : "navbar__option"}>
+                <Link className="navbar__link navbar__category" onClick={handleClick} style={{color: 'inherit', textDecoration: 'inherit'}} to="/">Men</Link>
+                <Link className="navbar__link navbar__category" onClick={handleClick} style={{color: 'inherit', textDecoration: 'inherit'}} to="/">Women</Link>
+                <Link className="navbar__link navbar__category" onClick={handleClick} style={{color: 'inherit', textDecoration: 'inherit'}} to="/">Unisex</Link>
             </div>
-            <div>
+            
+            <div className="small__searchbox">
                 <SearchBox/>
             </div>
+            
             <div className="navbar__logincart">
                 {
                     userInfo ? (
                         <div className="dropdown">
-                            <Link className="link link__button" to='#'>
+                            <Link className="link link__button" to='# '>
                             <Button
                                 variant="contained"
                                 endIcon={<ArrowDropDownIcon/>}
@@ -121,6 +134,11 @@ function Navbar() {
                 </Link>
             </div>
         </div>
+        <div className="big__searchbox">
+            <SearchBox/>
+        </div>
+        </div>
+        
     )
 }
 
