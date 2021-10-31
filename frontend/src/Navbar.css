@@ -7,7 +7,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #e7e7e7;
     background-color: white;
 }
 
@@ -43,6 +42,7 @@
     font-size: 1.1em;
     color: #57534a;
 }
+
 .dropdown{
     display: inline-block;
     position: relative;
@@ -58,25 +58,32 @@
     box-shadow: none;
 }
 
-.dropdown__content{
+.dropdown__content {
     position: absolute ;
     display: none;
-    z-index: 1;
+    z-index: 1000;
+    top: 45;
     right: 10px;
+    border: 1px solid lightgray;
     margin: 0;
-    padding: 0.5em 2em;
-    background-color: bisque;
+    padding: 0em 1em;
+    background-color: white;
+    width: 12em;
 }
-.dropdown:hover .dropdown__content{
+.dropdown__content.active{
     display: block;
 }
 ul{
     list-style-type: none;
-    
+
 }
 ul li {
     padding: 0.5em 0;
+    border-top: 1px solid lightgray;
 }
+/* ul > li:first-child  {
+    border-color: yellow;
+} */
 
 .capitalize{
     text-transform: capitalize;
@@ -143,7 +150,7 @@ ul li {
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 127px;
+        top: 119px;
         width: 100%;
         z-index: 100;
         /* margin-left: -24px; */
@@ -159,14 +166,62 @@ ul li {
 
     .navbar__category{
         width: 100%;
-        background-color: bisque;
+        background-color: white;
         padding: 1.5em 1.5em;
+        border-bottom : lightgray 1px solid;;
     }
     .big__searchbox{
         display : block;
     }
     .small__searchbox{
         display : none;
+    }
+} 
+
+@media only screen and (max-width: 570px){
+    .navbar__outer{
+        padding: 0 0.5em;
+    }
+    .navbar__logo>img{
+        width: 6em;
+        margin-right: 1.5em;
+    }
+    .hamburger__cancel{
+        font-size: 0.9em;
+    }
+    
+    .navbar__category{
+        padding: 0.8em 0.8em;
+    }
+
+    .navbar__option>.navbar__link{
+        font-size: 0.7em;
+    }
+    
+
+    .navbar__logincart .MuiSvgIcon-root {
+        font-size: 1em;
+    }
+    .link__button Button{
+        font-size: 0.7em;
+    }
+    .navbar__option{
+        top: 86px;
+    }
+    .dropdown__content{
+        width: 8em;
+        top: 30px;
+        right: -18px;
+    }
+    ul li {
+        font-size: 0.8em;
+    }
+    .navbar__logincart .MuiButton-root{
+        padding: 0 ;
+    }
+    .navbar__logincart .MuiIconButton-root{
+        padding: 0 ;
+        font-size: 1.1em;
     }
 } 
 

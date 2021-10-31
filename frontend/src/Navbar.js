@@ -18,8 +18,25 @@ import { ImCancelCircle } from "react-icons/im";
 function Navbar() {
 
     const [click,setClick]= useState(false)
+    const [userDropdownStatus,setUserDropdownStatus]= useState(false)
+    const [adminDropdownStatus,setAdminDropdownStatus]= useState(false)
 
-    const handleClick = () => setClick(!click)
+    const handleClick = () => {
+        setClick(!click)
+        setUserDropdownStatus(false)
+        setAdminDropdownStatus(false)
+    }
+    const handleUserDropdown = () => {
+        setClick(false)
+        setAdminDropdownStatus(false)
+        setUserDropdownStatus(!userDropdownStatus)
+    }
+    const handleAdminDropdown = () => {
+        setClick(false)
+        setUserDropdownStatus(false)
+        setAdminDropdownStatus(!adminDropdownStatus)
+    }
+
     console.log(`click`, click)
 
     const Cart = useSelector(state=> state.Cart)
@@ -27,6 +44,12 @@ function Navbar() {
     const {cartItems} = Cart
     const UserSignin = useSelector(state=> state.UserSignin)
     const { userInfo } = UserSignin
+    
+    if(userInfo){
+        var name = userInfo.name
+        var matches = name.match(/\b(\w)/g); // ['J','S','O','N']
+        var acronym = matches.join('');
+    }
     
     const signoutHandler = () =>{
         dispatch(signout())
@@ -71,16 +94,19 @@ function Navbar() {
             <div className="navbar__logincart">
                 {
                     userInfo ? (
-                        <div className="dropdown">
-                            <Link className="link link__button" to='# '>
+                        <div className="dropdown"  onClick={handleUserDropdown}>
+                            <Link className="link link__button" to='#'>
                             <Button
                                 variant="contained"
                                 endIcon={<ArrowDropDownIcon/>}
+                                className="navbar__btn"
                             >
-                            {userInfo.name}
+                            {
+                                acronym    
+                            }
                             </Button>
                             </Link>
-                            <ul className="dropdown__content">
+                            <ul className={userDropdownStatus ? "dropdown__content active" : "dropdown__content"}>
                                 <Link to="/orderhistory" className="link"><li>Order History</li></Link>
                                 <Link to="/profile" className="link"><li>My Profile</li></Link>
                                 <Link to="#signout" className="link" onClick={signoutHandler}><li>Logout</li></Link>
@@ -99,16 +125,17 @@ function Navbar() {
                 }
                 {
                     userInfo && userInfo.isAdmin &&
-                        <div className="dropdown">
+                        <div className="dropdown" onClick={handleAdminDropdown}>
                             <Link className="link link__button" to='#admin'>
                             <Button
+                                className="navbar__btn"
                                 variant="contained"
                                 endIcon={<ArrowDropDownIcon/>}
                             >
                             Admin
                             </Button>
                             </Link>
-                            <ul className="dropdown__content">
+                            <ul className={adminDropdownStatus ? "dropdown__content active" : "dropdown__content"}>
                                 <Link to="/dashboard" className="link"><li>Dashboard</li></Link>
                                 <Link to="/productlist" className="link"><li>Products</li></Link>
                                 <Link to="/orderlist" className="link" ><li>Orders</li></Link>

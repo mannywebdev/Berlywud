@@ -57,5 +57,20 @@
       padding: 5px;
       height: 2em;
     }
-} 
+  } 
+  @media only screen and (max-width: 1310px){
+    .searchButton {
+      width: 1.5em;
+      height: 1.5em;
+      text-align: center;
+      color: #fff;
+    }
+    .searchTerm {
+      border-right: none;
+      padding: 5px;
+      height: 1.5em;
+    }
+  } 
+
+
 
