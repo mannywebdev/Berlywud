@@ -80,7 +80,9 @@ ul{
 ul li {
     padding: 0.5em 0;
     border-top: 1px solid lightgray;
+
 }
+
 /* ul > li:first-child  {
     border-color: yellow;
 } */

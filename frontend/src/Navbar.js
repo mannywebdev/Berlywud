@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './Navbar.css'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
@@ -14,12 +14,14 @@ import SearchBox from './SearchBox'
 import { listProductCategories } from './redux/actions/allProductsActions'
 import { FiMenu } from "react-icons/fi";
 import { ImCancelCircle } from "react-icons/im";
+import { useOutsideAlerter1, useOutsideAlerter2, useOutsideAlerter3 } from './OutsideAlert'
 
 function Navbar() {
 
-    const [click,setClick]= useState(false)
-    const [userDropdownStatus,setUserDropdownStatus]= useState(false)
-    const [adminDropdownStatus,setAdminDropdownStatus]= useState(false)
+    // const [click,setClick]= useState(false)
+    const {click,setClick,ref1} = useOutsideAlerter1(false)
+    const {userDropdownStatus,setUserDropdownStatus,ref2}= useOutsideAlerter2(false)
+    const {adminDropdownStatus,setAdminDropdownStatus,ref3}= useOutsideAlerter3(false)
 
     const handleClick = () => {
         setClick(!click)
@@ -37,8 +39,6 @@ function Navbar() {
         setAdminDropdownStatus(!adminDropdownStatus)
     }
 
-    console.log(`click`, click)
-
     const Cart = useSelector(state=> state.Cart)
     const dispatch = useDispatch()
     const {cartItems} = Cart
@@ -55,9 +55,10 @@ function Navbar() {
         dispatch(signout())
     }
 
+
     useEffect(() => {
         dispatch(listProductCategories());
-      }, [dispatch]);
+      }, [dispatch,]);
 
     const StyledBadge = withStyles((theme) => ({
         badge: {
@@ -81,7 +82,7 @@ function Navbar() {
                 <img src={BERLYWUD} alt=""/>
             </div>
             </Link>
-            <div className={click ? "navbar__option active" : "navbar__option"}>
+            <div className={click ? "navbar__option active" : "navbar__option"} ref={ref1}>
                 <Link className="navbar__link navbar__category" onClick={handleClick} style={{color: 'inherit', textDecoration: 'inherit'}} to="/">Men</Link>
                 <Link className="navbar__link navbar__category" onClick={handleClick} style={{color: 'inherit', textDecoration: 'inherit'}} to="/">Women</Link>
                 <Link className="navbar__link navbar__category" onClick={handleClick} style={{color: 'inherit', textDecoration: 'inherit'}} to="/">Unisex</Link>
@@ -94,7 +95,7 @@ function Navbar() {
             <div className="navbar__logincart">
                 {
                     userInfo ? (
-                        <div className="dropdown"  onClick={handleUserDropdown}>
+                        <div className="dropdown"  onClick={handleUserDropdown} ref={ref2}>
                             <Link className="link link__button" to='#'>
                             <Button
                                 variant="contained"
@@ -125,7 +126,7 @@ function Navbar() {
                 }
                 {
                     userInfo && userInfo.isAdmin &&
-                        <div className="dropdown" onClick={handleAdminDropdown}>
+                        <div className="dropdown" onClick={handleAdminDropdown} ref={ref3}>
                             <Link className="link link__button" to='#admin'>
                             <Button
                                 className="navbar__btn"
