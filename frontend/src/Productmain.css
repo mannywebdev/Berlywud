@@ -83,6 +83,7 @@
     border: none;
     font-weight: 500;
     width: 100%;
+    font-family: 'Poppins' , 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .pink__button{
     margin: .5em 0 .5em 0;
@@ -107,6 +108,7 @@ select{
     border: none;
     font-weight: 500;
     width: 100%;
+    font-family: 'Poppins' , 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 /* .productmain__form{
     width: 100%;
@@ -118,8 +120,10 @@ textarea{
 
 .productmain__productdetails{
     margin: 1em 0 1em 0;
-    border-top: 1px solid rgba(211,211,211,0.5);;
+    border-top: 1px solid rgba(211,211,211,0.5);
+    border-bottom: 1px solid rgba(211,211,211,0.5);
 }
+
 
 .productmain__status{
     margin: 1.5em 0 1.5em 0;
@@ -140,6 +144,44 @@ textarea{
     color: #505050;
 }
 
+.reviews__comment{
+    margin: 0;
+    font-weight: 300;
+}
+
+.reviews__details{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.reviews__details p{
+    margin: 0.5em 0em;
+    font-size: 0.8em;
+    color: #505050;
+}
+
+.reviews__userreview{
+    border-bottom: 1px solid rgba(211,211,211,0.5);
+}
+
+.productmain__form select, .productmain__form textarea{
+    width: 100%;
+    margin: 0.2em 0;
+    
+}
+.productmain__form label{
+    color: #505050;
+}
+.reviews__pencil{
+    color: #008000;
+}
+.reviews{
+    border-bottom: 1px solid rgba(211,211,211,0.5);
+}
+.reviews__userreview{
+    border-bottom: 1px solid rgba(211,211,211,0.5);
+    margin: 0.5em 0;
+}
 
 
 
@@ -202,6 +244,39 @@ textarea{
         font-size: 0.9em;
         margin: 0.7em 0;
     }
+
+    .reviews__details p{
+        font-size: 0.9em;
+    }
+    
+    .productmain__form select, .productmain__form textarea{
+        width: 100%;
+        margin: 0.2em 0;
+        font-size: 0.9em;
+    }
+    .productmain__form label{
+        color: #505050;
+        font-size: 0.9em;
+    }
+    .reviews__pencil{
+        color: #008000;
+        font-size: 0.9em;
+    }
+    .reviews__comment{
+        font-size: 0.9em;
+    }
+    .pinkButton {
+       font-size: 0.9em;
+    }
+    .errormsg{
+        font-size: 0.9em;
+    }
+    .rating{
+        margin: 0
+    }
+    .reviews{
+        font-size: 0.9em;
+    }
 }
 
 
@@ -244,7 +319,7 @@ textarea{
     .productmain__info .brandtitle > p{
         padding-bottom: 0.4em;
         margin: 0.4em 0;
-        font-size: 1.4em;
+        font-size: 0.9em;
     }
     .productmain__info .productmain__pricing >span{
         font-size: 1.2em;
@@ -273,7 +348,7 @@ textarea{
         font-size: 1em;
     }
     .productmain__productdetails>h3{
-        font-size: 1.3em;
+        font-size: 0.9em;
     }
     .pink__button>Button{
         padding: 0.5em 0.6em;
@@ -320,6 +395,13 @@ textarea{
     }
     .productmain__button>button{ 
         font-size: 0.8em;
+    }
+    .productmain__form select, .productmain__form textarea{
+        font-size: 0.9em;
+    }
+    .productmain__form label{
+        color: #505050;
+        font-size: 0.9em;
     }
 }
 
@@ -373,5 +455,46 @@ textarea{
     .productmain__productdetails>h4{
         font-size: 0.9em;
         margin: 0.7em 0;
+    }
+      
+    .reviews__details p{
+        font-size: 0.7em;
+    }
+    
+    .reviews__userreview{
+        border-bottom: 1px solid rgba(211,211,211,0.5);
+    }
+    
+    .productmain__form select, .productmain__form textarea{
+        width: 100%;
+        margin: 0.2em 0;
+        font-size: 0.7em;
+    }
+    .productmain__form label{
+        color: #505050;
+        font-size: 0.7em;
+    }
+    .reviews__pencil{
+        color: #008000;
+        font-size: 0.7em;
+    }
+    .reviews__comment{
+        font-size: 0.7em;
+    }
+    .pinkButton {
+       font-size: 0.7em;
+    }
+    .errormsg{
+        font-size: 0.7em;
+    }
+    .rating{
+        margin: 0
+    }
+    .reviews{
+        font-size: 0.9em;
+    }
+    .productmain__form h4{
+        font-size: 0.8em;
+        margin: 0.5em 0;
     }
 }

@@ -52,7 +52,7 @@ export default function UserList() {
                 <td>{user.isAdmin ? 'YES' : 'NO'}</td>
                 <td>
                   <button type="button" className="small" onClick={() => history.push(`/user/${user._id}/edit`)}>Edit</button>
-                  <button type="button" className="small" onClick={() => deleteHandler(user)}>Delete</button>
+                  {/* <button type="button" className="small" onClick={() => deleteHandler(user)}>Delete</button> */}
                 </td>
               </tr>
             ))}

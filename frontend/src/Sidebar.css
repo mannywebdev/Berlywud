@@ -1,6 +1,5 @@
 .sidebar{
     border: 1px solid #d3d3d3;
-    height: 1200px;
     margin: 1em 0em 0em 1em;
     padding: 0em 1em;
     border-radius: 0.4em;
@@ -20,7 +19,8 @@
     margin-bottom: 0.7em;
 }
 .sidebar label {
-    font-weight: 300
+    font-weight: 300;
+    font-size: 0.9em;
 }
 div>label{
     display: block;
@@ -29,6 +29,7 @@ div>label{
 .sidebar p{
     font-weight: 300;
     margin-bottom: 0.25em;
+    font-size: 0.9em;
 }
 .sidebar p .active{
     font-weight: 700;
@@ -52,6 +53,23 @@ div>label{
 @media only screen and (max-width: 1310px){
     .sidebar{
         margin: 0.5em 0em 0em 1em;
-        
+    }
+}
+
+@media only screen and (max-width: 570px){
+    .sidebar{
+        margin: 0.5em 0em 0em 1em;    
+    }
+    .sidebar p{
+        font-size: 0.7em;
+    }
+    .sidebar h4{
+        font-size: 0.8em;
+    }
+    .sidebar h5{
+        font-size: 0.7em;
+    }
+    .sidebar label {
+        font-size: 0.7em;
     }
 }

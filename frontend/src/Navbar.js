@@ -15,6 +15,8 @@ import { listProductCategories } from './redux/actions/allProductsActions'
 import { FiMenu } from "react-icons/fi";
 import { ImCancelCircle } from "react-icons/im";
 import { useOutsideAlerter1, useOutsideAlerter2, useOutsideAlerter3 } from './OutsideAlert'
+import Errormsg from './Errormsg'
+import Loadingmsg from './Loadingmsg'
 
 function Navbar() {
 
@@ -39,11 +41,20 @@ function Navbar() {
         setAdminDropdownStatus(!adminDropdownStatus)
     }
 
+    const productCategoryList = useSelector((state) => state.ProductCategoryList);
+    const {
+        loading: loadingCategories,
+        error: errorCategories,
+        categories,
+    } = productCategoryList;
+
     const Cart = useSelector(state=> state.Cart)
     const dispatch = useDispatch()
     const {cartItems} = Cart
     const UserSignin = useSelector(state=> state.UserSignin)
     const { userInfo } = UserSignin
+
+    
     
     if(userInfo){
         var name = userInfo.name
@@ -82,12 +93,24 @@ function Navbar() {
                 <img src={BERLYWUD} alt=""/>
             </div>
             </Link>
-            <div className={click ? "navbar__option active" : "navbar__option"} ref={ref1}>
+            {/* <div className={click ? "navbar__option active" : "navbar__option"} ref={ref1}>
                 <Link className="navbar__link navbar__category" onClick={handleClick} style={{color: 'inherit', textDecoration: 'inherit'}} to="/">Men</Link>
                 <Link className="navbar__link navbar__category" onClick={handleClick} style={{color: 'inherit', textDecoration: 'inherit'}} to="/">Women</Link>
                 <Link className="navbar__link navbar__category" onClick={handleClick} style={{color: 'inherit', textDecoration: 'inherit'}} to="/">Unisex</Link>
+            </div> */}
+            <div className={click ? "navbar__option active" : "navbar__option"} ref={ref1}>
+                {loadingCategories ? (
+                    <Loadingmsg/>  
+                    ) : errorCategories ? (
+                        <Errormsg>{errorCategories}</Errormsg>
+                    ) : (
+                        categories.map(c =>(
+                            <Link className="navbar__link navbar__category" to={`/search/category/${c}`} onClick={handleClick}>{c}</Link>
+                        ))
+                    )
+                }
             </div>
-            
+
             <div className="small__searchbox">
                 <SearchBox/>
             </div>
@@ -137,7 +160,7 @@ function Navbar() {
                             </Button>
                             </Link>
                             <ul className={adminDropdownStatus ? "dropdown__content active" : "dropdown__content"}>
-                                <Link to="/dashboard" className="link"><li>Dashboard</li></Link>
+                                {/* <Link to="/dashboard" className="link"><li>Dashboard</li></Link> */}
                                 <Link to="/productlist" className="link"><li>Products</li></Link>
                                 <Link to="/orderlist" className="link" ><li>Orders</li></Link>
                                 <Link to="/userlist" className="link"><li>Users</li></Link>

@@ -49,7 +49,7 @@ app.use('/uploads', express.static(path.join(_dirname, '/uploads')));
 //Payment routes
 app.post('/razorpay',async(req,res) =>{
     try{
-        console.log(req.body)
+        // console.log(req.body)
         const response = await instance.orders.create({
             amount: req.body.amount,
             reciept: req.body.reciept

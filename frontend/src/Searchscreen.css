@@ -4,7 +4,7 @@
     border-radius: 2em;
     border: 0.1em #a4a4a4 solid;
     font-size: 0.9em;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Poppins' , 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -20,5 +20,100 @@
   .sort__filter{
     display :flex;
     justify-content: space-between;
-    margin: 0 3em 1em 1em;
+    margin: 0 1em 1em 1em;
+    align-items: center;
   }
+
+  .color__button{
+    background-color: #ff3e6c;
+    color: #ffffff;
+    font-size: 1em;
+    padding: 0.6em 1.3em;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    width: 100%;
+  }
+  .sort__filter__sortby{
+    font-size: 0.9em;
+  }
+  .sort__filter  button{
+    width: 15em;
+  }
+  .search__screen__asidefilter{
+    display: none;
+  }
+
+
+  @media only screen and (max-width: 1024px){
+    .searchscreen__productcount{
+      display: none;
+    }
+    .home__sidebar{
+      display: none;
+    }
+    .sort__filter{
+      justify-content: space-evenly;
+    }
+    
+    .color__button{
+      font-size: 0.7em;
+      padding: 0.4em 1em;
+      font-family: 'Poppins' , 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .sort__filter__sortby select{
+      font-size: 0.9em;
+    }
+
+    .search__screen__asidefilter{
+      display: block;
+      
+    }
+    .sort__by{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0em 1em;
+      color: #ffffff;
+      background-color: #ff3e6c;
+    }
+
+    aside{
+      position: fixed;
+      z-index: 1000;
+      width: 100%;
+      top: 0;
+      background-color: white;
+      transform : translateX(-100%);
+      bottom:0;
+      position:fixed;
+      overflow-y:scroll;
+      overflow-x:hidden;
+      transition: transform 0.3s;
+    }
+    aside.open{
+      transform : translateX(0%)
+    }
+    aside .sidebar{
+      margin: 0;
+    }
+  } 
+
+
+  @media only screen and (max-width: 570px){
+    .sort__filter__sortby{
+      font-size: 0.7em;
+    }
+    .sort__filter button{
+      width: 8em;
+    }
+    .sort__filter{
+      margin: 0 0.4em 0.4em 0.4em;
+    }
+    .sort__by h4{
+      font-size: 0.8em;
+    }
+  } 
+  

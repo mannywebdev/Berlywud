@@ -15,16 +15,16 @@
     display: block;
     text-decoration: none;
     color: black;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins' , 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 300;
     margin: 0.2em 0;
 }
 .footer h3{
-    font-family: 'Quando', serif;
+    font-family: 'Poppins' , 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #57534a;
 }
 .footer__info p{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins' , 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     font-weight: 300;
     margin: 0.2em 0;

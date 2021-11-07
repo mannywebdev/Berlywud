@@ -12,7 +12,9 @@ import Carousel ,{CarouselItem} from './Carousel'
 import { CgDetailsMore } from "react-icons/cg";
 import Rating from './Rating';
 import _ from 'lodash';
+import { RiStarSmileLine } from "react-icons/ri";
 import { PRODUCT_REVIEW_CREATE_RESET } from './redux/constants/allProductConstants';
+import { BsPencil } from "react-icons/bs";
 
 function Productmain() {
     const dispatch = useDispatch()
@@ -63,7 +65,7 @@ function Productmain() {
         e.preventDefault();
         if (comment && rating) {
           dispatch(
-            createReview(productId, { rating, comment, name: userInfo.name })
+            createReview(productId, { rating, comment, name: userInfo.name ,  email: userInfo.email})
           );
         } else {
           alert('Please enter comment and rating');
@@ -132,7 +134,7 @@ function Productmain() {
                                 {product.stockcount > 0 ? <span className="success">Instock</span> : <span className="error">Out of stock</span>}
                             </div>
                             <div className="productmain__productdetails">
-                                <h3>PRODUCT DETAILS<CgDetailsMore/></h3>
+                                <h3>PRODUCT DETAILS <CgDetailsMore/></h3>
                                 <h4>Notes</h4>
                                 <p>Topnotes: {product.notes.Topnotes.join(', ')}</p>
                                 <p>Middlenotes: {product.notes.Middlenotes.join(', ')}</p>
@@ -145,24 +147,26 @@ function Productmain() {
                                 <p>{product.concentration}</p>
                             </div>
                             <div>
-                                <h3 className="reviews">Reviews</h3>
+                                <h3 className="reviews">RATINGS <RiStarSmileLine/></h3>
                                 {_.isEmpty(product.userreviews) && (
                                 <Errormsg>There is no review.</Errormsg>
                                 )}
                                 <div>
                                 { product.userreviews.map((review) => (
-                                    <div key={review._id}>
-                                    <strong>{review.name}</strong>
-                                    <Rating rating={review.ratings} caption= " "></Rating>
-                                    <p>{review.createdAt.substring(0, 10)}</p>
-                                    <p>{review.comment}</p>
+                                    <div className="reviews__userreview" key={review._id}>
+                                        <Rating className="reviews__stars" rating={review.ratings} caption= " "></Rating>
+                                        <p className="reviews__comment">{review.comment}</p>
+                                        <div className="reviews__details">
+                                            <p>{review.name}&nbsp; |</p>
+                                            <p>&nbsp;{review.createdAt.substring(0, 10)}</p>
+                                        </div>
                                     </div>
                                 ))}
                                 <div>
                                     {userInfo ? (
                                     <form className="productmain__form" onSubmit={submitHandler}>
                                         <div>
-                                        <h2>Write a customer review</h2>
+                                        <h4>Write a customer review  &nbsp;<BsPencil className="reviews__pencil"/></h4>
                                         </div>
                                         <div>
                                         <label htmlFor="rating">Rating</label>

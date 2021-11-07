@@ -8,7 +8,7 @@ const isAdmin = require('../utils').isAdmin
 const productRouter = express.Router()
 
 productRouter.get('/',expressAsyncHandler(async(req,res)=>{
-  const pageSize = 10;
+  const pageSize = 12;
   const page = Number(req.query.pageNumber) || 1;
   const name = req.query.name || '';
   const category = req.query.category || '';
@@ -67,8 +67,8 @@ productRouter.post('/',restAuth,isAdmin,expressAsyncHandler(async (req, res) => 
       concentration: 'Eau De Parfum',
       stockcount: 100,
       url: 'https://raw.githubusercontent.com/mannywebdev/perfumesite/main/PerfumePics/giorgio%20armani%20code%20absolu.jpg',
-      // rating: 4.5,
-      // reviews: 6,
+      rating: 0,
+      numReviews: 0,
       decantprice: {
           "2ml": 150,
           "5ml": 250,
@@ -142,7 +142,7 @@ productRouter.post('/:id/reviews',restAuth,expressAsyncHandler(async (req, res) 
     const productId = req.params.id;
     const product = await Product.findById(productId);
     if (product) {
-      if (product.userreviews.find((x) => x.name === req.user.name)) {
+      if (product.userreviews.find((x) => x.email === req.user.email)) {
         return res
           .status(400)
           .send({ message: 'You already submitted a review' });
@@ -151,6 +151,7 @@ productRouter.post('/:id/reviews',restAuth,expressAsyncHandler(async (req, res) 
         name: req.user.name,
         comment: req.body.comment,
         ratings: Number(req.body.rating),
+        email: req.user.email,
       };
       // console.log(`review`, review)
       product.userreviews.push(review);

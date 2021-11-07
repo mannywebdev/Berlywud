@@ -52,6 +52,7 @@
     box-shadow: none;
     text-transform: none;
     font-size: 1em;
+    font-family: 'Poppins' , 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .link__button Button:hover{
     background-color: white;
@@ -97,11 +98,6 @@ ul li {
     font-size: 1.3em;
 }
 
-.hamburger__cancel{
-    display: none;
-    margin: 0.5em;
-    font-size: 1.3em;
-}
 /* .small__searchbox{
     display : none;
 } */

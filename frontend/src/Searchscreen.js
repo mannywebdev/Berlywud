@@ -8,6 +8,8 @@ import Errormsg from './Errormsg'
 import Rating from './Rating'
 import { prices,ratings } from './utils'
 import './Searchscreen.css'
+import { AiOutlinePlus } from "react-icons/ai";
+import { ImCancelCircle } from "react-icons/im";
 
 export default function Searchscreen(props) {
   const { name = 'all' , category = 'all' , min = 0, max = 0,rating = 0 , order = 'newest', pageNumber = 1 } = useParams();
@@ -17,6 +19,8 @@ export default function Searchscreen(props) {
   const history = useHistory()
 
   const [brands,setBrands] = useState([])
+  const [isFilterOpen,setIsFilterOpen] = useState(false)
+  console.log(`isFilterOpen`, isFilterOpen)
 
  
   const getFilterUrl = (filter) =>{
@@ -47,6 +51,7 @@ export default function Searchscreen(props) {
         setBrands(prevarr => prevarr.filter((item)=> item !== value))
     }
    }
+
    
    console.log(brands)
 //    const filteredProducts = allProducts.filter((item)=>{
@@ -70,8 +75,13 @@ export default function Searchscreen(props) {
                 ):(
                     <>
                     <div className="sort__filter">
-                        <p>{allProducts.length} RESULTS</p>
                         <div>
+                            <p className="searchscreen__productcount">{allProducts.length} RESULTS</p>
+                            <div className="hamburger__cancel" >
+                                <button className="color__button" onClick={()=>setIsFilterOpen(true)}>Filters</button>
+                            </div>
+                        </div>
+                        <div className="sort__filter__sortby">
                             Sort by{' '}
                             <select
                                 value={order}
@@ -163,6 +173,71 @@ export default function Searchscreen(props) {
                             </Link>    
                         ))}
                     </div>
+                    <aside className={isFilterOpen ? 'search__screen__asidefilter open' : 'search__screen__asidefilter'}>
+                            <div className="sort__by">
+                                <h4>Shop By</h4>
+                                <ImCancelCircle onClick={()=>setIsFilterOpen(false)}/>
+                            </div>
+                            <div className="sidebar">
+                                <h4>FILTERS</h4>
+                                    {loadingCategories ? (
+                                    <Loadingmsg/>  
+                                    ) : errorCategories ? (
+                                        <Errormsg>{errorCategories}</Errormsg>
+                                    ) : (
+                                        <div className="sidebar__gender">
+                                            <p>
+                                                <Link className={"all" === category ? "active link capitalize" : "link capitalize"} to={getFilterUrl({category: 'all'})} onClick={()=>setIsFilterOpen(false)}>Any</Link>
+                                            </p>
+                                            {
+                                                categories.map(c =>(
+                                                    <p key={c}>
+                                                        <Link className={c === category ? "active link capitalize" : "link capitalize"} to={getFilterUrl({category: c})}  onClick={()=>setIsFilterOpen(false)}>{c}</Link>
+                                                    </p>
+                                                ))
+                                            }
+                                        </div>
+                                    )}
+                                <h5>BRANDS</h5>
+                                <div className="sidebar__brands">
+                                    <label><input type="checkbox" value="Ajmal"  onChange={handleChange}/> Ajmal</label>
+                                    <label><input type="checkbox" value="Bentley" onChange={handleChange}/> Bentley</label>
+                                    <label><input type="checkbox" value="Bvlgari" onChange={handleChange}/> Bvlgari</label>
+                                    <label><input type="checkbox" value="Giorgio Armani" onChange={handleChange}/> Giorgio Armani</label>
+                                    <label><input type="checkbox" value="Ormonde Jayne" onChange={handleChange}/> Ormonde Jayne</label>
+                                    <label><input type="checkbox" value="Prada" onChange={handleChange}/> Prada</label>
+                                    <label><input type="checkbox" value="Versace" onChange={handleChange}/> Versace</label>
+                                </div>
+                                <h5>PRICE</h5>
+                                <div className="sidebar__price">                
+                                    {prices.map((p) => (
+                                    <p key={p.name}>
+                                    <Link
+                                        to={getFilterUrl({ min: p.min, max: p.max })}
+                                        onClick={()=>setIsFilterOpen(false)}
+                                        className={`${p.min}-${p.max}` === `${min}-${max}` ? 'active link capitalize' : 'link capitalize'}
+                                    >
+                                        {p.name}
+                                    </Link>
+                                    </p>
+                                ))}
+                                </div>
+                                <h5>Avg. Customer Rating</h5>
+                                <div className="sidebar__rating">
+                                    {ratings.map((r) => (
+                                    <p key={r.name}>
+                                    <Link
+                                        to={getFilterUrl({ rating: r.rating })}
+                                        onClick={()=>setIsFilterOpen(false)}
+                                        className={`${r.rating}` === `${rating}` ? 'active' : ''}
+                                    >
+                                        <Rating caption ={" & Up"} rating={r.rating}/>
+                                    </Link>
+                                    </p>
+                                    ))}
+                                </div>
+                            </div>
+                    </aside>
                     </>
                 )
             }
