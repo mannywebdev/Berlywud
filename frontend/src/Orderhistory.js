@@ -4,7 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { myOrdersList } from './redux/actions/orderActions';
 import Errormsg from './Errormsg'
 import Loadingmsg from './Loadingmsg'
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import _, { isEmpty } from 'lodash';
+import { CgEnter } from 'react-icons/cg';
+import { Button } from '@material-ui/core';
+import emptybag from './images/emptybag.png'
 
 export default function Orderhistory() {
   const myOrders = useSelector((state) => state.MyOrders);
@@ -16,16 +20,19 @@ export default function Orderhistory() {
   }, [dispatch]);
   return (
     <div className="orderhistory">
-      <h1>Order History</h1>
+      
       {loading ? (
         <Loadingmsg/>
       ) : error ? (
         <Errormsg variant="danger">{error}</Errormsg>
       ) : (
+        (!_.isEmpty(orders)) ? (
+        <>
+        <h3>Order History</h3>
         <table className="table">
           <thead>
             <tr>
-              <th>ID</th>
+              <th>ORDER ID</th>
               <th>DATE</th>
               <th>TOTAL</th>
               <th>PAID</th>
@@ -60,6 +67,23 @@ export default function Orderhistory() {
             ))}
           </tbody>
         </table>
+        </>
+        ):
+        (
+          <div className="cart__products">
+            <div className="cart__quotes">
+                
+                <img src={emptybag} width="100%" alt="emptycartItems"/>
+                <p>No orders yet...</p>
+                <p>Go find the product you like</p>
+                <Link to='/' className='link'>
+                <Button variant="outlined">
+                Go back to Shopping.
+                </Button>
+                </Link>
+            </div>
+        </div>
+        )
       )}
     </div>
   );

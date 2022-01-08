@@ -30,6 +30,12 @@ export default function ProductEdit(props) {
   const [brand, setBrand] = useState('');
   const [title, setTitle] = useState('');
   const [url, setUrl] = useState('');
+  const [url1, setUrl1] = useState('');
+  const [url2, setUrl2] = useState('');
+  const [url3, setUrl3] = useState('');
+  const [url4, setUrl4] = useState('');
+  const [url5, setUrl5] = useState('');
+  const [url6, setUrl6] = useState('');
   const [description, setDescription] = useState('');
   const [origprice, setOrigprice] = useState('');
   const [gender, setGender] = useState('');
@@ -71,7 +77,13 @@ export default function ProductEdit(props) {
     } else {
         setBrand(product.brand);
         setTitle(product.title);
-        setUrl(product.url);
+        setUrl(product.url[0]);
+        setUrl1(product.url[1]);
+        setUrl2(product.url[2]);
+        setUrl3(product.url[3]);
+        setUrl4(product.url[4]);
+        setUrl5(product.url[5]);
+        setUrl6(product.url[6]);
         setDescription(product.description);
         setOrigprice(product.origprice);
         setGender(product.gender);
@@ -96,41 +108,54 @@ export default function ProductEdit(props) {
         setBasenote3(product.notes.Basenotes[2])
     }
   }, [product, dispatch, productId, successUpdate, history]);
+
   const submitHandler = (e) => {
     e.preventDefault();
     // TODO: dispatch update product
-    dispatch(updateProduct({_id:productId, brand, title, url, description, origprice, gender, launch, concentration, rating, reviews, stockcount, twoml, fiveml, tenml, thirtyml, retail, topnote1, topnote2, topnote3, middlenote1, middlenote2, middlenote3, basenote1, basenote2, basenote3}))
+    dispatch(updateProduct({_id:productId, brand, title, url, url1, url2 ,url3,url4 ,url5 ,url6 ,description, origprice, gender, launch, concentration, rating, reviews, stockcount, twoml, fiveml, tenml, thirtyml, retail, topnote1, topnote2, topnote3, middlenote1, middlenote2, middlenote3, basenote1, basenote2, basenote3}))
   };
 
   const [loadingUpload, setLoadingUpload] = useState(false);
   const [errorUpload, setErrorUpload] = useState('');
+  const [loadingUpload1, setLoadingUpload1] = useState(false);
+  const [errorUpload1, setErrorUpload1] = useState('');
+  const [loadingUpload2, setLoadingUpload2] = useState(false);
+  const [errorUpload2, setErrorUpload2] = useState('');
+  const [loadingUpload3, setLoadingUpload3] = useState(false);
+  const [errorUpload3, setErrorUpload3] = useState('');
+  const [loadingUpload4, setLoadingUpload4] = useState(false);
+  const [errorUpload4, setErrorUpload4] = useState('');
+  const [loadingUpload5, setLoadingUpload5] = useState(false);
+  const [errorUpload5, setErrorUpload5] = useState('');
+  const [loadingUpload6, setLoadingUpload6] = useState(false);
+  const [errorUpload6, setErrorUpload6] = useState('');
 
   const userSignin = useSelector((state) => state.UserSignin);
   const { userInfo } = userSignin;
-  const uploadFileHandler = async (e) => {
-    const file = e.target.files[0];
-    const bodyFormData = new FormData();
-    bodyFormData.append('image', file);
-    setLoadingUpload(true);
-    try {
-      const { data } = await axios.post('/uploads', bodyFormData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${userInfo.token}`,
-        },
-      });
-      setUrl(data);
-      setLoadingUpload(false);
-    } catch (error) {
-      setErrorUpload(error.message);
-      setLoadingUpload(false);
-    }
-  };
+
+  // const uploadFileHandler = async (e) => {
+  //   const file = e.target.files[0];
+  //   const bodyFormData = new FormData();
+  //   bodyFormData.append('image', file);
+  //   setLoadingUpload(true);
+  //   try {
+  //     const { data } = await axios.post('https://api.berlywud.com/api/uploads/s3', bodyFormData, {
+  //       headers: {
+  //         'Content-Type': 'multipart/form-data',
+  //         Authorization: `Bearer ${userInfo.token}`,
+  //       },
+  //     });
+  //     setUrl(data);
+  //     setLoadingUpload(false);
+  //   } catch (error) {
+  //     setErrorUpload(error.message);
+  //     setLoadingUpload(false);
+  //   }
+  // };
   return (
     <div className="productedit">
       <div className="productlist__header">
         <h2 style={{color:"black"}}>Edit Product {productId}</h2>
-        
       </div>
       <form className={classes.root} noValidate autoComplete="off"  onSubmit={submitHandler}>
         <div className="pink__button">
@@ -201,6 +226,8 @@ export default function ProductEdit(props) {
                 color="secondary"
                 onChange={(e) => setStockcount(e.target.value)}
             />
+
+            {/* Main Image */}
             <TextField 
                 id="outlined-basic" 
                 label="Image Url"
@@ -217,11 +244,301 @@ export default function ProductEdit(props) {
                 type="file"
                 id="imageFile"
                 label="Choose Image"
-                onChange={uploadFileHandler}
+                onChange={
+                   async (e) => {
+                    const file = e.target.files[0];
+                    const bodyFormData = new FormData();
+                    bodyFormData.append('image', file);
+                    setLoadingUpload(true);
+                    try {
+                      const { data } = await axios.post('https://api.berlywud.com/api/uploads/s3', bodyFormData, {
+                        headers: {
+                          'Content-Type': 'multipart/form-data',
+                          Authorization: `Bearer ${userInfo.token}`,
+                        },
+                      });
+                      setUrl(data);
+                      setLoadingUpload(false);
+                    } catch (error) {
+                      setErrorUpload(error.message);
+                      setLoadingUpload(false);
+                    }
+                  }
+                }
               ></input>
               {loadingUpload && <Loadingmsg/>}
               {errorUpload && (
                 <Errormsg variant="danger">{errorUpload}</Errormsg>
+              )}
+            </div>
+
+            {/* Image 1 */}
+            <TextField 
+                id="outlined-basic" 
+                label="Image Url"
+                color="secondary"
+                variant="outlined"
+                fullWidth
+                required
+                value={url1}
+                onChange={(e) => setUrl1(e.target.value)}
+            />
+            <div>
+              <input
+                className="inputfieldtext"
+                type="file"
+                id="imageFile"
+                label="Choose Image"
+                onChange={
+                  async (e) => {
+                    const file = e.target.files[0];
+                    const bodyFormData = new FormData();
+                    bodyFormData.append('image', file);
+                    setLoadingUpload1(true);
+                    try {
+                      const { data } = await axios.post('https://api.berlywud.com/api/uploads/s3', bodyFormData, {
+                        headers: {
+                          'Content-Type': 'multipart/form-data',
+                          Authorization: `Bearer ${userInfo.token}`,
+                        },
+                      });
+                      setUrl1(data);
+                      setLoadingUpload1(false);
+                    } catch (error) {
+                      setErrorUpload1(error.message);
+                      setLoadingUpload1(false);
+                    }
+                  }
+                }
+              ></input>
+              {loadingUpload1 && <Loadingmsg/>}
+              {errorUpload1 && (
+                <Errormsg variant="danger">{errorUpload1}</Errormsg>
+              )}
+            </div>
+
+            {/* Image 2 */}
+            <TextField 
+                id="outlined-basic" 
+                label="Image Url"
+                color="secondary"
+                variant="outlined"
+                fullWidth
+                required
+                value={url2}
+                onChange={(e) => setUrl2(e.target.value)}
+            />
+            <div>
+              <input
+                className="inputfieldtext"
+                type="file"
+                id="imageFile"
+                label="Choose Image"
+                onChange={
+                  async (e) => {
+                    const file = e.target.files[0];
+                    const bodyFormData = new FormData();
+                    bodyFormData.append('image', file);
+                    setLoadingUpload2(true);
+                    try {
+                      const { data } = await axios.post('https://api.berlywud.com/api/uploads/s3', bodyFormData, {
+                        headers: {
+                          'Content-Type': 'multipart/form-data',
+                          Authorization: `Bearer ${userInfo.token}`,
+                        },
+                      });
+                      setUrl2(data);
+                      setLoadingUpload2(false);
+                    } catch (error) {
+                      setErrorUpload2(error.message);
+                      setLoadingUpload2(false);
+                    }
+                  }
+                }
+              ></input>
+              {loadingUpload2 && <Loadingmsg/>}
+              {errorUpload2 && (
+                <Errormsg variant="danger">{errorUpload2}</Errormsg>
+              )}
+            </div>
+
+            {/* Image 3 */}
+            <TextField 
+                id="outlined-basic" 
+                label="Image Url"
+                color="secondary"
+                variant="outlined"
+                fullWidth
+                required
+                value={url3}
+                onChange={(e) => setUrl3(e.target.value)}
+            />
+            <div>
+              <input
+                className="inputfieldtext"
+                type="file"
+                id="imageFile"
+                label="Choose Image"
+                onChange={
+                  async (e) => {
+                    const file = e.target.files[0];
+                    const bodyFormData = new FormData();
+                    bodyFormData.append('image', file);
+                    setLoadingUpload3(true);
+                    try {
+                      const { data } = await axios.post('https://api.berlywud.com/api/uploads/s3', bodyFormData, {
+                        headers: {
+                          'Content-Type': 'multipart/form-data',
+                          Authorization: `Bearer ${userInfo.token}`,
+                        },
+                      });
+                      setUrl3(data);
+                      setLoadingUpload3(false);
+                    } catch (error) {
+                      setErrorUpload3(error.message);
+                      setLoadingUpload3(false);
+                    }
+                  }
+                }
+              ></input>
+              {loadingUpload3 && <Loadingmsg/>}
+              {errorUpload3 && (
+                <Errormsg variant="danger">{errorUpload3}</Errormsg>
+              )}
+            </div>
+
+            {/* Image 4 */}
+            <TextField 
+                id="outlined-basic" 
+                label="Image Url"
+                color="secondary"
+                variant="outlined"
+                fullWidth
+                required
+                value={url4}
+                onChange={(e) => setUrl4(e.target.value)}
+            />
+            <div>
+              <input
+                className="inputfieldtext"
+                type="file"
+                id="imageFile"
+                label="Choose Image"
+                onChange={
+                  async (e) => {
+                    const file = e.target.files[0];
+                    const bodyFormData = new FormData();
+                    bodyFormData.append('image', file);
+                    setLoadingUpload4(true);
+                    try {
+                      const { data } = await axios.post('https://api.berlywud.com/api/uploads/s3', bodyFormData, {
+                        headers: {
+                          'Content-Type': 'multipart/form-data',
+                          Authorization: `Bearer ${userInfo.token}`,
+                        },
+                      });
+                      setUrl4(data);
+                      setLoadingUpload4(false);
+                    } catch (error) {
+                      setErrorUpload4(error.message);
+                      setLoadingUpload4(false);
+                    }
+                  }
+                }
+              ></input>
+              {loadingUpload4 && <Loadingmsg/>}
+              {errorUpload4 && (
+                <Errormsg variant="danger">{errorUpload4}</Errormsg>
+              )}
+            </div>
+
+            {/* Image 5 */}
+            <TextField 
+                id="outlined-basic" 
+                label="Image Url"
+                color="secondary"
+                variant="outlined"
+                fullWidth
+                required
+                value={url5}
+                onChange={(e) => setUrl5(e.target.value)}
+            />
+            <div>
+              <input
+                className="inputfieldtext"
+                type="file"
+                id="imageFile"
+                label="Choose Image"
+                onChange={
+                  async (e) => {
+                    const file = e.target.files[0];
+                    const bodyFormData = new FormData();
+                    bodyFormData.append('image', file);
+                    setLoadingUpload5(true);
+                    try {
+                      const { data } = await axios.post('https://api.berlywud.com/api/uploads/s3', bodyFormData, {
+                        headers: {
+                          'Content-Type': 'multipart/form-data',
+                          Authorization: `Bearer ${userInfo.token}`,
+                        },
+                      });
+                      setUrl5(data);
+                      setLoadingUpload5(false);
+                    } catch (error) {
+                      setErrorUpload5(error.message);
+                      setLoadingUpload5(false);
+                    }
+                  }
+                }
+              ></input>
+              {loadingUpload5 && <Loadingmsg/>}
+              {errorUpload5 && (
+                <Errormsg variant="danger">{errorUpload5}</Errormsg>
+              )}
+            </div>
+
+            {/* Image 6 */}
+            <TextField 
+                id="outlined-basic" 
+                label="Image Url"
+                color="secondary"
+                variant="outlined"
+                fullWidth
+                required
+                value={url6}
+                onChange={(e) => setUrl6(e.target.value)}
+            />
+            <div>
+              <input
+                className="inputfieldtext"
+                type="file"
+                id="imageFile"
+                label="Choose Image"
+                onChange={
+                  async (e) => {
+                    const file = e.target.files[0];
+                    const bodyFormData = new FormData();
+                    bodyFormData.append('image', file);
+                    setLoadingUpload6(true);
+                    try {
+                      const { data } = await axios.post('https://api.berlywud.com/api/uploads/s3', bodyFormData, {
+                        headers: {
+                          'Content-Type': 'multipart/form-data',
+                          Authorization: `Bearer ${userInfo.token}`,
+                        },
+                      });
+                      setUrl(data);
+                      setLoadingUpload6(false);
+                    } catch (error) {
+                      setErrorUpload6(error.message);
+                      setLoadingUpload6(false);
+                    }
+                  }
+                }
+              ></input>
+              {loadingUpload6 && <Loadingmsg/>}
+              {errorUpload6 && (
+                <Errormsg variant="danger">{errorUpload6}</Errormsg>
               )}
             </div>
             
@@ -377,7 +694,7 @@ export default function ProductEdit(props) {
                 value={origprice}
                 onChange={(e) => setOrigprice(e.target.value)}
             />
-            <div>
+            {/* <div>
                 <h3>Rating</h3>
             </div>
             <TextField 
@@ -400,7 +717,7 @@ export default function ProductEdit(props) {
                 required
                 value={reviews}
                 onChange={(e) => setReviews(e.target.value)}
-            />
+            /> */}
           </>
         )}
       </form>

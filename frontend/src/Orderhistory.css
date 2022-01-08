@@ -1,23 +1,26 @@
+.orderhistory h3{
+  font-size: 2rem;
+}
 .table {
     /* width: 100%; */
     border-collapse: collapse;
     
   }
   .table tbody tr:nth-of-type(odd) {
-    background-color: #f4f4f4;
+    background-color: bisque;
   }
   .table td,
   .table th {
     text-align: left;
-    border: 0.1rem solid #e4e4e4;
-    padding: 0.5rem;
   }
+
   .table button {
     margin: 0 0.2rem;
   }
   button.small {
     font-size: 0.9rem;
-    padding: .5rem 1rem;
+    margin: 0.3rem 0.2rem;
+    padding: .3rem .8rem;
     border-radius: 5px;
     outline: 0;
     border: 1px solid black;
@@ -27,3 +30,75 @@
   .orderhistory{
     margin : 0 4% 4% 4%;
   }
+
+  @media only screen and (max-width: 1310px){
+    .orderhistory h3{
+        font-size: 1.5em;
+    }
+  }
+
+  @media only screen and (max-width: 850px){
+    .orderhistory h3{
+      font-size: 1.2em;
+  }
+  }
+
+  /* @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)  {
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+ 
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    margin: 0 0 1em 0;
+    padding: 0.3em;
+  }
+    
+  tr:nth-child(odd) {
+    background: #ccc;
+  }
+  
+  td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 35%;
+  }
+
+  td:before {
+    position: absolute;
+    top: 0;
+    left: 6px;
+    width: 15%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+  td:nth-of-type(1):before { content: "Order Id"; }
+  td:nth-of-type(2):before { content: "Date"; }
+  td:nth-of-type(3):before { content: "Total"; }
+  td:nth-of-type(4):before { content: "Paid"; }
+  td:nth-of-type(5):before { content: "Delivered"; }
+  td:nth-of-type(6):before { content: "Actions"; }
+  } */
+
+  /* @media only screen and (max-width: 570px) {
+    .table td,
+    .table th {
+      font-size: 0.7em;
+    }
+    button.small {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
+      background-color: white;
+    }
+    h3{
+      font-size: 1rem;
+    }
+  } */

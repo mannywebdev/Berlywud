@@ -60,6 +60,10 @@ function Productmain() {
     function addToCart(){
         history.push(`/cart/${productId}?price=${product.decantprice[ml]}&size=${ml}`)
     } 
+    let filteredArray
+    function removeNull(array) {
+        filteredArray = array.filter(x => x !== null)
+    };
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -81,17 +85,26 @@ function Productmain() {
                 ):(
                     <div className="productmain">
                         <div className="productmain__img">
+                            {product.url.map((item)=> {
+                                if( item!== null){
+                                return <img src={item} key={item} alt={product.title}/>
+                                }
+                            })}
+                            {/* <img src={product.url} alt={product.title}/>
                             <img src={product.url} alt={product.title}/>
                             <img src={product.url} alt={product.title}/>
-                            <img src={product.url} alt={product.title}/>
-                            <img src={product.url} alt={product.title}/>
+                            <img src={product.url} alt={product.title}/> */}
                         </div>
                         <div className="productmain__img__mob">
+                            {
+                                removeNull(product.url)
+                            }
                             <Carousel>
-                                <CarouselItem><img className="carouselitem__img_mob" src={product.url} alt={product.title}/></CarouselItem>
-                                <CarouselItem><img className="carouselitem__img_mob" src={product.url} alt={product.title}/></CarouselItem>
-                                <CarouselItem><img className="carouselitem__img_mob" src={product.url} alt={product.title}/></CarouselItem>
-                                <CarouselItem><img className="carouselitem__img_mob" src={product.url} alt={product.title}/></CarouselItem>
+                                {
+                                    filteredArray.map((item)=>{
+                                        return <CarouselItem><img src={item} className="carouselitem__img_mob" key={item} alt={product.title}/></CarouselItem>
+                                    })
+                                }
                             </Carousel>
                         </div>
                         <div className="productmain__info">

@@ -23,15 +23,15 @@ function Subtotal() {
                 <table>
                     <tr>
                         <td>Total MRP</td>
-                        <td className="rates">&#8377;{totalMRP.toFixed(2)}</td>
+                        <td className="rates">Rs. {totalMRP.toFixed(2)}</td>
                     </tr>
                     <tr>
                         <td>Delivery Charges</td>
-                        <td className="rates">&#8377;{deliveryCharge.toFixed(2)}</td>
+                        <td className="rates">Rs. {deliveryCharge.toFixed(2)}</td>
                     </tr>
                     <tr>
-                        <td className="bt">Total Amount</td>
-                        <td className="rates bt">&#8377;{totalAmount.toFixed(2)}</td>
+                        <td>Total Amount</td>
+                        <td className="rates bt">Rs. {totalAmount.toFixed(2)}</td>
                     </tr>
                 </table>
             </div>

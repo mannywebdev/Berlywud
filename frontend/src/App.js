@@ -45,7 +45,7 @@ function App() {
               <CarouselItem><img className="carouselimg" src={i1} alt=""/></CarouselItem>
             </Carousel>
             <Home/>
-            {/* <Footer/> */}
+            <Footer/>
           </Route>
           <Route path="/cart/:productId?">
             <Cart/>

@@ -7,26 +7,24 @@ const dotenv = require('dotenv')
 const path = require('path')
 const Razorpay= require('razorpay')
 const multer = require('multer')
+const multerS3 = require('multer-s3')
+const aws = require('aws-sdk')
 const restAuth = require('./utils').restAuth
+const config = require('./config')
 
 dotenv.config()
 
-const razorpayPublicKey = "rzp_test_tjgqJf8OgEA215"
-const razorpaySecretKey = "0wIdYCiuPh7ydfOwhvTKyKEP"
-console.log(`razorpayPublickey`, razorpayPublicKey)
-console.log(`razorpayPublickey`, razorpaySecretKey)
 var instance = new Razorpay({
-    key_id: razorpayPublicKey,
-    key_secret: razorpaySecretKey,
+    key_id: config.RZP_PUBLIC_KEY,
+    key_secret: config.RZP_SECRET_KEY,
 });
-
 
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended : true}))
 
-const port = process.env.PORT || 5000
-mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/berlywud',{
+const port = config.PORT
+mongoose.connect(process.env.MONGODB_URL  || 'mongodb://localhost/berlywud',{
     useNewUrlParser:true,
     useCreateIndex:true,
     useUnifiedTopology: true
@@ -103,6 +101,20 @@ app.post("/payment/success", async (req, res) => {
 
 /// Image upload///
 
+aws.config.update({
+    accessKeyId : config.accessKeyId,
+    secretAccessKey : config.secretAccessKey
+})
+const s3 = new aws.S3()
+const storageS3 = multerS3({
+    s3,
+    bucket: 'berlywud-bucket',
+    acl: 'public-read',
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    key(req,file,cb){
+        cb(null,file.originalname)
+    }
+})
 const storage = multer.diskStorage({
     destination(req, file, cb) {
       cb(null, 'uploads/');
@@ -111,6 +123,11 @@ const storage = multer.diskStorage({
       cb(null, `${Date.now()}.jpg`);
     },
  });
+ const uploadS3 = multer({storage: storageS3})
+ app.post('/api/uploads/s3',uploadS3.single('image'),(req,res)=>{
+    res.send(req.file.location)
+ })
+
 const upload = multer({ storage });
 
 app.post('/uploads', restAuth, upload.single('image'), (req, res) => {
@@ -124,9 +141,6 @@ app.use('/api/users',userRouter)
 app.use('/api/products',productRouter)
 app.use('/api/orders', orderRouter);
 
-
-
-
 app.get('/',(req,res) =>{
     res.send('Server is Ready')
 })
@@ -136,5 +150,5 @@ app.use((err,req,res,next)=>{
 })
 
 app.listen(port,()=>{
-    console.log(`server is up at port ${port}`)
+    console.log(`Server is up at port ${port}`)
 })

@@ -30,15 +30,15 @@ function Cart() {
     const {cartItems} = Cart
     
     const render = 
-        (cartItems.length <= 0) ? 
+        (cartItems.length <= 0) ?
         (<div className="cart__products">
             <div className="cart__quotes">
                 <img src={emptybag} width="100%" alt="emptycartItems"/>
                 <p>Hey,it feels so light!</p>
                 <p>There is nothing in your bag.Let's add some items.</p>
                 <Link to='/' className='link'>
-                <Button variant="outlined">
-                Go back to Shopping.
+                <Button className="link__button" variant="outlined">
+                    Go back to Shopping.
                 </Button>
                 </Link>
             </div>
@@ -71,7 +71,7 @@ function Cart() {
                     <div className="cart__left">
                         <div className="cart-values">
                             <h4>My Shopping Bag ({cartItems.length} item)</h4>
-                            <h4>Total: ₹ 0</h4>
+                            <h4>Total: Rs. 0</h4>
                         </div>
                         {render}
                     </div>
@@ -81,14 +81,14 @@ function Cart() {
                     <div className="cart__left">
                         <div className="cart-values">
                             <h4>My Shopping Bag ({cartItems.length} item)</h4>
-                            <h4>Total: ₹ {cartItems.reduce((accumulator,item)=> item.price * item.qty + accumulator,0)}</h4>
+                            <h4>Total: Rs. {cartItems.reduce((accumulator,item)=> item.price * item.qty + accumulator,0)}</h4>
                         </div>
                         {render}
                     </div>
                     <div className="cart__right">
                         <Subtotal/>
                         <div className="pink__button">
-                            <Button variant="contained" onClick={checkoutHandler}>Proceed to Checkout</Button>
+                            <Button className="link__button" variant="contained" onClick={checkoutHandler}>Proceed to Checkout</Button>
                         </div>
                     </div>
                 </div>)

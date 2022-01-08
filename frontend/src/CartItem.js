@@ -8,7 +8,8 @@ import { IconButton } from '@material-ui/core'
 
 function CartItem({title,url,brand,price,product,stockcount,size,qty}) {
     const dispatch = useDispatch()
-
+    console.log(`size`, size)
+    console.log(`url`, url)
     const removeFromCartHandler = (product,price) =>{
         dispatch(removeFromCart(product,price))
     }
@@ -16,7 +17,18 @@ function CartItem({title,url,brand,price,product,stockcount,size,qty}) {
     return (
         <div className="cartitem">
             <div className="cartitem__img">
-                <img src={url} alt=""/>
+                {
+                    (size === "Retail") && <img src={url[0]} alt=""/>
+                }
+                {
+                    (size === "30ml") && <img src={url[1]} alt=""/>
+                }
+                {
+                    (size === "10ml") && <img src={url[2]} alt=""/>
+                }
+                {
+                    (size === "5ml") && <img src={url[3]} alt=""/>
+                }
             </div>
             <div className="cartitem__info">
                 <Link to={`/productpage/${product}`} className="link">

@@ -66,7 +66,7 @@ productRouter.post('/',restAuth,isAdmin,expressAsyncHandler(async (req, res) => 
       launch: 2010,
       concentration: 'Eau De Parfum',
       stockcount: 100,
-      url: 'https://raw.githubusercontent.com/mannywebdev/perfumesite/main/PerfumePics/giorgio%20armani%20code%20absolu.jpg',
+      url : ['https://raw.githubusercontent.com/mannywebdev/perfumesite/main/PerfumePics/giorgio%20armani%20code%20absolu.jpg',null,null,null,null,null,null],
       rating: 0,
       numReviews: 0,
       decantprice: {
@@ -92,10 +92,18 @@ productRouter.put('/:id',restAuth,isAdmin,expressAsyncHandler(async (req, res) =
       const productId = req.params.id;
       const product = await Product.findById(productId);
       console.log(`product`, product)
+      console.log(`req.body`, req.body)
       if (product) {
         product.brand = req.body.brand;
         product.title = req.body.title;
-        product.url = req.body.url;
+        product.url.splice(0, 1, req.body.url);
+        product.url.splice(1, 1, req.body.url1);
+        product.url.splice(2, 1, req.body.url2);
+        product.url.splice(3, 1, req.body.url3);
+        product.url.splice(4, 1, req.body.url4);
+        product.url.splice(5, 1, req.body.url5);
+        product.url.splice(6, 1, req.body.url6);
+    
         product.description = req.body.description;
         product.origprice = req.body.origprice;
         product.gender = req.body.gender;

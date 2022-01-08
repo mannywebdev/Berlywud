@@ -7,6 +7,7 @@ import Loadingmsg from './Loadingmsg'
 import Errormsg from './Errormsg'
 import Button from '@material-ui/core/Button';
 import GoogleLogin from 'react-google-login';
+import { AiOutlineEye } from "react-icons/ai";
 
 function Signin() {
     const dispatch = useDispatch()
@@ -63,6 +64,9 @@ function Signin() {
                     placeholder="Enter password"
                     onChange={(e)=> setPassword(e.target.value)}>
                     </input>
+                    <span class="p-viewer">
+                        <AiOutlineEye/>
+				    </span>
                 </div>
                 <div className="pink__button">
                     <Button variant="contained" type="submit">Login</Button>

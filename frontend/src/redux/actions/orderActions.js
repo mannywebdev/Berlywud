@@ -6,7 +6,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
   dispatch({ type: ORDER_CREATE_REQUEST, payload: order });
   try {
     const {UserSignin: { userInfo }} = getState();
-    const { data } = await axios.post('/api/orders', order, {
+    const { data } = await axios.post('https://api.berlywud.com/api/orders', order, {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
@@ -30,7 +30,7 @@ export const detailsOrder = (orderId) => async (dispatch, getState) => {
   const {
     UserSignin: { userInfo },} = getState();
   try {
-    const { data } = await axios.get(`/api/orders/${orderId}`, {
+    const { data } = await axios.get(`https://api.berlywud.com/api/orders/${orderId}`, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
@@ -49,7 +49,7 @@ export const payOrder = (order, paymentResult) => async (dispatch,getState) => {
     UserSignin: { userInfo },
   } = getState();
   try {
-    const { data } = axios.put(`/api/orders/${order._id}/pay`, paymentResult, {
+    const { data } = axios.put(`https://api.berlywud.com/api/orders/${order._id}/pay`, paymentResult, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: ORDER_PAY_SUCCESS, payload: data });
@@ -68,7 +68,7 @@ export const myOrdersList = () => async (dispatch, getState) => {
     UserSignin: { userInfo },
   } = getState();
   try {
-    const { data } = await axios.get('/api/orders/myorder', {
+    const { data } = await axios.get('https://api.berlywud.com/api/orders/myorder', {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
@@ -89,7 +89,7 @@ export const listOrders = () => async (dispatch, getState) => {
     UserSignin: { userInfo },
   } = getState();
   try {
-    const { data } = await axios.get('/api/orders', {
+    const { data } = await axios.get('https://api.berlywud.com/api/orders', {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     console.log(data);
@@ -109,7 +109,7 @@ export const deleteOrder = (orderId) => async (dispatch, getState) => {
     UserSignin: { userInfo },
   } = getState();
   try {
-    const { data } = axios.delete(`/api/orders/${orderId}`, {
+    const { data } = axios.delete(`https://api.berlywud.com/api/orders/${orderId}`, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: ORDER_DELETE_SUCCESS, payload: data });
@@ -129,7 +129,7 @@ export const deliverOrder = (orderId) => async (dispatch, getState) => {
   } = getState();
   try {
     const { data } = axios.put(
-      `/api/orders/${orderId}/deliver`,
+      `https://api.berlywud.com/api/orders/${orderId}/deliver`,
       {},
       {
         headers: { Authorization: `Bearer ${userInfo.token}` },

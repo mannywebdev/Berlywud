@@ -72,7 +72,7 @@ function Orderdetails() {
             },
             body : JSON.stringify(data)
         };
-        const razorpayorder =  await fetch('http://localhost:5000/razorpay',option).then((t)=>t.json())
+        const razorpayorder =  await fetch('https://api.berlywud.com/razorpay',option).then((t)=>t.json())
         console.log('razorpayorder',razorpayorder)
 
         const options = {
@@ -81,7 +81,7 @@ function Orderdetails() {
             "currency": "INR",
             "name": "Berlywud",
             "description": "Feed Your Senses",
-            "image": 'http://localhost:5000/berlywud.png',
+            "image": 'https://api.berlywud.com/berlywud.png',
             "order_id": razorpayorder.id,
              //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
             "handler": async function (response){
@@ -94,7 +94,7 @@ function Orderdetails() {
                     razorpayOrderId: response.razorpay_order_id,
                     razorpaySignature: response.razorpay_signature,
                 }
-                const result = await axios.post("http://localhost:5000/payment/success",data);
+                const result = await axios.post("https://api.berlywud.com/payment/success",data);
                 if(result.data.msg === "success"){
                     dispatch(payOrder(order,result))
                 }
@@ -131,17 +131,14 @@ function Orderdetails() {
                     <div className="paymentleft__card">
                         <h3>Shipping Address</h3>
                         <p>
-                            <span>Name: </span>{order.shippingAddress.fullName}<br/>
-                            <span>Address: </span>{order.shippingAddress.address1},{order.shippingAddress.address2},{order.shippingAddress.city},{order.shippingAddress.state},{order.shippingAddress.pinCode}<br/>
+                            <span>Name:&nbsp;</span>{order.shippingAddress.fullName}<br/>
+                            <span>Address:&nbsp;</span>{order.shippingAddress.address1},{order.shippingAddress.address2},{order.shippingAddress.city},{order.shippingAddress.state},{order.shippingAddress.pinCode}<br/>
                         </p>
-                        {order.isDelivered ? <Errormsg>Delivered at :{order.deliveredAt}</Errormsg>:<Errormsg>Not Delivered</Errormsg>}
+                        {order.isDelivered ? <Errormsg>Delivered at:&nbsp;{order.deliveredAt}</Errormsg>:<Errormsg>Not Delivered</Errormsg>}
                     </div>
                     <div className="paymentleft__card">
                         <h3>Payment</h3>
-                        <p>
-                        <span>Method: </span>Paypal<br/>
-                        </p>
-                        {order.isPaid ? <Errormsg>Paid at:{order.paidAt}</Errormsg>:<Errormsg>Not Paid</Errormsg>}
+                        {order.isPaid ? <Errormsg>Paid at:&nbsp;{order.paidAt}</Errormsg>:<Errormsg>Not Paid</Errormsg>}
                     </div>
 
                     <div className="paymentleft__card">
@@ -154,7 +151,18 @@ function Orderdetails() {
                                         <div className="cardinner">
                                             <div className="cardleft">
                                                 <div className="cardleft__img">
-                                                    <img src={item.url} alt=""/>
+                                                    {
+                                                        (item.size === "Retail") && <img src={item.url[0]} alt=""/>
+                                                    }
+                                                    {
+                                                        (item.size === "30ml") && <img src={item.url[1]} alt=""/>
+                                                    }
+                                                    {
+                                                        (item.size === "10ml") && <img src={item.url[2]} alt=""/>
+                                                    }
+                                                    {
+                                                        (item.size === "5ml") && <img src={item.url[3]} alt=""/>
+                                                    }
                                                 </div>
                                                 <div className="cardleft__info">
                                                     <p>{item.brand}</p>
@@ -178,15 +186,15 @@ function Orderdetails() {
                             <h3>Order Summary</h3>
                             <div className="paymentright__div">
                                 <p>Price</p>
-                                <p>&#8377;{order.itemPrice.toFixed(2)}</p>
+                                <p>Rs. {order.itemPrice.toFixed(2)}</p>
                             </div>
                             <div className="paymentright__div">
                                 <p>Shipping Charge</p>
-                                <p>&#8377;{order.shippingPrice.toFixed(2)}</p>
+                                <p>Rs. {order.shippingPrice.toFixed(2)}</p>
                             </div>
                             <div className="paymentright__div">
                                 <p><strong>Total Price</strong></p>
-                                <p><strong>&#8377;{order.totalPrice.toFixed(2)}</strong></p>
+                                <p><strong>Rs. {order.totalPrice.toFixed(2)}</strong></p>
                             </div>
                             {
                                 !order.isPaid &&

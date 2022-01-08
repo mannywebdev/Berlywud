@@ -14,7 +14,7 @@ const reviewSchema = new mongoose.Schema(
 
 const productSchema = new mongoose.Schema(
     {
-        url : {type:String, required:true},
+        url : [{type: String}],
         brand:{type:String, required:true},
         title:{type:String, required:true, unique: true},
         description : {type:String, required:true},

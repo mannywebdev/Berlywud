@@ -4,7 +4,7 @@ import axios from 'axios'
 export const register = (name,email,password) => async(dispatch) =>{
     dispatch({type: USER_REGISTER_REQUEST, payload : {name,email,password}})
     try{
-        const {data} = await axios.post('/api/users/register',{name,email,password})
+        const {data} = await axios.post('https://api.berlywud.com/api/users/register',{name,email,password})
         dispatch({type: USER_REGISTER_SUCCESS, payload: data})
         dispatch({type: USER_SIGNIN_SUCCESS, payload: data})
         localStorage.setItem('userInfo',JSON.stringify(data))
@@ -19,7 +19,7 @@ export const register = (name,email,password) => async(dispatch) =>{
 export const signin = (email,password) => async(dispatch) =>{
     dispatch({type: USER_SIGNIN_REQUEST , payload : {email,password}})
     try{
-        const {data} = await axios.post('/api/users/signin',{email,password})
+        const {data} = await axios.post('https://api.berlywud.com/api/users/signin',{email,password})
         dispatch({type: USER_SIGNIN_SUCCESS, payload: data})
         localStorage.setItem('userInfo',JSON.stringify(data))
     }catch(error){
@@ -36,7 +36,7 @@ export const detailsUser = (userId) => async (dispatch, getState) => {
       UserSignin: { userInfo },
     } = getState();
     try {
-      const { data } = await axios.get(`/api/users/${userId}`, {
+      const { data } = await axios.get(`https://api.berlywud.com/api/users/${userId}`, {
         headers: { Authorization: `Bearer ${userInfo.token}` },
       });
       dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
@@ -55,7 +55,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       UserSignin: { userInfo },
     } = getState();
     try {
-      const { data } = await axios.put(`/api/users/profile`, user, {
+      const { data } = await axios.put(`https://api.berlywud.com/api/users/profile`, user, {
         headers: { Authorization: `Bearer ${userInfo.token}` },
       });
       dispatch({ type: USER_UPDATE_PROFILE_SUCCESS, payload: data });
@@ -83,7 +83,7 @@ export const listUsers = () => async (dispatch, getState) => {
     const {
       UserSignin: { userInfo },
     } = getState();
-    const { data } = await axios.get('/api/users', {
+    const { data } = await axios.get('https://api.berlywud.com//api/users', {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
@@ -104,7 +104,7 @@ export const deleteUser = (userId) => async (dispatch, getState) => {
     UserSignin: { userInfo },
   } = getState();
   try {
-    const { data } = await axios.delete(`/api/users/${userId}`, {
+    const { data } = await axios.delete(`https://api.berlywud.com/api/users/${userId}`, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: USER_DELETE_SUCCESS, payload: data });
@@ -123,7 +123,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
     UserSignin: { userInfo },
   } = getState();
   try {
-    const { data } = await axios.put(`/api/users/${user._id}`, user, {
+    const { data } = await axios.put(`https://api.berlywud.com/api/users/${user._id}`, user, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: USER_UPDATE_SUCCESS, payload: data });

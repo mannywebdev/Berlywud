@@ -39,8 +39,8 @@ function Payment() {
                     <div className="paymentleft__card">
                         <h3>Shipping Address</h3>
                         <p>
-                            <span>Name: </span>{Cart.shippingAddress.fullName}<br/>
-                            <span>Address: </span>{Cart.shippingAddress.address1},{Cart.shippingAddress.address2},{Cart.shippingAddress.city},{Cart.shippingAddress.state},{Cart.shippingAddress.pinCode}<br/>
+                            <span>Name:&nbsp;</span>{Cart.shippingAddress.fullName}<br/>
+                            <span>Address:&nbsp;</span>{Cart.shippingAddress.address1},{Cart.shippingAddress.address2},{Cart.shippingAddress.city},{Cart.shippingAddress.state},{Cart.shippingAddress.pinCode}<br/>
                         </p>
                     </div>
                     <div className="paymentleft__card">
@@ -53,7 +53,18 @@ function Payment() {
                                         <div className="cardinner">
                                             <div className="cardleft">
                                                 <div className="cardleft__img">
-                                                    <img src={item.url} alt=""/>
+                                                    {
+                                                        (item.size === "Retail") && <img src={item.url[0]} alt=""/>
+                                                    }
+                                                    {
+                                                        (item.size === "30ml") && <img src={item.url[1]} alt=""/>
+                                                    }
+                                                    {
+                                                        (item.size === "10ml") && <img src={item.url[2]} alt=""/>
+                                                    }
+                                                    {
+                                                        (item.size === "5ml") && <img src={item.url[3]} alt=""/>
+                                                    }
                                                 </div>
                                                 <div className="cardleft__info">
                                                     <p>{item.brand}</p>
@@ -77,15 +88,15 @@ function Payment() {
                             <h3>Order Summary</h3>
                             <div className="paymentright__div">
                                 <p>Price</p>
-                                <p>&#8377;{Cart.itemPrice.toFixed(2)}</p>
+                                <p>Rs. {Cart.itemPrice.toFixed(2)}</p>
                             </div>
                             <div className="paymentright__div">
                                 <p>Shipping Charge</p>
-                                <p>&#8377;{Cart.shippingPrice.toFixed(2)}</p>
+                                <p>Rs. {Cart.shippingPrice.toFixed(2)}</p>
                             </div>
                             <div className="paymentright__div">
                                 <p><strong>Total Price</strong></p>
-                                <p><strong>&#8377;{Cart.totalPrice.toFixed(2)}</strong></p>
+                                <p><strong>Rs. {Cart.totalPrice.toFixed(2)}</strong></p>
                             </div>
                             <div className="pink__button">
                                 <Button variant="contained" onClick={placeOrderHandler} disabled={Cart.cartItems.length === 0}>Place Order</Button>
