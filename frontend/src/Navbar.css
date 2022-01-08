@@ -181,7 +181,7 @@ ul li {
         padding: 0 0.5em;
     }
     .navbar__logo>img{
-        width: 6em;
+        width: 7em;
         margin-right: 1.5em;
     }
     .hamburger__cancel{
@@ -193,15 +193,15 @@ ul li {
     }
 
     .navbar__option>.navbar__link{
-        font-size: 0.7em;
+        font-size: 0.8em;
     }
     
 
     .navbar__logincart .MuiSvgIcon-root {
-        font-size: 1em;
+        font-size: 1.3em;
     }
     .link__button Button{
-        font-size: 0.7em;
+        font-size: 0.8em;
     }
     .navbar__option{
         top: 86px;

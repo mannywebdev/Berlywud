@@ -8,11 +8,13 @@ import Errormsg from './Errormsg'
 import Button from '@material-ui/core/Button';
 import GoogleLogin from 'react-google-login';
 import { AiOutlineEye } from "react-icons/ai";
+import { FiEye,FiEyeOff } from "react-icons/fi";
 
 function Signin() {
     const dispatch = useDispatch()
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
+    const [showPassword,setShowPassword] = useState(false)
 
     const locationsignin = useLocation()
     const historysignin = useHistory()
@@ -38,6 +40,10 @@ function Signin() {
         console.log(error);
     }
 
+    const handleClickShowPassword = (e) => {
+        setShowPassword(!showPassword);
+    };
+
     return (
         <div className="signin">
             <>
@@ -47,26 +53,30 @@ function Signin() {
                 {error && <Errormsg>{error}</Errormsg>}
                 <div>
                     <label htmlFor="email">Email</label>
-                    <input 
-                    className="inputfieldtext"
-                    type="email" 
-                    id="email"
-                    placeholder="Enter email"
-                    onChange={(e)=> setEmail(e.target.value)}>
-                    </input>
+                    <div className="inputfielddiv">
+                        <input 
+                        className="inputfield"
+                        type="email" 
+                        id="email"
+                        placeholder="Enter email"
+                        onChange={(e)=> setEmail(e.target.value)}>
+                        </input>
+                    </div>
                 </div>
                 <div>
                     <label htmlFor="password">Password</label>
-                    <input 
-                    className="inputfieldtext"
-                    type="password" 
-                    id="password"
-                    placeholder="Enter password"
-                    onChange={(e)=> setPassword(e.target.value)}>
-                    </input>
-                    <span class="p-viewer">
-                        <AiOutlineEye/>
-				    </span>
+                    <div className="inputfielddiv">
+                        <input 
+                        className="inputfield"
+                        type={showPassword ? "text" : "password"}
+                        id="password"
+                        placeholder="Enter password"
+                        onChange={(e)=> setPassword(e.target.value)}>
+                        </input>
+                        <span class="p-viewer">
+                            {showPassword ? <FiEye onClick={handleClickShowPassword}/> : <FiEyeOff onClick={handleClickShowPassword}/>}
+                        </span>
+                    </div>
                 </div>
                 <div className="pink__button">
                     <Button variant="contained" type="submit">Login</Button>

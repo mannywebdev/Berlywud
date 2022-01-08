@@ -24,13 +24,9 @@
     height: 36px;
     border-radius: 5px 0 0 5px;
     outline: none;
-    color: #e2a4d1;
     font-family: 'Poppins','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
-  .searchTerm:focus{
-    color: #ff3e6c;
-  }
   
   .searchButton {
     width: 40px;
@@ -45,7 +41,7 @@
   
   /*Resize the wrap to see the search bar change!*/
  
-  @media only screen and (max-width: 1310px){
+  /* @media only screen and (max-width: 1310px){
     .searchButton {
       width: 2em;
       height: 2em;
@@ -57,18 +53,32 @@
       padding: 5px;
       height: 2em;
     }
-  } 
+  }  */
   @media only screen and (max-width: 1310px){
     .searchButton {
-      width: 1.5em;
-      height: 1.5em;
+      width: auto;
+      height: auto;
       text-align: center;
       color: #fff;
     }
     .searchTerm {
       border-right: none;
-      padding: 5px;
-      height: 1.5em;
+      height: 1.8rem;
+      font-size: 0.8rem;
+    }
+  } 
+
+  @media only screen and (max-width: 570px){
+    .searchButton {
+      width: auto;
+      height: auto;
+      text-align: center;
+      color: #fff;
+    }
+    .searchTerm {
+      border-right: none;
+      height: 1.6rem;
+      font-size: 0.7rem;
     }
   } 
 
