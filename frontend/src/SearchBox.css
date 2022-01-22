@@ -39,6 +39,7 @@
     color: black;
     border-radius: 0 5px 5px 0;
     cursor: pointer;  
+    background-color: #f6dd90;
   }
   
   /*Resize the wrap to see the search bar change!*/
@@ -65,7 +66,8 @@
     }
     .searchTerm {
       border-right: none;
-      height: 1.8rem;
+      height: auto;
+      padding: 3px;
       font-size: 0.8rem;
     }
   } 
@@ -79,7 +81,8 @@
     }
     .searchTerm {
       border-right: none;
-      height: 1.6rem;
+      height: auto;
+      padding: 2px;
       font-size: 0.7rem;
     }
   } 

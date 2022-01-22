@@ -18,6 +18,9 @@ import { useOutsideAlerter1, useOutsideAlerter2, useOutsideAlerter3 } from './Ou
 import Errormsg from './Errormsg'
 import Loadingmsg from './Loadingmsg'
 import { VscError } from "react-icons/vsc";
+import theme from './Theme'
+import {ThemeProvider} from '@material-ui/core'
+
 
 
 function Navbar() {
@@ -121,17 +124,19 @@ function Navbar() {
                 {
                     userInfo ? (
                         <div className="dropdown"  onClick={handleUserDropdown} ref={ref2}>
-                            <Link className="link link__button" to='#'>
-                            <Button
-                                variant="contained"
-                                endIcon={<ArrowDropDownIcon/>}
-                                className="navbar__btn"
-                            >
-                            {
-                                acronym    
-                            }
-                            </Button>
-                            </Link>
+                            <ThemeProvider theme={theme}>
+                                <Link className="link link__button" to='#'>
+                                    <Button
+                                        variant="contained"
+                                        endIcon={<ArrowDropDownIcon/>}
+                                        color="secondary"
+                                    >
+                                    {
+                                        acronym    
+                                    }
+                                    </Button>
+                                </Link>
+                            </ThemeProvider>
                             <ul className={userDropdownStatus ? "dropdown__content active" : "dropdown__content"}>
                                 <Link to="/orderhistory" className="link"><li>Order History</li></Link>
                                 <Link to="/profile" className="link"><li>My Profile</li></Link>
@@ -152,15 +157,17 @@ function Navbar() {
                 {
                     userInfo && userInfo.isAdmin &&
                         <div className="dropdown" onClick={handleAdminDropdown} ref={ref3}>
+                            <ThemeProvider theme={theme}>
                             <Link className="link link__button" to='#admin'>
-                            <Button
-                                className="navbar__btn"
-                                variant="contained"
-                                endIcon={<ArrowDropDownIcon/>}
-                            >
-                            Admin
-                            </Button>
+                                <Button 
+                                    color="secondary"
+                                    variant="contained"
+                                    endIcon={<ArrowDropDownIcon/>}
+                                    >
+                                Admin
+                                </Button>
                             </Link>
+                            </ThemeProvider>
                             <ul className={adminDropdownStatus ? "dropdown__content active" : "dropdown__content"}>
                                 {/* <Link to="/dashboard" className="link"><li>Dashboard</li></Link> */}
                                 <Link to="/productlist" className="link"><li>Products</li></Link>
@@ -172,17 +179,19 @@ function Navbar() {
                 
                 <Link className="link" to='/cart'>
                 <div className="cart">
-                    {cartItems.length > 0 ? (
-                        <IconButton aria-label="cart">
-                        <StyledBadge badgeContent={cartItems.length} color="secondary">
-                            <ShoppingCartIcon />
-                        </StyledBadge>
-                        </IconButton>
-                    ):(
-                        <IconButton aria-label="cart">
-                            <ShoppingCartIcon/>
-                        </IconButton>
-                    )}
+                    <ThemeProvider theme={theme}>
+                        {cartItems.length > 0 ? (
+                            <IconButton aria-label="cart">
+                            <StyledBadge badgeContent={cartItems.length} color="primary">
+                                <ShoppingCartIcon />
+                            </StyledBadge>
+                            </IconButton>
+                        ):(
+                            <IconButton aria-label="cart">
+                                <ShoppingCartIcon/>
+                            </IconButton>
+                        )}
+                    </ThemeProvider>
                 </div>
                 </Link>
             </div>
