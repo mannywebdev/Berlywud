@@ -23,7 +23,7 @@ export default function SearchBox() {
           onChange={(e) => setName(e.target.value)}
         ></input>
         <button className="primary" className="searchButton" type="submit">
-          <BiSearchAlt/>
+          <BiSearchAlt style={{color: "black"}}/>
         </button>
       </div>
       </div>

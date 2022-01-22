@@ -16,7 +16,7 @@ const data = {
         }
     ],
     products: [
-        {
+            {
             "url":["https://raw.githubusercontent.com/mannywebdev/perfumesite/main/PerfumePics/giorgio%20armani%20code%20absolu.jpg",null,null,null,null,null,null],
             "brand":"Giorgio Armani",
             "title":"Armani Code Absolu Giorgio Armani for men",

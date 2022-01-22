@@ -14,6 +14,7 @@ function Shippingaddress() {
     const { shippingAddress } = Cart
     
     const history = useHistory()
+    console.log(`history`, history)
     if(!userInfo){
         history.push('/signin')
     }

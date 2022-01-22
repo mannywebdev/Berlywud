@@ -1,13 +1,14 @@
 .navbar__outer{
     padding: 0 3em;
     border-bottom: lightgray 1px solid;
+    background-color: black;
 }
 
 .navbar{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
+    background-color: black;
 }
 
 .navbar__logo{
@@ -23,14 +24,14 @@
 
 .navbar__option>.navbar__link{
     text-decoration: none;
-    color: black;
+    color: white;
     padding-right: 2em;
     font-size: 1.1em;
-    color: #57534a;
 }
 /* .navbar__option{
     width: 40%;
 } */
+
 
 .navbar__logincart{
     display: flex;
@@ -40,7 +41,7 @@
 
 .navbar__logincart .MuiSvgIcon-root {
     font-size: 1.1em;
-    color: #57534a;
+    color: white;
 }
 
 .dropdown{
@@ -139,6 +140,10 @@ ul li {
     .navbar__logo>img{
         width: 8em;
         margin-right: 2em;
+    }
+
+    .navbar__logincart .MuiSvgIcon-root {
+        margin: 0;
     }
     
     .hamburger__cancel{

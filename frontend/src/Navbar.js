@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import './Navbar.css'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-import BERLYWUD from './images/BERLYWUD.png'
+import gold from './images/gold.png'
 import Badge from '@material-ui/core/Badge';
 import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
@@ -17,6 +17,8 @@ import { ImCancelCircle } from "react-icons/im";
 import { useOutsideAlerter1, useOutsideAlerter2, useOutsideAlerter3 } from './OutsideAlert'
 import Errormsg from './Errormsg'
 import Loadingmsg from './Loadingmsg'
+import { VscError } from "react-icons/vsc";
+
 
 function Navbar() {
 
@@ -55,7 +57,6 @@ function Navbar() {
     const { userInfo } = UserSignin
 
     
-    
     if(userInfo){
         var name = userInfo.name
         var matches = name.match(/\b(\w)/g); // ['J','S','O','N']
@@ -65,7 +66,6 @@ function Navbar() {
     const signoutHandler = () =>{
         dispatch(signout())
     }
-
 
     useEffect(() => {
         dispatch(listProductCategories());
@@ -83,16 +83,18 @@ function Navbar() {
     return (
         <div className="navbar__outer">
         <div className="navbar">
-            <Link className="navbar__link" style={{color: 'inherit', textDecoration: 'inherit'}} to="/">
-            <div className="navbar__logo">
+            <div className="navbar">
                 <div className="hamburger__cancel" onClick = {handleClick}>
-                {
-                    click ? <ImCancelCircle/> : <FiMenu/> 
-                }    
+                    {
+                        click ? <VscError/> : <FiMenu/> 
+                    }    
                 </div>
-                <img src={BERLYWUD} alt=""/>
+                <Link className="navbar__link" style={{color: 'inherit', textDecoration: 'inherit'}} to="/">
+                    <div className="navbar__logo">
+                        <img src={gold} alt=""/>
+                    </div>
+                </Link>
             </div>
-            </Link>
             {/* <div className={click ? "navbar__option active" : "navbar__option"} ref={ref1}>
                 <Link className="navbar__link navbar__category" onClick={handleClick} style={{color: 'inherit', textDecoration: 'inherit'}} to="/">Men</Link>
                 <Link className="navbar__link navbar__category" onClick={handleClick} style={{color: 'inherit', textDecoration: 'inherit'}} to="/">Women</Link>

@@ -27,6 +27,7 @@ import i1 from './images/i1.png'
 import i2 from './images/i2.png'
 import i3 from './images/i3.png'
 import i4 from './images/i4.png'
+import mainbanner from './images/mainbanner.png'
 
 function App() { 
   return(
@@ -39,10 +40,10 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Carousel>
-              <CarouselItem><img className="carouselimg" src={i4} alt=""/></CarouselItem>
-              <CarouselItem><img className="carouselimg" src={i2} alt=""/></CarouselItem>
+              <CarouselItem><img className="carouselimg" src={mainbanner} alt=""/></CarouselItem>
+              {/* <CarouselItem><img className="carouselimg" src={i2} alt=""/></CarouselItem>
               <CarouselItem><img className="carouselimg" src={i3} alt=""/></CarouselItem>
-              <CarouselItem><img className="carouselimg" src={i1} alt=""/></CarouselItem>
+              <CarouselItem><img className="carouselimg" src={i1} alt=""/></CarouselItem> */}
             </Carousel>
             <Home/>
             <Footer/>

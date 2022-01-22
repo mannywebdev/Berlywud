@@ -1,0 +1,21 @@
+.tiles__img{
+    max-width: 46%;
+    margin: 1.5% 1.5%;
+}
+.tiles{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 1024px){
+    .tiles__img{
+        margin: 1% 1%;
+    }
+    .tiles{
+        width: 100%;
+        margin: 0 auto;
+    }
+  }

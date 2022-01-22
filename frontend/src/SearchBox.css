@@ -18,7 +18,9 @@
   
   .searchTerm {
     width: 100%;
-    border: 2px solid grey;
+    border: 2px solid white;
+    color: black;
+    background-color: white;
     border-right: none;
     padding: 5px;
     height: 36px;
@@ -31,10 +33,10 @@
   .searchButton {
     width: 40px;
     height: 36px;
-    border: 1px solid #ff3e6c;
-    background: #ff3e6c;
+    border: 1px solid #fff;
+    background: #fff;
     text-align: center;
-    color: #fff;
+    color: black;
     border-radius: 0 5px 5px 0;
     cursor: pointer;  
   }

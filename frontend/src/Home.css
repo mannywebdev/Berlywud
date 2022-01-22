@@ -23,6 +23,12 @@
     min-width: 15em;
 }
 
+.home__flag>img{
+    width: 100%;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
 
 @media only screen and (max-width: 570px){
     .home__page .home__container{
