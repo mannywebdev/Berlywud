@@ -1,6 +1,6 @@
 .tiles__img{
     max-width: 46%;
-    margin: 1.5% 1.5%;
+    margin: 1.5% ;
 }
 .tiles{
     width: 90%;
@@ -10,12 +10,15 @@
     justify-content: center;
 }
 
-@media only screen and (max-width: 1024px){
+@media only screen and (max-width: 576px){
     .tiles__img{
-        margin: 1% 1%;
+        padding: 0 0.6rem 0.6rem 0.6rem;
+        margin: 0;
+        max-width: 100%;
     }
     .tiles{
         width: 100%;
         margin: 0 auto;
+        flex-direction: column;
     }
   }
