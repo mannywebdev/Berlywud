@@ -146,11 +146,13 @@ function Navbar() {
                     ):
                     (
                         <Link className="link link__button" to='/signin'>
-                         <Button
+                        <ThemeProvider theme={theme}>
+                            <Button
+                                color="secondary"
                                 variant="contained"
-                            >
-                            Login
-                        </Button>
+                            >Login
+                            </Button>
+                        </ThemeProvider>
                         </Link>
                     )
                 }

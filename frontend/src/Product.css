@@ -81,7 +81,7 @@
     .product{
         width:14em;     
         margin:  0.4em;
-        padding: 0.6em;
+        padding: 0em;
     }
     .product__img{
         width: 9em;
@@ -97,7 +97,7 @@
     .product{
         width:10em;     
         margin:  0.3em;
-        padding: 0.6em 0.4em;
+        padding: 0em 0em;
     }
     .product__img{
         width: 6em;

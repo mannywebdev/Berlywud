@@ -70,12 +70,12 @@
     outline: none;
 }
 .productmain__info .productmain__button>button:focus{
-    background-color: #ff3e6c;
-    color :#ffffff;
+    background-color: #f6dd90;
+    color : #ffffff;
 }
 .pink__button>Button{
-    background-color: #ff3e6c;
-    color: #ffffff;
+    background-color: #f6dd90;
+    color: #000;
     font-size: 1em;
     padding: 0.6em 1.3em;
     border-radius: 4px;
@@ -89,7 +89,7 @@
     margin: .5em 0 .5em 0;
 }
 .pink__button>Button:hover{
-    background-color: #ff3e6be8;
+    background-color: #e0c36c;
 }
 .productmain__buttonwidth{
     max-width: 12em;

@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import "./Home.css"
 import Product from "./Product"
 import Tiles from "./Tiles"
@@ -6,15 +6,24 @@ import {useDispatch,useSelector} from 'react-redux'
 import Sidebar from "./Sidebar"
 import Loadingmsg from './Loadingmsg'
 import Errormsg from './Errormsg'
-import flag_gold from './images/flag_gold.png'
+import flag from './images/flag.png'
 import {allProductsLoad} from './redux/actions/allProductsActions'
 import Carousel ,{CarouselItem} from './Carousel'
 import carousel1 from './images/carousel1.png'
 import carousel2 from './images/carousel2.png'
+import { css } from "@emotion/react";
+import BounceLoader from "react-spinners/BounceLoader";
+
+const override = css`
+        display: block;
+        margin: 0 auto;
+        border-color: #f6dd90;
+`;
 
 function Home() {
 
     const dispatch = useDispatch()
+    const [color,setColor]=useState('#f6dd90')
     const  AllProducts= useSelector(state => state.AllProducts)
     const {loading,error,allProducts} = AllProducts
    
@@ -28,14 +37,15 @@ function Home() {
         <div className="home">
             {
                 loading ? (
-                    <Loadingmsg/> 
+                    <BounceLoader color={color} loading={loading} css={override} size={60} />
                 ): error ? (
                     <Errormsg>{error}</Errormsg>
                 ):(
                     <>
+                    
                     <Tiles/>
                     <div className="home__flag">
-                        <img src={flag_gold} alt=""/>
+                        <img src={flag} alt=""/>
                     </div>
                     <h3>FEATURED PRODUCTS</h3>
                     <Carousel>

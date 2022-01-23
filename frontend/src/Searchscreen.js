@@ -10,6 +10,14 @@ import { prices,ratings } from './utils'
 import './Searchscreen.css'
 import { AiOutlinePlus } from "react-icons/ai";
 import { ImCancelCircle } from "react-icons/im";
+import { css } from "@emotion/react";
+import BounceLoader from "react-spinners/BounceLoader";
+
+const override = css`
+        display: block;
+        margin: 0 auto;
+        border-color: #f6dd90;
+`;
 
 export default function Searchscreen(props) {
   const { name = 'all' , category = 'all' , min = 0, max = 0,rating = 0 , order = 'newest', pageNumber = 1 } = useParams();
@@ -19,6 +27,7 @@ export default function Searchscreen(props) {
   const history = useHistory()
 
   const [brands,setBrands] = useState([])
+  const [color,setColor]=useState('#f6dd90')
   const [isFilterOpen,setIsFilterOpen] = useState(false)
   console.log(`isFilterOpen`, isFilterOpen)
 
@@ -69,7 +78,7 @@ export default function Searchscreen(props) {
     <div className="home">
             {
                 loading ? (
-                    <Loadingmsg/>  
+                    <BounceLoader color={color} loading={loading} css={override} size={60} />
                 ): error ? (
                     <Errormsg>{error}</Errormsg>
                 ):(

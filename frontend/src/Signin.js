@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import GoogleLogin from 'react-google-login';
 import { AiOutlineEye } from "react-icons/ai";
 import { FiEye,FiEyeOff } from "react-icons/fi";
+import { FcGoogle } from "react-icons/fc";
 
 function Signin() {
     const dispatch = useDispatch()
@@ -84,7 +85,10 @@ function Signin() {
                 <GoogleLogin
                     clientId="988273385279-nhtg9hfjh0kidtum9jb8oj21mjiqnhfu.apps.googleusercontent.com"
                     render={renderProps => (
-                    <button onClick={renderProps.onClick} disabled={renderProps.disabled}>Google</button>
+                    <button className="google__btn" onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                        <FcGoogle style={{fontSize: "25px"}}/>
+                        &nbsp;<span>Google</span>
+                    </button>
                     )}
                     buttonText="Login"
                     onSuccess={googleSuccess}

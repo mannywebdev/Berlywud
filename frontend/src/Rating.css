@@ -10,9 +10,19 @@
     margin-left: 0.2em;
 }
 
+@media only screen and (max-width: 1024px){
+    .rating{
+        margin-bottom: 0.9em;
+    }
+}
+
 @media only screen and (max-width: 570px){
+    .rating{
+        margin-bottom: 0.7em;
+    }
     .rating span{
         margin-right: 0.10em;
         font-size: 0.7em;
     }
 }
+

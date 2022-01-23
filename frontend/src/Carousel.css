@@ -23,7 +23,7 @@
     outline: 0;
     background-color: grey;
     height: 12px;
-    border-radius: 50%;
+    border-radius: 4px;
 }
 .indicators > button.active{
     background-color: #f6dd90;
@@ -31,13 +31,14 @@
     border: 0;
     outline: 0;
     height: 12px;
-    border-radius: 50%;
+    border-radius: 4px;
 }
     
 @media only screen and (max-width: 570px){
     .indicators > button{
         margin: 0.5em 0.5em;
         height: 1px; 
+        width: 10px;
     }
     .indicators > button.active{
         height: 2px;
