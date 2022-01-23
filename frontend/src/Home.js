@@ -8,6 +8,9 @@ import Loadingmsg from './Loadingmsg'
 import Errormsg from './Errormsg'
 import flag_gold from './images/flag_gold.png'
 import {allProductsLoad} from './redux/actions/allProductsActions'
+import Carousel ,{CarouselItem} from './Carousel'
+import carousel1 from './images/carousel1.png'
+import carousel2 from './images/carousel2.png'
 
 function Home() {
 
@@ -34,7 +37,12 @@ function Home() {
                     <div className="home__flag">
                         <img src={flag_gold} alt=""/>
                     </div>
-                    <h3>OUR PRODUCTS</h3>
+                    <h3>FEATURED PRODUCTS</h3>
+                    <Carousel>
+                        <CarouselItem><img className="carouselimg" src={carousel1} alt=""/></CarouselItem>
+                        <CarouselItem><img className="carouselimg" src={carousel2} alt=""/></CarouselItem>
+                    </Carousel>
+                    
                     <div className="home__page">
                         {/* <div className="home__sidebar">
                             <Sidebar/>

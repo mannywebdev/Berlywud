@@ -14,7 +14,9 @@ function Product({prop}) {
     return (
         <div className="product">
         <Link style={{color: 'inherit', textDecoration: 'inherit'}} to={`/productpage/${prop._id}`}>
-            <img className="product__img" src={prop.url[0]} alt={prop.title}/>
+            <div style={{backgroundColor:"#fff",padding:"1rem 0"}}>
+                <img className="product__img" src={prop.url[0]} alt={prop.title}/>
+            </div>
             <div className="product__info">
                 <p>{prop.title}</p>
                 <span>Rs.{prop.decantprice.Retail}&nbsp;<del>Rs.{prop.origprice}</del></span>
