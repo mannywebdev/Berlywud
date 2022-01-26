@@ -4,7 +4,7 @@ import axios from 'axios'
 export const register = (name,email,password) => async(dispatch) =>{
     dispatch({type: USER_REGISTER_REQUEST, payload : {name,email,password}})
     try{
-        const {data} = await axios.post('https://api.berlywud.com/api/users/register',{name,email,password})
+        const {data} = await axios.post(Constants.API_BASE_URL +'/api/users/register',{name,email,password})
         dispatch({type: USER_REGISTER_SUCCESS, payload: data})
         dispatch({type: USER_SIGNIN_SUCCESS, payload: data})
         localStorage.setItem('userInfo',JSON.stringify(data))
