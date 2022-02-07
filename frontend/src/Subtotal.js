@@ -1,9 +1,7 @@
 import React from 'react'
 import './Subtotal.css'
 import {useSelector} from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import { Button } from '@material-ui/core'
-import { green, purple } from '@material-ui/core/colors';
+
 
 function Subtotal() {
 
@@ -20,18 +18,18 @@ function Subtotal() {
         <div className="subtotal">
             <div>
                 <h4>PRICE DETAILS ({cartItems.reduce((accumulator,item)=> item.qty + accumulator ,0)} Item)</h4>
-                <table>
-                    <tr>
-                        <td>Total MRP</td>
-                        <td className="rates">Rs. {totalMRP.toFixed(2)}</td>
+                <table className="subtotal__table">
+                    <tr className="subtotal__table__tr">
+                        <td className="subtotal__table__td">Total MRP</td>
+                        <td className="subtotal__table__td rates">Rs. {totalMRP.toFixed(2)}</td>
                     </tr>
-                    <tr>
-                        <td>Delivery Charges</td>
-                        <td className="rates">Rs. {deliveryCharge.toFixed(2)}</td>
+                    <tr className="subtotal__table__tr">
+                        <td className="subtotal__table__td">Delivery Charges</td>
+                        <td className="subtotal__table__td rates">Rs. {deliveryCharge.toFixed(2)}</td>
                     </tr>
-                    <tr>
-                        <td>Total Amount</td>
-                        <td className="rates bt">Rs. {totalAmount.toFixed(2)}</td>
+                    <tr className="subtotal__table__tr">
+                        <td className="subtotal__table__td">Total Amount</td>
+                        <td className="subtotal__table__td rates bt">Rs. {totalAmount.toFixed(2)}</td>
                     </tr>
                 </table>
             </div>

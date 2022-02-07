@@ -32,6 +32,7 @@
     background-color: #fff;
     display: inline-flex;
     justify-content: center;
+    align-items: center;
     color: #000;
     font-size: 1em;
     width: 100%;
@@ -42,13 +43,6 @@
     font-weight: 500;
     font-family: 'Poppins' , 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-
-/* .input-icon-container{
-    display: flex;
-    flex-direction: column;
-    margin: 1em 0;
-} */
 
 .inputfield{
     outline: none;
@@ -92,5 +86,89 @@ span{
 .pink__button Button{
     text-transform: none;
 }
+
+@media only screen and (max-width: 850px){
+    .form{
+        min-width: 25em;
+        padding: 1em;
+        margin: 0.5em;
+    }
+    .form >div{
+        display: flex;
+        flex-direction: column;
+        margin: 0.7em 0;
+    }
+    .form h2{
+        padding-bottom: 0.5em;
+    }
+    .form label{
+        font-size: 0.9em;
+    }
+    .inputfieldtext{
+        padding: 1em;
+    }
+    .google__btn{
+        font-size: 0.9em;
+    }
+    .inputfield{
+        font-size: 0.9em;
+    }
+    .inputfielddiv{
+        padding: 0.5em;
+    }
+    h2{
+        font-size: 1.2em;
+    }
+    .signin__footer>span{
+        font-size: 0.9em;
+        margin: 0.3em 0;
+    }
+    .link__pink{
+        font-size: 0.9em;
+    }
+}
+
+@media only screen and (max-width: 570px){
+    .form{
+        min-width: 20em;
+        padding: 1em;
+        margin: 0.5em;
+    }
+    .form >div{
+        display: flex;
+        flex-direction: column;
+        margin: 0.7em 0;
+    }
+    .form h2{
+        padding-bottom: 0.5em;
+    }
+    .form label{
+        font-size: 0.7em;
+    }
+    .inputfieldtext{
+        padding: 1em;
+    }
+    .google__btn{
+        font-size: 0.7em;
+    }
+    .inputfield{
+        font-size: 0.7em;
+    }
+    .inputfielddiv{
+        padding: 0.5em;
+    }
+    h2{
+        font-size: 1em;
+    }
+    .signin__footer>span{
+        font-size: 0.7em;
+        margin: 0.3em 0;
+    }
+    .link__pink{
+        font-size: 0.8em;
+    }
+}
+
+
 
 

@@ -61,3 +61,24 @@
     }
 }
 
+
+@media only screen and (max-width: 570px){
+    .cart-values{
+        padding: 0.7em;
+    }
+    .cart__left  h4,.cart__right h4{
+        margin: 0;
+        font-size: 0.9em;
+    }
+    .cart__quotes p{
+        font-size: 0.7em;
+    }
+    .cart__quotes Button{
+        font-size: 0.7em;
+    }
+    .cart__quotes img{
+        max-width: 600px;
+        margin: 1em 0;
+    }
+}
+

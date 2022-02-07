@@ -65,45 +65,53 @@ export default function Myprofile() {
             )}
             <div>
               <label htmlFor="name">Name</label>
-              <input
-                className="inputfieldtext"
-                id="name"
-                type="text"
-                placeholder="Enter name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              ></input>
+              <div className="inputfielddiv">
+                <input
+                  className="inputfield"
+                  id="name"
+                  type="text"
+                  placeholder="Enter name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                ></input>
+              </div>
             </div>
             <div>
               <label htmlFor="email">Email</label>
-              <input
-                className="inputfieldtext"
-                id="email"
-                type="email"
-                placeholder="Enter email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              ></input>
+              <div className="inputfielddiv">
+                <input
+                  className="inputfield"
+                  id="email"
+                  type="email"
+                  placeholder="Enter email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                ></input>
+              </div>
             </div>
             <div>
               <label htmlFor="password">Password</label>
-              <input
-                className="inputfieldtext"
-                id="password"
-                type="password"
-                placeholder="Enter password"
-                onChange={(e) => setPassword(e.target.value)}
-              ></input>
+              <div className="inputfielddiv">
+                <input
+                  className="inputfield"
+                  id="password"
+                  type="password"
+                  placeholder="Enter password"
+                  onChange={(e) => setPassword(e.target.value)}
+                ></input>
+              </div>
             </div>
             <div>
               <label htmlFor="confirmPassword">confirm Password</label>
-              <input
-                className="inputfieldtext"
-                id="confirmPassword"
-                type="password"
-                placeholder="Enter confirm password"
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              ></input>
+              <div className="inputfielddiv">
+                <input
+                  className="inputfield"
+                  id="confirmPassword"
+                  type="password"
+                  placeholder="Enter confirm password"
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                ></input>
+              </div>
             </div>
             <div className="pink__button">
                 <Button variant="contained" type="submit">Update</Button>

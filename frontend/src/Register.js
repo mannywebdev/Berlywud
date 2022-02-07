@@ -111,7 +111,7 @@ function Register() {
                     <Button variant="contained" type="submit">Continue</Button>
                 </div>
                 
-                <div>
+                <div className="signin__footer">
                     <span>Already have an account?</span> <Link to={`/signin?redirect=${redirect}`} className="link link__pink">Login</Link>
                 </div>
             </form>

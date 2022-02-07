@@ -88,7 +88,7 @@
 }
 
 
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 570px){
     .cardleft__info >span{
         margin: 0.3em 0.3em 0.3em 0;
         font-size: 0.8em;
@@ -124,6 +124,10 @@
         font-size: 1.1em;
     }
     .paymentleft__card >h3{
+        margin: 0;
+    }
+    .payment__left{
+        flex-grow: 1;
         margin: 0;
     }
 }

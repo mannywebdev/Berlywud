@@ -95,7 +95,7 @@ function Signin() {
                     onFailure={googleFailure}
                     cookiePolicy={'single_host_origin'}
                 />  
-                <div>
+                <div className="signin__footer">
                     <span>New Customer?</span> <Link to={`/register?redirect=${redirect}`} className="link link__pink">Create your account</Link>
                 </div>
             </form>

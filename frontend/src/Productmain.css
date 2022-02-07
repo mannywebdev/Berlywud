@@ -345,7 +345,7 @@ textarea{
     }
     .pink__button>Button{
         padding: 0.5em 0.6em;
-        font-size: 1em;
+        font-size: 0.9em;
     }
     
     .productmain__productdetails{
@@ -359,6 +359,11 @@ textarea{
     .productmain__productdetails>h4{
         font-size: 0.9em;
         margin: 0.7em 0;
+    }
+
+    .pink__button>Button{
+        font-size: 0.9em;
+        padding: 0.6em 1.3em;
     }
 }
 
@@ -432,10 +437,6 @@ textarea{
     .productmain__productdetails>h3{
         font-size: 0.9em;
     }
-    .pink__button>Button{
-        padding: 0.5em 0.6em;
-        font-size: 0.8em;
-    }
     
     .productmain__productdetails{
         margin: 0.8em 0 0.8em 0;
@@ -484,5 +485,9 @@ textarea{
     .productmain__form h4{
         font-size: 0.8em;
         margin: 0.5em 0;
+    }
+    .pink__button>Button{
+        font-size: 0.7em;
+        padding: 0.4em 1.3em;
     }
 }

@@ -3,9 +3,8 @@
     font-family: 'Poppins' , 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: right;
 }
-table{
+.subtotal__table{
     width: 100%;
-    
 }
 .subtotal{
     border: 1px solid #343434;
@@ -13,7 +12,7 @@ table{
     border-radius: 3px;
     min-width: 18em;
 }
-table> tr > td{
+.subtotal__table> .subtotal__table__tr > .subtotal__table__td{
     padding: 0.3em 0;
     font-weight: 300;
 }
@@ -24,11 +23,11 @@ table> tr > td{
     margin: 5px 0 10px 0;
     font-weight: 500;
 }
-table>tr>th{
+.subtotal__table> .subtotal__table__tr> .subtotal__table__th{
     text-align: left;
 }
 .subtotal__button > Button{
-    background-color: #ff3e6c;
+    background-color: #f6dd90;
     color: #ffffff;
     font-size: 1em;
     padding: 0.4em ;
@@ -39,5 +38,26 @@ table>tr>th{
     width: 100%;
 }
 .subtotal__button > Button:hover{
-    background-color: #ff3e6be8;
+    background-color: #f6dd90;
 }
+
+@media only screen and (max-width: 850px){
+    .subtotal__table> .subtotal__table__tr > .subtotal__table__td{
+        font-size: 0.9em;
+    }
+}
+
+@media only screen and (max-width: 570px){
+    .subtotal__table> .subtotal__table__tr > .subtotal__table__td{
+        padding: 0.1em 0;
+        font-size: 0.7em;
+    }
+    .subtotal{
+        padding: 0.6em;
+    }
+    .subtotal h4{
+        font-size: 0.9em;
+    }
+}
+
+

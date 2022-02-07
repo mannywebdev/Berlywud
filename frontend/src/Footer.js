@@ -1,6 +1,6 @@
 import React from 'react'
 import './Footer.css'
-import logoblack from './images/blacklogo2025.png'
+import logoblack from './images/BERLYWUD.png'
 
 function Footer() {
     return (

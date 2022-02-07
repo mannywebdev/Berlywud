@@ -5,7 +5,7 @@ import Subtotal from './Subtotal'
 import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
 import { addToCart } from './redux/actions/cartActions'
 import CartItem from './CartItem';
-import emptybag from './images/emptybag.png'
+import emptybag from './images/empty-cuateee.png'
 import { Button } from '@material-ui/core';
 
 function Cart() {
