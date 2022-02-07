@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import './Cart.css'
 import { useDispatch, useSelector } from 'react-redux';
 import Subtotal from './Subtotal'
-
 import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
 import { addToCart } from './redux/actions/cartActions'
 import CartItem from './CartItem';

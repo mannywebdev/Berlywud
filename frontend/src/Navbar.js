@@ -129,7 +129,7 @@ function Navbar() {
                                     <Button
                                         variant="contained"
                                         endIcon={<ArrowDropDownIcon/>}
-                                        color="secondary"
+                                        color="primary"
                                     >
                                     {
                                         acronym    
@@ -162,7 +162,7 @@ function Navbar() {
                             <ThemeProvider theme={theme}>
                             <Link className="link link__button" to='#admin'>
                                 <Button 
-                                    color="secondary"
+                                    color="primary"
                                     variant="contained"
                                     endIcon={<ArrowDropDownIcon/>}
                                     >

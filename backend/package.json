@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/mannywebdev/Berlywud#readme",
   "devDependencies": {
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.15"
   },
   "dependencies": {
     "aws-sdk": "^2.1028.0",

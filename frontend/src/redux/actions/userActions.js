@@ -1,11 +1,13 @@
 import { USER_DELETE_FAIL, USER_DELETE_REQUEST, USER_DELETE_SUCCESS, USER_DETAILS_FAIL, USER_DETAILS_REQUEST, USER_DETAILS_SUCCESS, USER_LIST_FAIL, USER_LIST_REQUEST, USER_LIST_SUCCESS, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNOUT, USER_UPDATE_FAIL, USER_UPDATE_PROFILE_FAIL, USER_UPDATE_PROFILE_REQUEST, USER_UPDATE_PROFILE_SUCCESS, USER_UPDATE_SUCCESS } from "../constants/userConstants"
 import axios from 'axios'
-import { Constants } from '../../Config.js'
+import { API_BASE_URL } from '../../Config.js'
 
 export const register = (name,email,password) => async(dispatch) =>{
     dispatch({type: USER_REGISTER_REQUEST, payload : {name,email,password}})
+    console.log("####", API_BASE_URL +'api/users/register')
     try{
-        const {data} = await axios.post(Constants.API_BASE_URL +'/api/users/register',{name,email,password})
+        const {data} = await axios.post(API_BASE_URL +'/api/users/register',{name,email,password})
+        console.log("%%%%", API_BASE_URL +'api/users/register')
         dispatch({type: USER_REGISTER_SUCCESS, payload: data})
         dispatch({type: USER_SIGNIN_SUCCESS, payload: data})
         localStorage.setItem('userInfo',JSON.stringify(data))
@@ -20,7 +22,7 @@ export const register = (name,email,password) => async(dispatch) =>{
 export const signin = (email,password) => async(dispatch) =>{
     dispatch({type: USER_SIGNIN_REQUEST , payload : {email,password}})
     try{
-        const {data} = await axios.post('https://api.berlywud.com/api/users/signin',{email,password})
+        const {data} = await axios.post(API_BASE_URL + '/api/users/signin',{email,password})
         dispatch({type: USER_SIGNIN_SUCCESS, payload: data})
         localStorage.setItem('userInfo',JSON.stringify(data))
     }catch(error){
@@ -37,7 +39,7 @@ export const detailsUser = (userId) => async (dispatch, getState) => {
       UserSignin: { userInfo },
     } = getState();
     try {
-      const { data } = await axios.get(`https://api.berlywud.com/api/users/${userId}`, {
+      const { data } = await axios.get(API_BASE_URL + `/api/users/${userId}`, {
         headers: { Authorization: `Bearer ${userInfo.token}` },
       });
       dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
@@ -56,7 +58,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       UserSignin: { userInfo },
     } = getState();
     try {
-      const { data } = await axios.put(`https://api.berlywud.com/api/users/profile`, user, {
+      const { data } = await axios.put(API_BASE_URL + `/api/users/profile`, user, {
         headers: { Authorization: `Bearer ${userInfo.token}` },
       });
       dispatch({ type: USER_UPDATE_PROFILE_SUCCESS, payload: data });
@@ -84,7 +86,7 @@ export const listUsers = () => async (dispatch, getState) => {
     const {
       UserSignin: { userInfo },
     } = getState();
-    const { data } = await axios.get('https://api.berlywud.com//api/users', {
+    const { data } = await axios.get(API_BASE_URL + '/api/users', {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
@@ -105,7 +107,7 @@ export const deleteUser = (userId) => async (dispatch, getState) => {
     UserSignin: { userInfo },
   } = getState();
   try {
-    const { data } = await axios.delete(`https://api.berlywud.com/api/users/${userId}`, {
+    const { data } = await axios.delete(API_BASE_URL + `/api/users/${userId}`, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: USER_DELETE_SUCCESS, payload: data });
@@ -124,7 +126,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
     UserSignin: { userInfo },
   } = getState();
   try {
-    const { data } = await axios.put(`https://api.berlywud.com/api/users/${user._id}`, user, {
+    const { data } = await axios.put(API_BASE_URL + `/api/users/${user._id}`, user, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: USER_UPDATE_SUCCESS, payload: data });

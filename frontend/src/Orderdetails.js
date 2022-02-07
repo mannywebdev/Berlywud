@@ -8,6 +8,7 @@ import Loadingmsg from './Loadingmsg'
 import './Payment.css'
 import { deliverOrder, detailsOrder, payOrder } from './redux/actions/orderActions'
 import { ORDER_DELIVER_RESET, ORDER_PAY_RESET } from './redux/constants/orderConstants'
+import { API_BASE_URL } from './Config.js'
 
 const loadRazorpay= (src)=>{
     return new Promise((resolve)=>{
@@ -72,7 +73,7 @@ function Orderdetails() {
             },
             body : JSON.stringify(data)
         };
-        const razorpayorder =  await fetch('https://api.berlywud.com/razorpay',option).then((t)=>t.json())
+        const razorpayorder =  await fetch(API_BASE_URL + '/razorpay',option).then((t)=>t.json())
         console.log('razorpayorder',razorpayorder)
 
         const options = {
@@ -81,7 +82,7 @@ function Orderdetails() {
             "currency": "INR",
             "name": "Berlywud",
             "description": "Feed Your Senses",
-            "image": 'https://api.berlywud.com/berlywud.png',
+            "image": API_BASE_URL + '/berlywud.png',
             "order_id": razorpayorder.id,
              //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
             "handler": async function (response){
@@ -94,7 +95,7 @@ function Orderdetails() {
                     razorpayOrderId: response.razorpay_order_id,
                     razorpaySignature: response.razorpay_signature,
                 }
-                const result = await axios.post("https://api.berlywud.com/payment/success",data);
+                const result = await axios.post(API_BASE_URL + "/payment/success",data);
                 if(result.data.msg === "success"){
                     dispatch(payOrder(order,result))
                 }

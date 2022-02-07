@@ -1,8 +1,9 @@
 import axios from "axios"
 import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SAVE_SHIPPING_ADDRESS } from "../constants/cartConstants"
+import { API_BASE_URL } from '../../Config.js'
 
 export const addToCart = (productId,price,size,qty=1) => async(dispatch,getState) =>{
-    const {data} = await axios.get(`https://api.berlywud.com/api/products/${productId}`)
+    const {data} = await axios.get(API_BASE_URL + `/api/products/${productId}`)
     dispatch({
         type: CART_ADD_ITEM , 
         payload : {

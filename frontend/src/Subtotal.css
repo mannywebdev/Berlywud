@@ -8,7 +8,7 @@ table{
     
 }
 .subtotal{
-    border: 1px solid #e7e7e7;
+    border: 1px solid #343434;
     padding: 1em;
     border-radius: 3px;
     min-width: 18em;
@@ -18,11 +18,10 @@ table> tr > td{
     font-weight: 300;
 }
 .bt{
-    border-top: 1px solid #e7e7e7;
+    border-top: 1px solid #343434;
 }
 .subtotal h4{
     margin: 5px 0 10px 0;
-    color: #57534a;
     font-weight: 500;
 }
 table>tr>th{

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { addToCart, removeFromCart } from './redux/actions/cartActions'
 import DeleteIcon from '@material-ui/icons/Delete';
 import { IconButton } from '@material-ui/core'
+import { ImBin } from "react-icons/im";
 
 function CartItem({title,url,brand,price,product,stockcount,size,qty}) {
     const dispatch = useDispatch()
@@ -44,10 +45,7 @@ function CartItem({title,url,brand,price,product,stockcount,size,qty}) {
                         <option key={x+1} value={x+1}>{x+1}</option>
                     ))}
                 </select>
-                <IconButton aria-label="delete">
-                    <DeleteIcon onClick={()=> removeFromCartHandler(product,price)}/>
-                </IconButton>
-                
+                <ImBin className='cartitem__delete' onClick={()=> removeFromCartHandler(product,price)}/>  
             </div>
         </div>
     )

@@ -16,8 +16,9 @@
     margin: 2em 0.5em 1em 0.5em;
     width: 24em;
     height: 32em;
-    border: 1px solid rgba(211,211,211,0.5);
-    object-fit: contain;	
+    border: 1px solid #343434;
+    object-fit: contain;
+    background-color: white;	
 }
 .productmain__img > img:hover{
     transform:  scale(1.1);
@@ -33,9 +34,9 @@
     padding-bottom: 0.5em;
     margin: 0.5em 0;
     font-size: 1.5em;
-    color: #505050;
+    color: #f6dd90;
     font-weight: 300;
-    border-bottom: 1px solid rgba(211,211,211,0.5);
+    border-bottom: 1px solid #343434;
 }
 .productmain__info .productmain__pricing >span{
     font-size: 1.8em;
@@ -48,30 +49,30 @@
 }
 .productmain__info .productmain__pricing >p{
     font-size: 1.2em;
-    color: green;
     font-weight: 500;
+    color: #537A5A;
 }
 .productmain__info .productmain__pricing .discount{
     font-size: 1.4em;
-    color: orange;
+    color: #f6dd90;
 }
 .productmain__button>p{
     font-size: 1.3em;
-    color: #505050;
+    color: #fff;
 }
 .productmain__info .productmain__button>button{
     font-size: 1.2em;
     padding: 0.4em 0.8em;
     margin: 0 0.5em 1em 0 ;
-    border: 1px solid #ff3e6c;
-    color:  #ff3e6c;
+    border: 1px solid #fff;
+    color:  #fff;
     background: none;
     border-radius: 25px;
     outline: none;
 }
 .productmain__info .productmain__button>button:focus{
     background-color: #f6dd90;
-    color : #ffffff;
+    color : #000;
 }
 .pink__button>Button{
     background-color: #f6dd90;
@@ -99,8 +100,8 @@ select{
     border-radius: 5px;
 }
 .pinkButton{
-    background-color: #ff3e6c;
-    color: #ffffff;
+    background-color: #f6dd90;
+    color: #000;
     font-size: 1em;
     padding: 0.6em 1.3em;
     border-radius: 4px;
@@ -120,8 +121,8 @@ textarea{
 
 .productmain__productdetails{
     margin: 1em 0 1em 0;
-    border-top: 1px solid rgba(211,211,211,0.5);
-    border-bottom: 1px solid rgba(211,211,211,0.5);
+    border-top: 1px solid #343434;
+    border-bottom: 1px solid #343434;
 }
 
 
@@ -129,10 +130,10 @@ textarea{
     margin: 1.5em 0 1.5em 0;
 }
 .success{
-    color: green;
+    color: #fddd90;
 }
 .error{
-    color: red;
+    color: #f6dd90;
 }
 
 .productmain__productdetails>p{
@@ -141,7 +142,7 @@ textarea{
 .productmain__productdetails>h4{
     font-size: 1em;
     margin: 0.8em 0;
-    color: #505050;
+    color: #537A5A;
 }
 
 .reviews__comment{
@@ -161,7 +162,7 @@ textarea{
 }
 
 .reviews__userreview{
-    border-bottom: 1px solid rgba(211,211,211,0.5);
+    border-bottom: 1px solid #343434;
 }
 
 .productmain__form select, .productmain__form textarea{
@@ -170,16 +171,18 @@ textarea{
     
 }
 .productmain__form label{
-    color: #505050;
+    color: #fff;
+    padding: 0.5em 0;
 }
 .reviews__pencil{
-    color: #008000;
+    color: #537A5A;
 }
 .reviews{
-    border-bottom: 1px solid rgba(211,211,211,0.5);
+    border-bottom: 1px solid #343434;
+    padding: 0.5em 0;
 }
 .reviews__userreview{
-    border-bottom: 1px solid rgba(211,211,211,0.5);
+    border-bottom: 1px solid #343434;
     margin: 0.5em 0;
 }
 
@@ -194,9 +197,7 @@ textarea{
         padding-bottom: 0.5em;
         margin: 0.5em 0;
         font-size: 1.2em;
-        color: #505050;
         font-weight: 300;
-        border-bottom: 1px solid rgba(211,211,211,0.5);
     }
     .productmain__info .productmain__pricing >span{
         font-size: 1.4em;
@@ -209,16 +210,13 @@ textarea{
     }
     .productmain__info .productmain__pricing >p{
         font-size: 1em;
-        color: green;
         font-weight: 500;
     }
     .productmain__info .productmain__pricing .discount{
         font-size: 1.2em;
-        color: orange;
     }
     .productmain__button>p{
         font-size: 1em;
-        color: #505050;
     }
     .productmain__info .productmain__button>button{
         padding: 0.3em 0.6em;
@@ -255,11 +253,9 @@ textarea{
         font-size: 0.9em;
     }
     .productmain__form label{
-        color: #505050;
         font-size: 0.9em;
     }
     .reviews__pencil{
-        color: #008000;
         font-size: 0.9em;
     }
     .reviews__comment{
@@ -331,16 +327,13 @@ textarea{
     }
     .productmain__info .productmain__pricing >p{
         font-size: 1em;
-        color: green;
         font-weight: 500;
     }
     .productmain__info .productmain__pricing .discount{
         font-size: 1.2em;
-        color: orange;
     }
     .productmain__button>p{
         font-size: 1em;
-        color: #505050;
     }
     .productmain__info .productmain__button>button{
         padding: 0.4em 0.8em;
@@ -400,8 +393,8 @@ textarea{
         font-size: 0.9em;
     }
     .productmain__form label{
-        color: #505050;
         font-size: 0.9em;
+        padding: 0.3em 0;
     }
 }
 
@@ -461,21 +454,16 @@ textarea{
         font-size: 0.7em;
     }
     
-    .reviews__userreview{
-        border-bottom: 1px solid rgba(211,211,211,0.5);
-    }
-    
     .productmain__form select, .productmain__form textarea{
         width: 100%;
         margin: 0.2em 0;
         font-size: 0.7em;
     }
     .productmain__form label{
-        color: #505050;
         font-size: 0.7em;
+        padding: 0.3em 0;
     }
     .reviews__pencil{
-        color: #008000;
         font-size: 0.7em;
     }
     .reviews__comment{

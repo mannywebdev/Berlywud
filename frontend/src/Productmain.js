@@ -143,7 +143,7 @@ function Productmain() {
                             }
                             </div>
                             <div className="productmain__status">
-                                <span>Status: </span>
+                                <span>Status:&nbsp; </span>
                                 {product.stockcount > 0 ? <span className="success">Instock</span> : <span className="error">Out of stock</span>}
                             </div>
                             <div className="productmain__productdetails">
@@ -162,7 +162,7 @@ function Productmain() {
                             <div>
                                 <h3 className="reviews">RATINGS <RiStarSmileLine/></h3>
                                 {_.isEmpty(product.userreviews) && (
-                                <Errormsg>There is no review.</Errormsg>
+                                <Errormsg>Be the first to review.</Errormsg>
                                 )}
                                 <div>
                                 { product.userreviews.map((review) => (

@@ -22,6 +22,8 @@ var instance = new Razorpay({
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended : true}))
+var cors = require('cors');
+app.use(cors());
 
 const port = config.PORT
 mongoose.connect(process.env.MONGODB_URL  || 'mongodb://localhost/berlywud',{
@@ -143,6 +145,13 @@ app.use('/api/orders', orderRouter);
 
 app.get('/',(req,res) =>{
     res.send('Server is Ready')
+})
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET , PUT , POST , DELETE");
+    res.header("Access-Control-Allow-Headers", "Content-Type, x-requested-with");
+    next(); // Important
 })
 
 app.use((err,req,res,next)=>{

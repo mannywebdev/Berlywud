@@ -41,71 +41,83 @@ function Shippingaddress() {
                         <h2>Shipping Address</h2>
                         <div>
                             <label htmlFor="fullname">Full name (First and Last name)</label>
-                            <input 
-                            className="inputfieldtext"
-                            type="text" 
-                            id="fullname"
-                            value={fullName}
-                            onChange={(e)=> setFullName(e.target.value)}
-                            required>
-                            </input>
+                            <div className="inputfielddiv">
+                                <input 
+                                className="inputfield"
+                                type="text" 
+                                id="fullname"
+                                value={fullName}
+                                onChange={(e)=> setFullName(e.target.value)}
+                                required>
+                                </input>
+                            </div>
                         </div>
                         <div>
                             <label htmlFor="pincode">PIN code</label>
-                            <input 
-                            className="inputfieldtext"
-                            type="number" 
-                            id="pincode"
-                            placeholder="6 digits [0-9] PIN code"
-                            value={pinCode}
-                            onChange={(e)=> setPinCode(e.target.value)}
-                            required>
-                            </input>
+                            <div className="inputfielddiv">
+                                <input 
+                                className="inputfield"
+                                type="number" 
+                                id="pincode"
+                                placeholder="6 digits [0-9] PIN code"
+                                value={pinCode}
+                                onChange={(e)=> setPinCode(e.target.value)}
+                                required>
+                                </input>
+                            </div>
                         </div>
                         <div>
                             <label htmlFor="address1">Flat, House no., Building, Company, Apartment</label>
-                            <input 
-                            className="inputfieldtext"
-                            type="text" 
-                            id="address1"
-                            value={address1}
-                            onChange={(e)=> setAddress1(e.target.value)}
-                            required>
-                            </input>
+                            <div className="inputfielddiv">
+                                <input 
+                                className="inputfield"
+                                type="text" 
+                                id="address1"
+                                value={address1}
+                                onChange={(e)=> setAddress1(e.target.value)}
+                                required>
+                                </input>
+                            </div>
                         </div>
                         <div>
                             <label htmlFor="address2">Area, Colony, Street, Sector, Village , Landmark</label>
-                            <input 
-                            className="inputfieldtext"
-                            type="text" 
-                            id="address2"
-                            placeholder="E.g Near Roman apt. sector-62 ,e.t.c"
-                            value={address2}
-                            onChange={(e)=> setAddress2(e.target.value)}>
-                            </input>
+                            <div className="inputfielddiv">
+                                <input 
+                                className="inputfield"
+                                type="text" 
+                                id="address2"
+                                placeholder="E.g Near Roman apt. sector-62 ,e.t.c"
+                                value={address2}
+                                onChange={(e)=> setAddress2(e.target.value)}>
+                                </input>
+                            </div>
                         </div>
                         <div>
                             <label htmlFor="city">Town/City</label>
-                            <input 
-                            className="inputfieldtext"
-                            type="text" 
-                            id="city"
-                            value={city}
-                            onChange={(e)=> setCity(e.target.value)}
-                            required>
-                            </input>
+                            <div className="inputfielddiv">
+                                <input 
+                                className="inputfield"
+                                type="text" 
+                                id="city"
+                                value={city}
+                                onChange={(e)=> setCity(e.target.value)}
+                                required>
+                                </input>
+                            </div>
                         </div>
                         <div>
                             <label htmlFor="state">State/Region</label>
-                            <input 
-                            className="inputfieldtext"
-                            type="text" 
-                            id="state"
-                            placeholder="E.g MP,Punjab,Gujarat"
-                            value={state}
-                            onChange={(e)=> setState(e.target.value)}
-                            required>
-                            </input>
+                            <div className="inputfielddiv">
+                                <input 
+                                className="inputfield"
+                                type="text" 
+                                id="state"
+                                placeholder="E.g MP,Punjab,Gujarat"
+                                value={state}
+                                onChange={(e)=> setState(e.target.value)}
+                                required>
+                                </input>
+                            </div>
                         </div>
                         <div className="pink__button">
                             <Button variant="contained" type="submit">Continue</Button>

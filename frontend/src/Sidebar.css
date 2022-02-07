@@ -1,17 +1,17 @@
 .sidebar{
-    border: 1px solid #d3d3d3;
+    border: 1px solid #373737;
     margin: 1em 0em 0em 1em;
     padding: 0em 1em;
     border-radius: 0.4em;
     background-color: #000;
 }
 .sidebar h4{
-    border-bottom: 1px solid #d3d3d3;
+    border-bottom: 1px solid #343434;
     margin: 0;
     padding: 1em 0em;
 }
 .sidebar h5{
-    border-bottom: 1px solid #d3d3d3;
+    border-bottom: 1px solid #343434;
     margin: 0;
     padding: 1em 0em;
 }

@@ -22,9 +22,10 @@
 }
 
 .inputfieldtext{
-    border: 1px solid #d4d5d9;
+    border: 1px solid #343434;
     padding: 1em;
-    color: #282c3f;
+    color: #fff;
+    background-color: black;
 }
 
 .google__btn{

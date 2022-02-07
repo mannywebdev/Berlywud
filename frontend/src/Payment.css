@@ -8,8 +8,9 @@
 }
 .paymentleft__card >h3{
     margin: 0;
-    border-bottom: 1px solid #e7e7e7;
+    border-bottom: 1px solid #343434;
     padding-bottom: 0.8em;
+    color: #f6dd90;
 }
 .paymentleft__card>p{
     font-weight: 300;
@@ -19,12 +20,12 @@
 }
 .paymentleft__card{
     border-radius: 3px;
-    border: 1px solid #e7e7e7;
+    border: 1px solid #343434;
     margin: 1em 0;
     padding: 1em;
 }
 .paymentleft__card > div:nth-child(4){
-    border-top: 1px solid #e7e7e7;
+    border-top: 1px solid #343434;
     padding-top: 0.5em;
 }
 .payment__container{
@@ -37,7 +38,7 @@
     display: flex;
     justify-content: space-between;
     margin: 1em 0;
-    border-bottom: 1px solid #e7e7e7;
+    border-bottom: 1px solid #343434;
     padding: 0.5em 0;
     border-radius: 3px;
 }
@@ -58,7 +59,7 @@
 }
 .cardleft__info > span:last-child{
     font-weight: 300;
-    color: green;
+    color: #537a5a;
 }
 .cardleft__info p{
     margin: 0;
@@ -76,6 +77,14 @@
 .paymentright__div>p{
     font-weight: 300;
     margin: 0;
+}
+
+@media only screen and (max-width: 860px){
+    .payment__container{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
 }
 
 
@@ -101,7 +110,7 @@
     .cardright{
         font-size: 0.9em;
         padding: 0.3em 1em 0 1em;
-        border-top: 1px solid #e7e7e7;
+        border-top: 1px solid #343434;
         display: block;
         text-align: right;
     }

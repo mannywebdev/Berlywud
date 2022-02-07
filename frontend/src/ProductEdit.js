@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
 import { PRODUCT_UPDATE_RESET } from './redux/constants/allProductConstants';
 import axios from 'axios';
+import { API_BASE_URL } from './Config.js'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -251,7 +252,7 @@ export default function ProductEdit(props) {
                     bodyFormData.append('image', file);
                     setLoadingUpload(true);
                     try {
-                      const { data } = await axios.post('https://api.berlywud.com/api/uploads/s3', bodyFormData, {
+                      const { data } = await axios.post(API_BASE_URL + '/api/uploads/s3', bodyFormData, {
                         headers: {
                           'Content-Type': 'multipart/form-data',
                           Authorization: `Bearer ${userInfo.token}`,
@@ -296,7 +297,7 @@ export default function ProductEdit(props) {
                     bodyFormData.append('image', file);
                     setLoadingUpload1(true);
                     try {
-                      const { data } = await axios.post('https://api.berlywud.com/api/uploads/s3', bodyFormData, {
+                      const { data } = await axios.post(API_BASE_URL + '/api/uploads/s3', bodyFormData, {
                         headers: {
                           'Content-Type': 'multipart/form-data',
                           Authorization: `Bearer ${userInfo.token}`,
@@ -341,7 +342,7 @@ export default function ProductEdit(props) {
                     bodyFormData.append('image', file);
                     setLoadingUpload2(true);
                     try {
-                      const { data } = await axios.post('https://api.berlywud.com/api/uploads/s3', bodyFormData, {
+                      const { data } = await axios.post(API_BASE_URL + '/api/uploads/s3', bodyFormData, {
                         headers: {
                           'Content-Type': 'multipart/form-data',
                           Authorization: `Bearer ${userInfo.token}`,
@@ -386,7 +387,7 @@ export default function ProductEdit(props) {
                     bodyFormData.append('image', file);
                     setLoadingUpload3(true);
                     try {
-                      const { data } = await axios.post('https://api.berlywud.com/api/uploads/s3', bodyFormData, {
+                      const { data } = await axios.post(API_BASE_URL + '/api/uploads/s3', bodyFormData, {
                         headers: {
                           'Content-Type': 'multipart/form-data',
                           Authorization: `Bearer ${userInfo.token}`,
@@ -431,7 +432,7 @@ export default function ProductEdit(props) {
                     bodyFormData.append('image', file);
                     setLoadingUpload4(true);
                     try {
-                      const { data } = await axios.post('https://api.berlywud.com/api/uploads/s3', bodyFormData, {
+                      const { data } = await axios.post(API_BASE_URL + '/api/uploads/s3', bodyFormData, {
                         headers: {
                           'Content-Type': 'multipart/form-data',
                           Authorization: `Bearer ${userInfo.token}`,
@@ -476,7 +477,7 @@ export default function ProductEdit(props) {
                     bodyFormData.append('image', file);
                     setLoadingUpload5(true);
                     try {
-                      const { data } = await axios.post('https://api.berlywud.com/api/uploads/s3', bodyFormData, {
+                      const { data } = await axios.post(API_BASE_URL + '/api/uploads/s3', bodyFormData, {
                         headers: {
                           'Content-Type': 'multipart/form-data',
                           Authorization: `Bearer ${userInfo.token}`,
@@ -521,7 +522,7 @@ export default function ProductEdit(props) {
                     bodyFormData.append('image', file);
                     setLoadingUpload6(true);
                     try {
-                      const { data } = await axios.post('https://api.berlywud.com/api/uploads/s3', bodyFormData, {
+                      const { data } = await axios.post(API_BASE_URL + '/api/uploads/s3', bodyFormData, {
                         headers: {
                           'Content-Type': 'multipart/form-data',
                           Authorization: `Bearer ${userInfo.token}`,

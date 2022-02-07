@@ -1,14 +1,13 @@
 .cart-values{
     display: flex;
     justify-content: space-between;
-    border: 1px solid #e7e7e7;
+    border: 1px solid #343434;
     padding: 4%;
     border-radius: 3px;
 }
 .cart__left  h4,.cart__right h4{
     font-family: 'Poppins' , 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 500;
-    color: #57534a;
     margin: 0;
 }
 .cart{
@@ -30,8 +29,8 @@
     max-width: 600px;
 }
 .cart__quotes Button{
-    color: #008000;
-    border: 1px solid #008000;
+    color: #f6dd90;
+    border: 1px solid #f6dd90;
     margin: 1em 0;
     font-family: 'Poppins','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
