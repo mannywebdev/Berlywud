@@ -54,10 +54,12 @@
     }
     .subtotal{
         padding: 0.6em;
+        min-width: 0%;
     }
     .subtotal h4{
         font-size: 0.9em;
     }
+    
 }
 
 

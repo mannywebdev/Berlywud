@@ -91,7 +91,7 @@ span{
     .form{
         min-width: 25em;
         padding: 1em;
-        margin: 0.5em;
+        margin: 1em;
     }
     .form >div{
         display: flex;
@@ -132,7 +132,7 @@ span{
     .form{
         min-width: 20em;
         padding: 1em;
-        margin: 0.5em;
+        margin: 1em;
     }
     .form >div{
         display: flex;
@@ -167,6 +167,15 @@ span{
     .link__pink{
         font-size: 0.8em;
     }
+}
+
+@media only screen and (max-width: 360px){
+    .form{
+        min-width: 16em;
+        padding: 1em;
+        margin: 1em;
+    }
+  
 }
 
 

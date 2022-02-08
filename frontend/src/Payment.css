@@ -79,23 +79,22 @@
     margin: 0;
 }
 
-@media only screen and (max-width: 860px){
+@media only screen and (max-width: 850px){
     .payment__container{
         display: flex;
         justify-content: center;
         flex-direction: column;
     }
-}
-
-
-@media only screen and (max-width: 570px){
+    .paymentright__div>p{
+        font-size: 0.9em;
+    }
     .cardleft__info >span{
         margin: 0.3em 0.3em 0.3em 0;
-        font-size: 0.8em;
+        font-size: 0.9em;
     }
     .cardleft__info p{
         margin: 0;
-        font-size: 0.9em;
+        font-size: 0.7em;
         font-weight: 300;
     }
     .cardleft__info p:first-child{
@@ -108,7 +107,7 @@
         height: 5em;
     }
     .cardright{
-        font-size: 0.9em;
+        font-size: 0.7em;
         padding: 0.3em 1em 0 1em;
         border-top: 1px solid #343434;
         display: block;
@@ -118,16 +117,60 @@
         display: block;
     }
     .paymentleft__card>p{
-        font-size: 0.9em;
-    }
-    .paymentleft__card > p >span{
-        font-size: 1.1em;
+        font-size: 0.7em;
     }
     .paymentleft__card >h3{
         margin: 0;
+        font-size: 0.9em;
     }
     .payment__left{
         flex-grow: 1;
         margin: 0;
+    }
+}
+
+
+@media only screen and (max-width: 570px){
+    .cardleft__info >span{
+        margin: 0.3em 0.3em 0.3em 0;
+        font-size: 0.7em;
+    }
+    .cardleft__info p{
+        margin: 0;
+        font-size: 0.7em;
+        font-weight: 300;
+    }
+    .cardleft__info p:first-child{
+        font-weight: 500;
+        font-size: 1em;
+        margin-bottom: 0.3em;
+    }
+    .cardleft__img >img{
+        width: 5em;
+        height: 5em;
+    }
+    .cardright{
+        font-size: 0.7em;
+        padding: 0.3em 1em 0 1em;
+        border-top: 1px solid #343434;
+        display: block;
+        text-align: right;
+    }
+    .cardinner{
+        display: block;
+    }
+    .paymentleft__card>p{
+        font-size: 0.7em;
+    }
+    .paymentleft__card >h3{
+        margin: 0;
+        font-size: 0.9em;
+    }
+    .payment__left{
+        flex-grow: 1;
+        margin: 0;
+    }
+    .paymentright__div>p{
+        font-size: 0.7em;
     }
 }

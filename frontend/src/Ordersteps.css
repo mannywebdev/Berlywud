@@ -14,6 +14,19 @@
     margin-bottom: 1em;
 }
 
+@media only screen and (max-width: 850px){
+    .ordersteps > div {
+        font-size: 0.9em;
+    }
+    .ordersteps > div.active{
+        border-top: 0.2em #537a5a solid;
+    }
+    .ordersteps{
+        margin-bottom: 1em;
+    }
+}
+
+
 @media only screen and (max-width: 570px){
     .ordersteps > div {
         font-size: 0.7em;
@@ -22,7 +35,6 @@
         border-top: 0.2em #537a5a solid;
     }
     .ordersteps{
-        display: flex;
         margin-bottom: 1em;
     }
 }
