@@ -29,33 +29,33 @@ export default function Orderhistory() {
         (!_.isEmpty(orders)) ? (
         <>
         <h3>Order History</h3>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>ORDER ID</th>
-              <th>DATE</th>
-              <th>TOTAL</th>
-              <th>PAID</th>
-              <th>DELIVERED</th>
-              <th>ACTIONS</th>
+        <table className="resp_table">
+          <thead className="resp_table_thead">
+            <tr className="resp_table_tr">
+              <th className="resp_table_th">ORDER ID</th>
+              <th className="resp_table_th">DATE</th>
+              <th className="resp_table_th">TOTAL</th>
+              <th className="resp_table_th">PAID</th>
+              <th className="resp_table_th">DELIVERED</th>
+              <th className="resp_table_th">ACTIONS</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="resp_table_tbody">
             {orders.map((order) => (
-              <tr key={order._id}>
-                <td>{order._id}</td>
-                <td>{order.createdAt.substring(0, 10)}</td>
-                <td>{order.totalPrice.toFixed(2)}</td>
-                <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
-                <td>
+              <tr className="resp_table_tr" key={order._id}>
+                <td className="resp_table_td">{order._id}</td>
+                <td className="resp_table_td">{order.createdAt.substring(0, 10)}</td>
+                <td className="resp_table_td">{order.totalPrice.toFixed(2)}</td>
+                <td className="resp_table_td">{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
+                <td className="resp_table_td">
                   {order.isDelivered
                     ? order.deliveredAt.substring(0, 10)
                     : 'No'}
                 </td>
-                <td>
+                <td className="resp_table_td">
                   <button
                     type="button"
-                    className="small"
+                    className="small pinkButton"
                     onClick={() => {
                       history.push(`/order/${order._id}`);
                     }}

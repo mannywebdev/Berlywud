@@ -73,6 +73,7 @@
 }
 .dropdown__content.active{
     display: block;
+    border-radius: 0.5em;
 }
 .dropdown__content .link{
     color: #fff;
@@ -81,7 +82,7 @@ ul{
     list-style-type: none;
 
 }
-ul li {
+.navbar__ul li {
     padding: 0.5em 0;
     border-top: 1px solid lightgray;
 
@@ -220,7 +221,7 @@ ul li {
         top: 30px;
         right: -18px;
     }
-    ul li {
+    .navbar__ul li {
         font-size: 0.8em;
     }
     .navbar__logincart .MuiButton-root{

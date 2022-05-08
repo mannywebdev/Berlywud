@@ -1,105 +1,84 @@
-.orderhistory h3{
-  font-size: 2rem;
+.resp_table { 
+  width: 100%; 
+  border-collapse: collapse; 
 }
-.table {
-    /* width: 100%; */
-    border-collapse: collapse;
-    
-  }
-  .table tbody tr:nth-of-type(odd) {
-    background-color: #f6dd90;
-    color: black;
-  }
-  .table td,
-  .table th {
-    text-align: left;
-  }
+/* Zebra striping */
+/* .resp_table_tr:nth-of-type(odd) { 
+  background: #f6dd90; 
+  color: #000;
+} */
+.resp_table_th { 
+  background: #333; 
+  color: white; 
+  font-weight: bold; 
+}
+.resp_table_tr { 
+	border-bottom: 1px solid #343434;
+}
+.resp_table_td, .resp_table_th { 
+  padding: 6px; 
+  text-align: left; 
+}
 
-  .table button {
-    margin: 0 0.2rem;
-  }
-  button.small {
+.orderhistory{
+  margin: 4%;
+}
+
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	.resp_table, .resp_table_thead, .resp_table_tbody, .resp_table_th, .resp_table_td, .resp_table_tr { 
+		display: block; 
     font-size: 0.9rem;
-    margin: 0.3rem 0.2rem;
-    padding: .3rem .8rem;
-    border-radius: 5px;
-    outline: 0;
-    border: 1px solid black;
-    cursor: pointer;
-    background-color: white;
-  }
-  .orderhistory{
-    margin : 0 4% 4% 4%;
-  }
+	}
 
-  @media only screen and (max-width: 1310px){
-    .orderhistory h3{
-        font-size: 1.5em;
-    }
-  }
+  .resp_table_tr { 
+		margin-bottom: 1rem;
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	.resp_table_thead .resp_table_tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	.resp_table_tr { border: 1px solid #343434; }
+	
+	.resp_table_td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #343434; 
+		position: relative;
+		padding-left: 30%; 
+	}
+	
+	.resp_table_td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	/*
+	Label the data
+	*/
+	.resp_table_td:nth-of-type(1):before { content: "Order Id"; }
+	.resp_table_td:nth-of-type(2):before { content: "Date"; }
+	.resp_table_td:nth-of-type(3):before { content: "Total"; }
+	.resp_table_td:nth-of-type(4):before { content: "Paid"; }
+	.resp_table_td:nth-of-type(5):before { content: "Delivered"; }
+	.resp_table_td:nth-of-type(6):before { content: "Action"; }
+}
 
-  @media only screen and (max-width: 850px){
-    .orderhistory h3{
-      font-size: 1.2em;
-  }
-  }
-
-  /* @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)  {
-
-  table, thead, tbody, th, td, tr {
-    display: block;
-  }
-
- 
-  thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  }
-
-  tr {
-    margin: 0 0 1em 0;
-    padding: 0.3em;
-  }
-    
-  tr:nth-child(odd) {
-    background: #ccc;
-  }
-  
-  td {
-    border: none;
-    border-bottom: 1px solid #eee;
-    position: relative;
-    padding-left: 35%;
-  }
-
-  td:before {
-    position: absolute;
-    top: 0;
-    left: 6px;
-    width: 15%;
-    padding-right: 10px;
-    white-space: nowrap;
-  }
-  td:nth-of-type(1):before { content: "Order Id"; }
-  td:nth-of-type(2):before { content: "Date"; }
-  td:nth-of-type(3):before { content: "Total"; }
-  td:nth-of-type(4):before { content: "Paid"; }
-  td:nth-of-type(5):before { content: "Delivered"; }
-  td:nth-of-type(6):before { content: "Actions"; }
-  } */
-
-  /* @media only screen and (max-width: 570px) {
-    .table td,
-    .table th {
-      font-size: 0.7em;
-    }
-    button.small {
-      font-size: 0.7rem;
-      padding: 0.2rem 0.5rem;
-      background-color: white;
-    }
-    h3{
-      font-size: 1rem;
-    }
-  } */
+@media only screen and (max-width: 570px){
+  .resp_table, .resp_table_thead, .resp_table_tbody, .resp_table_th, .resp_table_td, .resp_table_tr { 
+    font-size: 0.7rem;
+	}
+}

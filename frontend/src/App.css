@@ -18,3 +18,29 @@ select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px #000 inset;
   transition: background-color 5000s ease-in-out 0s;
 }
+
+.click__button{
+  position: relative;
+  background-color: black;
+  border-radius: 0.5em;
+  font-size: 16px;
+  color: white;
+  border: 1px solid white;
+  padding: 0.8em 1.8em;
+  cursor:pointer;
+  user-select:none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition-duration: 0.1s;
+  -webkit-transition-duration: 0.1s; /* Safari */
+}
+
+/* .button:hover {
+  transition-duration: 0.1s;
+  background-color: #635782;
+} */
+
+.click__button:active {
+  top: 1px;
+}

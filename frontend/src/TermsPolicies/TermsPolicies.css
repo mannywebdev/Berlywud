@@ -1,0 +1,24 @@
+.terms-policies{
+    margin: 2em 18%;
+}
+.terms-policies a{
+    text-decoration: none;
+    color: #537a5a;
+}
+.terms-policies p{
+    text-align: justify;
+}
+
+@media only screen and (max-width: 1310px){
+    .terms-policies{
+        margin: 2em 12%;
+        font-size: 0.9em;
+    }
+} 
+@media only screen and (max-width: 570px){
+    .terms-policies{
+        margin: 2em 6%;
+        font-size: 0.7em;
+    }
+} 
+

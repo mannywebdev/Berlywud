@@ -23,6 +23,7 @@
     border: 1px solid #343434;
     margin: 1em 0;
     padding: 1em;
+    min-width: 18em;
 }
 .paymentleft__card > div:nth-child(4){
     border-top: 1px solid #343434;
@@ -33,16 +34,16 @@
     justify-content: space-between;
     margin: 0 4%;
 }
-
 .cardinner{
     display: flex;
     justify-content: space-between;
-    margin: 1em 0;
     border-bottom: 1px solid #343434;
     padding: 0.5em 0;
     border-radius: 3px;
 }
-
+.cardleft__img{
+    background-color: #fff;
+}
 .cardleft{
     display: flex;
 }
@@ -53,6 +54,9 @@
     width: 6em;
     height: 6em;
     object-fit: contain;
+}
+.cardleft__info{
+    padding-left: 1em;
 }
 .cardleft__info >span{
     margin: 0.5em 1em 0.5em 0;
@@ -79,14 +83,29 @@
     margin: 0;
 }
 
-@media only screen and (max-width: 850px){
+@media only screen and (max-width: 1024px){
     .payment__container{
         display: flex;
         justify-content: center;
         flex-direction: column;
     }
+    .payment__left {
+        margin-right: 0;
+    }
+    .payment__right{
+        margin-left: 0;
+    }
+}
+
+@media only screen and (max-width: 850px){
+    .payment__right{
+        margin-left: 0;
+    }
     .paymentright__div>p{
         font-size: 0.9em;
+    }
+    .cardleft__info{
+        padding: 0.4em 0.4em 0.4em 0.6em;
     }
     .cardleft__info >span{
         margin: 0.3em 0.3em 0.3em 0;
@@ -94,20 +113,22 @@
     }
     .cardleft__info p{
         margin: 0;
-        font-size: 0.7em;
+        font-size: 0.9em;
         font-weight: 300;
     }
     .cardleft__info p:first-child{
         font-weight: 500;
-        font-size: 1em;
+        font-size: 0.9em;
         margin-bottom: 0.3em;
     }
+    
     .cardleft__img >img{
         width: 5em;
         height: 5em;
+        background-color: #fff;
     }
     .cardright{
-        font-size: 0.7em;
+        font-size: 0.9em;
         padding: 0.3em 1em 0 1em;
         border-top: 1px solid #343434;
         display: block;
@@ -115,9 +136,14 @@
     }
     .cardinner{
         display: block;
+        margin: 0;
+        padding-top: 0;
+    }
+    .paymentleft__card{
+        margin: 0.6em 0;
     }
     .paymentleft__card>p{
-        font-size: 0.7em;
+        font-size: 0.9em;
     }
     .paymentleft__card >h3{
         margin: 0;
@@ -131,6 +157,9 @@
 
 
 @media only screen and (max-width: 570px){
+    .cardleft__info{
+        padding: 0.3em 0.3em 0.3em 0.5em;
+    }
     .cardleft__info >span{
         margin: 0.3em 0.3em 0.3em 0;
         font-size: 0.7em;
@@ -142,7 +171,7 @@
     }
     .cardleft__info p:first-child{
         font-weight: 500;
-        font-size: 1em;
+        font-size: 0.8em;
         margin-bottom: 0.3em;
     }
     .cardleft__img >img{
@@ -158,6 +187,7 @@
     }
     .cardinner{
         display: block;
+        margin: 0;
     }
     .paymentleft__card>p{
         font-size: 0.7em;

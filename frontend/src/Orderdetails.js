@@ -39,7 +39,7 @@ function Orderdetails() {
     const { userInfo } = UserSignin
 
     const orderDeliver = useSelector((state) => state.OrderDeliver);
-  const {loading: loadingDeliver,error: errorDeliver,success: successDeliver,} = orderDeliver;
+    const {loading: loadingDeliver,error: errorDeliver,success: successDeliver,} = orderDeliver;
 
     const orderPay = useSelector((state) => state.orderPay);
     const {loading: loadingPay,error: errorPay,success: successPay} = orderPay;
