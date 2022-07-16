@@ -87,6 +87,25 @@ span{
     text-transform: none;
 }
 
+/* .signin__footer{
+    margin-top : 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.signin__footer span{
+    display: block;
+}
+
+.signin__footer__right{
+    align-self: end;
+}
+
+.loader__center{
+    align-items: center;
+} */
+
 @media only screen and (max-width: 850px){
     .form{
         min-width: 25em;

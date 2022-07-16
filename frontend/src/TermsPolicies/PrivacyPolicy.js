@@ -4,7 +4,7 @@ import "../TermsPolicies/TermsPolicies.css";
 const PrivacyPolicy = () => {
   return (
     <div className="terms-policies">
-      <h1 class="text-center">Privacy Policy</h1>
+      <h1 className="text-center">Privacy Policy</h1>
       <h3>Your privacy is important to us</h3>
       <p>
         It is BERLYWUD's policy to respect your privacy regarding any

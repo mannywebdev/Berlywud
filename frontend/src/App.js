@@ -30,10 +30,14 @@ import i4 from "./images/i4.png";
 import bannermain from "./images/bannermain.png";
 import PrivacyPolicy from "./TermsPolicies/PrivacyPolicy";
 import ShippingPolicy from "./TermsPolicies/ShippingPolicy";
+import Resetpassword from "./Resetpassword";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <BrowserRouter>
+      <ToastContainer />
       <div className="App">
         <header>
           <Navbar />
@@ -78,6 +82,9 @@ function App() {
             </Route>
             <Route path="/register">
               <Register />
+            </Route>
+            <Route path="/reset-password">
+              <Resetpassword />
             </Route>
             <Route exact path="/search/name/:name?">
               <Searchscreen />
